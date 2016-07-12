@@ -58,6 +58,14 @@ Linux Mint 17.3 Cinnamon (Cinnamon-Version 2.8)
 .starkmenu-search-box {
 	padding-bottom: 0px;
 }
+.hover-user-icon {
+    border-radius: 4px;
+    border: 6px solid transparent;
+	border-image: url('box.png') 6 6 6 6;
+}
+.hover-icon {
+	border: 6px solid transparent;
+}
 ```
 -------------------------------------------------------------------------------------------------
 
