@@ -1794,6 +1794,7 @@ HoverIcon.prototype = {
 
         this.userLabel = new St.Label();
         this.userLabel.set_style("font-size: 16px;");
+        this.userLabel.add_style_class_name("starkmenu-user-label");
 
         this.userBox.add(this.userLabel, {
             x_fill: true,

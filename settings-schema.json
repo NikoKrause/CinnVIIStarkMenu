@@ -166,7 +166,7 @@
 	    "Vertical": "vertical",
         "Horizontal": "horizontal"
      },
-    "description": "Quit Menu Layout",
+    "description": "Quit Menu Layout: ",
     "tooltip": "Choose the layout of the Quit Menu.",
     "dependency" : "show-quicklinks-shutdown-menu",
     "indent" : true
