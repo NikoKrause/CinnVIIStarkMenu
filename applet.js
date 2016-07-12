@@ -3784,7 +3784,7 @@ MyApplet.prototype = {
         this.mainBox.remove_actor(this.rightButtonsBox.actor);
         this.mainBox.remove_actor(this.leftPaneBox);
         if(this.menuLayout == "mate-menu") {
-            this.rightButtonsBox.actor.set_style("padding-right: 8px;");
+            this.rightButtonsBox.actor.set_style("padding-right: 8px;"); 
             this.mainBox.add_actor(this.rightButtonsBox.actor);
             this.mainBox.add_actor(this.leftPaneBox);
         } else {
