@@ -10,6 +10,11 @@ This menu is adapted by me to look better with the CinnXP theme by petrucci4prez
 Linux Mint 17.3 Cinnamon (Cinnamon-Version 2.8)
 
 #### Installation guide:
+See this review video of CinnXPStarkMenu by @BigDaddyonTech for installation instructions and for a preview before installing this applet:
+https://www.youtube.com/watch?v=OmUpLNsWgC4
+
+Or follow the following instructions:
+
 1. Download ZIP
 2. Extract "starkmenu-master.zip"
 3. Rename the extracted "CinnXPStarkMenu-master" folder to "CinnXPStarkMenu@NikoKrause" 
@@ -75,7 +80,7 @@ Linux Mint 17.3 Cinnamon (Cinnamon-Version 2.8)
 * @lestcape for helping me with add_style_class and for his Configurable-Menu, which helped me to fix the moving issues of the favorites buttons
 * @linuxmint for Cinnamon and the default menu@cinnamon.org, from which I adapted most of the code and which helped me to understand more of the codebase
 * @petrucci4prez for his great CinnXP theme, which was the main reason for me to start with coding this menu
+* @BigDaddyonTech for his review video of CinnXPStarkMenu
 
 ###### ToDo and Bugs (help and hints are welcome):
-* Find a better way to translate the settings-schema.json file
 * [Minor Bug] After removing favorite with largest name, the favorites box should resize while menu is still open, but it doesn't.
