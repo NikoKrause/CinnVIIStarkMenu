@@ -287,7 +287,7 @@
  },
  "quicklink-6" : {
     "type": "entry",
-    "default": "Downloads,folder-downloads,nemo Downloads",
+    "default": "Downloads,folder-download,nemo Downloads",
     "description": "Quicklink",
     "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
     "dependency" : "quicklink-6-checkbox",
@@ -371,7 +371,7 @@
  },
  "quicklink-12" : {
     "type": "entry",
-    "default": "Help,help,yelp",
+    "default": "separator",
     "description": "Quicklink",
     "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
     "dependency" : "quicklink-12-checkbox",
@@ -379,13 +379,13 @@
  },
  "quicklink-13-checkbox" : {
     "type" : "checkbox",
-    "default" : true,
+    "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
  "quicklink-13" : {
     "type": "entry",
-    "default": "separator",
+    "default": "",
     "description": "Quicklink",
     "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
     "dependency" : "quicklink-13-checkbox",
