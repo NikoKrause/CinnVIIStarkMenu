@@ -2366,6 +2366,7 @@ MyApplet.prototype = {
         this._isBumblebeeInstalled = GLib.file_test("/usr/bin/optirun", GLib.FileTest.EXISTS);
         this.RecentManager = new DocInfo.DocManager();
         this.privacy_settings = new Gio.Settings( {schema_id: PRIVACY_SCHEMA} );
+        this.noRecentDocuments = true;
         this._display();
         this._updateMenuLayout();
         appsys.connect('installed-changed', Lang.bind(this, this._refreshAll));
@@ -2820,145 +2821,221 @@ MyApplet.prototype = {
 
         index = this._selectedItemIndex;
 
-        if (this._activeContainer === null && symbol == Clutter.KEY_Up) {
-            if(visiblePane == "favs") {
-                this._activeContainer = this.favoritesBox;
-                item_actor = this.favBoxIter.getLastVisible();
-                index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
-            } else {
-                this._activeContainer = this.categoriesBox;
-                item_actor = this.catBoxIter.getLastVisible();
-                index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
-            }
-            this._scrollToButton(item_actor._delegate);
-        } else if (this._activeContainer === null && symbol == Clutter.KEY_Down) {
-            if(visiblePane == "favs") {
+        let ctrlKey = modifierState & Clutter.ModifierType.CONTROL_MASK;
+
+        let navigationKey = true;
+        let whichWay = "none";
+
+        switch (symbol) {
+            case Clutter.KEY_Up:
+                whichWay = "up";
+                if (this._activeContainer === this.favoritesBox && ctrlKey &&
+                    (this.favoritesBox.get_child_at_index(index))._delegate instanceof FavoritesButton)
+                    navigationKey = false;
+                break;
+            case Clutter.KEY_Down:
+                whichWay = "down";
+                if (this._activeContainer === this.favoritesBox && ctrlKey &&
+                    (this.favoritesBox.get_child_at_index(index))._delegate instanceof FavoritesButton)
+                    navigationKey = false;
+                break;
+            case Clutter.KEY_Page_Up:
+                whichWay = "top"; break;
+            case Clutter.KEY_Page_Down:
+                whichWay = "bottom"; break;
+            case Clutter.KEY_Right:
+                if (!this.searchActive)
+                    whichWay = "right";
+                if (this._activeContainer === this.applicationsBox)
+                    whichWay = "none";
+                else if ((this.categoriesBox.get_child_at_index(index))._delegate instanceof RecentCategoryButton &&
+                            this.noRecentDocuments)
+                    whichWay = "none";
+                break;
+            case Clutter.KEY_Left:
+                if (!this.searchActive)
+                    whichWay = "left";
+                if (this._activeContainer === this.favoritesBox)
+                    whichWay = "none";
+                else if (!this.favBoxShow &&
+                            (this._activeContainer === this.categoriesBox || this._activeContainer === null))
+                    whichWay = "none";
+                break;
+            case Clutter.Tab:
+                if (!this.searchActive)
+                    whichWay = "right";
+                else
+                    navigationKey = false;
+                break;
+            case Clutter.ISO_Left_Tab:
+                if (!this.searchActive)
+                    whichWay = "left";
+                else
+                    navigationKey = false;
+                break;
+            default:
+                navigationKey = false;
+        }
+
+
+
+        if (navigationKey) {
+            if (this._activeContainer === null && symbol == Clutter.KEY_Up) {
+                if(visiblePane == "favs") {
+                    this._activeContainer = this.favoritesBox;
+                    item_actor = this.favBoxIter.getLastVisible();
+                    index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
+                } else {
+                    this._activeContainer = this.categoriesBox;
+                    item_actor = this.catBoxIter.getLastVisible();
+                    index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                }
+                this._scrollToButton(item_actor._delegate);
+            } else if (this._activeContainer === null && symbol == Clutter.KEY_Down) {
+                if(visiblePane == "favs") {
+                    this._activeContainer = this.favoritesBox;
+                    item_actor = this.favBoxIter.getFirstVisible();
+                    index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
+                } else {
+                    this._activeContainer = this.categoriesBox;
+                    item_actor = this.catBoxIter.getFirstVisible();
+                    item_actor = this._activeContainer._vis_iter.getNextVisible(item_actor);
+                    index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                }
+                this._scrollToButton(item_actor._delegate);
+            } else if (this._activeContainer === null && symbol == Clutter.KEY_Left) {
                 this._activeContainer = this.favoritesBox;
                 item_actor = this.favBoxIter.getFirstVisible();
                 index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
-            } else {
-                this._activeContainer = this.categoriesBox;
-                item_actor = this.catBoxIter.getFirstVisible();
-                item_actor = this._activeContainer._vis_iter.getNextVisible(item_actor);
-                index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
-            }
-            this._scrollToButton(item_actor._delegate);
-        } else if (this._activeContainer === null && symbol == Clutter.KEY_Left) {
-            this._activeContainer = this.favoritesBox;
-            item_actor = this.favBoxIter.getFirstVisible();
-            index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
-            if(visiblePane == "apps")
-                this.switchPanes("favs");
-        } else if (this._activeContainer === null && symbol == Clutter.KEY_Right) {
-            if(visiblePane == "favs") {
-                this._activeContainer = this.categoriesBox;
-                item_actor = this.catBoxIter.getFirstVisible();
-                index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
-                this.switchPanes("apps");
-            } else {
-                this._activeContainer = this.applicationsBox;
-                item_actor = this.appBoxIter.getFirstVisible();
-                index = this.appBoxIter.getAbsoluteIndexOfChild(item_actor);
-            }
-        } else if (symbol == Clutter.KEY_Up) {
-            if (this._activeContainer != this.categoriesBox) {
-                this._previousSelectedActor = this._activeContainer.get_child_at_index(index);
-                item_actor = this._activeContainer._vis_iter.getPrevVisible(this._previousSelectedActor);
-                this._previousVisibleIndex = this._activeContainer._vis_iter.getVisibleIndex(item_actor);
-                index = this._activeContainer._vis_iter.getAbsoluteIndexOfChild(item_actor);
-                this._scrollToButton(item_actor._delegate);
-            } else {
-                this._previousTreeSelectedActor = this.categoriesBox.get_child_at_index(index);
-                this._previousTreeSelectedActor._delegate.isHovered = false;
-                item_actor = this.catBoxIter.getPrevVisible(this._activeActor)
-                index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
-                this._scrollToCategoryButton(item_actor._delegate);
-            }
-        } else if (symbol == Clutter.KEY_Down) {
-            if (this._activeContainer != this.categoriesBox) {
-                this._previousSelectedActor = this._activeContainer.get_child_at_index(index);
-                item_actor = this._activeContainer._vis_iter.getNextVisible(this._previousSelectedActor);
-
-                this._previousVisibleIndex = this._activeContainer._vis_iter.getVisibleIndex(item_actor);
-                index = this._activeContainer._vis_iter.getAbsoluteIndexOfChild(item_actor);
-                this._scrollToButton(item_actor._delegate);
-            } else {
-                this._previousTreeSelectedActor = this.categoriesBox.get_child_at_index(index);
-                this._previousTreeSelectedActor._delegate.isHovered = false;
-                item_actor = this.catBoxIter.getNextVisible(this._activeActor)
-                index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
-                this._previousTreeSelectedActor._delegate.emit('leave-event');
-                this._scrollToCategoryButton(item_actor._delegate);
-            }
-        } else if (symbol == Clutter.KEY_Right && (this._activeContainer !== this.applicationsBox)) {
-            if (this._activeContainer == this.categoriesBox) {
-                if (this._previousVisibleIndex !== null) {
-                    item_actor = this.appBoxIter.getVisibleItem(this._previousVisibleIndex);
+                if(visiblePane == "apps")
+                    this.switchPanes("favs");
+            } else if (this._activeContainer === null && symbol == Clutter.KEY_Right) {
+                if(visiblePane == "favs") {
+                    this._activeContainer = this.categoriesBox;
+                    item_actor = this.catBoxIter.getFirstVisible();
+                    index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                    this.switchPanes("apps");
                 } else {
+                    this._activeContainer = this.applicationsBox;
                     item_actor = this.appBoxIter.getFirstVisible();
+                    index = this.appBoxIter.getAbsoluteIndexOfChild(item_actor);
                 }
-            } else {
+            } else if (symbol == Clutter.KEY_Up) {
+                if (this._activeContainer != this.categoriesBox) {
+                    this._previousSelectedActor = this._activeContainer.get_child_at_index(index);
+                    item_actor = this._activeContainer._vis_iter.getPrevVisible(this._previousSelectedActor);
+                    this._previousVisibleIndex = this._activeContainer._vis_iter.getVisibleIndex(item_actor);
+                    index = this._activeContainer._vis_iter.getAbsoluteIndexOfChild(item_actor);
+                    this._scrollToButton(item_actor._delegate);
+                } else {
+                    this._previousTreeSelectedActor = this.categoriesBox.get_child_at_index(index);
+                    this._previousTreeSelectedActor._delegate.isHovered = false;
+                    item_actor = this.catBoxIter.getPrevVisible(this._activeActor)
+                    index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                    this._scrollToCategoryButton(item_actor._delegate);
+                }
+            } else if (symbol == Clutter.KEY_Down) {
+                if (this._activeContainer != this.categoriesBox) {
+                    this._previousSelectedActor = this._activeContainer.get_child_at_index(index);
+                    item_actor = this._activeContainer._vis_iter.getNextVisible(this._previousSelectedActor);
+
+                    this._previousVisibleIndex = this._activeContainer._vis_iter.getVisibleIndex(item_actor);
+                    index = this._activeContainer._vis_iter.getAbsoluteIndexOfChild(item_actor);
+                    this._scrollToButton(item_actor._delegate);
+                } else {
+                    this._previousTreeSelectedActor = this.categoriesBox.get_child_at_index(index);
+                    this._previousTreeSelectedActor._delegate.isHovered = false;
+                    item_actor = this.catBoxIter.getNextVisible(this._activeActor)
+                    index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                    this._previousTreeSelectedActor._delegate.emit('leave-event');
+                    this._scrollToCategoryButton(item_actor._delegate);
+                }
+            } else if (symbol == Clutter.KEY_Right && (this._activeContainer !== this.applicationsBox)) {
+                if (this._activeContainer == this.categoriesBox) {
+                    if (this._previousVisibleIndex !== null) {
+                        item_actor = this.appBoxIter.getVisibleItem(this._previousVisibleIndex);
+                    } else {
+                        item_actor = this.appBoxIter.getFirstVisible();
+                    }
+                } else {
+                    item_actor = (this._previousTreeSelectedActor != null) ? this._previousTreeSelectedActor : this.catBoxIter.getFirstVisible();
+                    index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                    this._previousTreeSelectedActor = item_actor;
+                    if(visiblePane == "favs")
+                        this.switchPanes("apps");
+                }
+                index = item_actor.get_parent()._vis_iter.getAbsoluteIndexOfChild(item_actor);
+            } else if (symbol == Clutter.KEY_Left && this._activeContainer === this.applicationsBox && !this.searchActive) {
+                this._previousSelectedActor = this.applicationsBox.get_child_at_index(index);
                 item_actor = (this._previousTreeSelectedActor != null) ? this._previousTreeSelectedActor : this.catBoxIter.getFirstVisible();
                 index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
                 this._previousTreeSelectedActor = item_actor;
-                if(visiblePane == "favs")
-                    this.switchPanes("apps");
+            } else if (symbol == Clutter.KEY_Left && this._activeContainer === this.categoriesBox && !this.searchActive) {
+                this._previousSelectedActor = this.categoriesBox.get_child_at_index(index);
+                item_actor = this.favBoxIter.getFirstVisible();
+                index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
+                this.switchPanes("favs");
             }
-            index = item_actor.get_parent()._vis_iter.getAbsoluteIndexOfChild(item_actor);
-        } else if (symbol == Clutter.KEY_Left && this._activeContainer === this.applicationsBox && !this.searchActive) {
-            this._previousSelectedActor = this.applicationsBox.get_child_at_index(index);
-            item_actor = (this._previousTreeSelectedActor != null) ? this._previousTreeSelectedActor : this.catBoxIter.getFirstVisible();
-            index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
-            this._previousTreeSelectedActor = item_actor;
-        } else if (symbol == Clutter.KEY_Left && this._activeContainer === this.categoriesBox && !this.searchActive) {
-            this._previousSelectedActor = this.categoriesBox.get_child_at_index(index);
-            item_actor = this.favBoxIter.getFirstVisible();
-            index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
-            this.switchPanes("favs");
-        } else if (this._activeContainer !== this.categoriesBox && (symbol == Clutter.KEY_Return || symbol == Clutter.KP_Enter)) {
-            item_actor = this._activeContainer.get_child_at_index(this._selectedItemIndex);
-            item_actor._delegate.activate();
-            return true;
-        } else if (this.searchFilesystem && (this._fileFolderAccessActive || symbol == Clutter.slash)) {
-            if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
-                if (this._run(this.searchEntry.get_text())) {
-                    this.menu.close();
+        } else {
+            if (this._activeContainer !== this.categoriesBox && (symbol === Clutter.KEY_Return || symbol === Clutter.KP_Enter)) {
+                if (!ctrlKey) {
+                    item_actor = this._activeContainer.get_child_at_index(this._selectedItemIndex);
+                    item_actor._delegate.activate();
+                } else if (ctrlKey && this._activeContainer === this.applicationsBox) {
+                    item_actor = this.applicationsBox.get_child_at_index(this._selectedItemIndex);
+                    if (item_actor._delegate instanceof ApplicationButton || item_actor._delegate instanceof RecentButton)
+                        item_actor._delegate.activateContextMenus();
                 }
                 return true;
-            }
-            if (symbol == Clutter.Escape) {
-                this.searchEntry.set_text('');
-                this._fileFolderAccessActive = false;
-            }
-            if (symbol == Clutter.slash) {
-                // Need preload data before get completion. GFilenameCompleter load content of parent directory.
-                // Parent directory for /usr/include/ is /usr/. So need to add fake name('a').
-                let text = this.searchEntry.get_text().concat('/a');
-                let prefix;
-                if (text.lastIndexOf(' ') == -1) prefix = text;
-                else prefix = text.substr(text.lastIndexOf(' ') + 1);
-                this._getCompletion(prefix);
+            } else if (this.searchFilesystem && (this._fileFolderAccessActive || symbol == Clutter.slash)) {
+                if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
+                    if (this._run(this.searchEntry.get_text())) {
+                        this.menu.close();
+                    }
+                    return true;
+                }
+                if (symbol === Clutter.Escape) {
+                    this.searchEntry.set_text('');
+                    this._fileFolderAccessActive = false;
+                }
+                if (symbol === Clutter.slash) {
+                    // Need preload data before get completion. GFilenameCompleter load content of parent directory.
+                    // Parent directory for /usr/include/ is /usr/. So need to add fake name('a').
+                    let text = this.searchEntry.get_text().concat('/a');
+                    let prefix;
+                    if (text.lastIndexOf(' ') == -1)
+                        prefix = text;
+                    else
+                        prefix = text.substr(text.lastIndexOf(' ') + 1);
+                    this._getCompletion(prefix);
 
+                    return false;
+                }
+                if (symbol === Clutter.Tab) {
+                    let text = actor.get_text();
+                    let prefix;
+                    if (text.lastIndexOf(' ') == -1)
+                        prefix = text;
+                    else
+                        prefix = text.substr(text.lastIndexOf(' ') + 1);
+                    let postfix = this._getCompletion(prefix);
+                    if (postfix != null && postfix.length > 0) {
+                        actor.insert_text(postfix, -1);
+                        actor.set_cursor_position(text.length + postfix.length);
+                        if (postfix[postfix.length - 1] == '/')
+                            this._getCompletion(text + postfix + 'a');
+                    }
+                    return true;
+                }
+                if (symbol === Clutter.ISO_Left_Tab) {
+                    return true;
+                }
+                return false;
+            } else if (symbol === Clutter.Tab || symbol === Clutter.ISO_Left_Tab) {
+                return true;
+            } else {
                 return false;
             }
-            if (symbol == Clutter.Tab) {
-                let text = actor.get_text();
-                let prefix;
-                if (text.lastIndexOf(' ') == -1) prefix = text;
-                else prefix = text.substr(text.lastIndexOf(' ') + 1);
-                let postfix = this._getCompletion(prefix);
-                if (postfix != null && postfix.length > 0) {
-                    actor.insert_text(postfix, -1);
-                    actor.set_cursor_position(text.length + postfix.length);
-                    if (postfix[postfix.length - 1] == '/') this._getCompletion(text + postfix + 'a');
-                }
-
-                return true;
-            }
-            return false;
-
-        } else {
-            return false;
         }
 
         this._selectedItemIndex = index;
@@ -3194,7 +3271,7 @@ MyApplet.prototype = {
 
         this._setCategoriesButtonActive(!this.searchActive);
 
-        this._resizeApplicationsBox();
+        //this._resizeApplicationsBox();
     },
 
     _refreshRecent : function() {
@@ -3296,7 +3373,7 @@ MyApplet.prototype = {
 
         this._setCategoriesButtonActive(!this.searchActive);
 
-        this._resizeApplicationsBox();
+        //this._resizeApplicationsBox();
     },
 
     _refreshApps : function() {
