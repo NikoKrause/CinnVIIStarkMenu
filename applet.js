@@ -167,6 +167,10 @@ ApplicationContextMenuItem.prototype = {
                 Util.spawnCommandLine("gksu -m '" + _("Please provide your password to uninstall this application") + "' /usr/bin/cinnamon-remove-application '" + this._appButton.app.get_app_info().get_filename() + "'");
                 this._appButton.appsMenuButton.menu.close();
                 break;
+            case "run_with_nvidia_gpu":
+                Util.spawnCommandLine("optirun gtk-launch " + this._appButton.app.get_id());
+                this._appButton.appsMenuButton.menu.close();
+                break;
         }
         return false;
     }
@@ -258,12 +262,18 @@ GenericApplicationButton.prototype = {
                 menuItem = new ApplicationContextMenuItem(this, _("Uninstall"), "uninstall");
                 this.menu.addMenuItem(menuItem);
             }
+            if (this.appsMenuButton._isBumblebeeInstalled) {
+                menuItem = new ApplicationContextMenuItem(this, _("Run with nVidia GPU"), "run_with_nvidia_gpu");
+                this.menu.addMenuItem(menuItem);
+            }
         }
         this.menu.toggle();
     },
 
     _subMenuOpenStateChanged: function() {
-        if (this.menu.isOpen) this.appsMenuButton._scrollToButton(this.menu);
+        if (this.menu.isOpen) {
+            this.appsMenuButton._scrollToButton(this.menu);
+        }
     }
 }
 
@@ -2353,6 +2363,7 @@ MyApplet.prototype = {
         this._knownApps = new Array(); // Used to keep track of apps that are already installed, so we can highlight newly installed ones
         this._appsWereRefreshed = false;
         this._canUninstallApps = GLib.file_test("/usr/bin/cinnamon-remove-application", GLib.FileTest.EXISTS);
+        this._isBumblebeeInstalled = GLib.file_test("/usr/bin/optirun", GLib.FileTest.EXISTS);
         this.RecentManager = new DocInfo.DocManager();
         this.privacy_settings = new Gio.Settings( {schema_id: PRIVACY_SCHEMA} );
         this._display();
