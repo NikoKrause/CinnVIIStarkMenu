@@ -80,7 +80,7 @@
     "tooltip" : "Delay between switching categories"
  },
  "enable-animation" : {
-    "type": "switch",
+    "type": "checkbox",
     "default": false,
     "description": "Use menu animations",
     "tooltip": "Allow the menu to animate on open and close"
