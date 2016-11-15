@@ -3915,7 +3915,7 @@ MyApplet.prototype = {
             }
         } else if (apps) {
             for (let i = 0; i < this._applicationsButtons.length; i++) {
-                if (apps.indexOf(this._applicationsButtons[i].name) != -1) {
+                if (apps.indexOf(this._applicationsButtons[i].app.get_id()) != -1) {
                     if (!this._applicationsButtons[i].actor.visible) {
                         this._applicationsButtons[i].actor.show();
                     }
@@ -4099,7 +4099,10 @@ MyApplet.prototype = {
             res = new Array();
             for (var i in this._applicationsButtons) {
                 let app = this._applicationsButtons[i].app;
-                if (app.get_name().toLowerCase().indexOf(pattern) != -1 || (app.get_description() && app.get_description().toLowerCase().indexOf(pattern) != -1) || (app.get_id() && app.get_id().slice(0, -8).toLowerCase().indexOf(pattern) != -1)) res.push(app.get_name());
+                if (app.get_name().toLowerCase().indexOf(pattern) != -1 ||
+                    (app.get_description() && app.get_description().toLowerCase().indexOf(pattern) != -1) ||
+                    (app.get_id() && app.get_id().slice(0, -8).toLowerCase().indexOf(pattern) != -1))
+                    res.push(app.get_id());
             }
         } else res = applist;
         return res;
