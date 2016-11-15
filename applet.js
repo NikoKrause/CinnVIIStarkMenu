@@ -2315,6 +2315,9 @@ MyApplet.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-category-icons", "showCategoryIcons", this._refreshAll, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-application-icons", "showApplicationIcons", this._refreshAll, null);
 
+        this.settings.bindProperty(Settings.BindingDirection.IN, "enable-animation", "enableAnimation", null, null);
+
+
         this._updateKeybinding();
 
         this.settings.bindProperty(Settings.BindingDirection.IN, "all-programs-label", "allProgramsLabel", null, null);
@@ -2432,7 +2435,8 @@ MyApplet.prototype = {
 
     _updateKeybinding: function() {
         Main.keybindingManager.addHotKey("overlay-key", this.overlayKey, Lang.bind(this, function() {
-            if (!Main.overview.visible && !Main.expo.visible) this.menu.toggle_with_options(false);
+            if (!Main.overview.visible && !Main.expo.visible)
+                this.menu.toggle_with_options(this.enableAnimation);
         }));
     },
 
@@ -2454,7 +2458,7 @@ MyApplet.prototype = {
 
     openMenu: function() {
         if (!this._applet_context_menu.isOpen) {
-            this.menu.open(false);
+            this.menu.open(this.enableAnimation);
         }
     },
 
@@ -2651,7 +2655,7 @@ MyApplet.prototype = {
     },
 
     on_applet_clicked: function(event) {
-        this.menu.toggle_with_options(false);
+        this.menu.toggle_with_options(this.enableAnimation);
     },
 
     _onSourceKeyPress: function(actor, event) {

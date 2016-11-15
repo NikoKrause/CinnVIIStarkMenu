@@ -79,6 +79,12 @@
     "description" : "Menu hover delay: ",
     "tooltip" : "Delay between switching categories"
  },
+ "enable-animation" : {
+    "type": "switch",
+    "default": false,
+    "description": "Use menu animations",
+    "tooltip": "Allow the menu to animate on open and close"
+ },
  "menu-editor-button" : {
     "type" : "button",
     "description" : "Open the menu editor",
