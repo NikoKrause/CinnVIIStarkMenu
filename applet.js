@@ -3186,16 +3186,21 @@ MyApplet.prototype = {
                 if (!ctrlKey) {
                     item_actor = this._activeContainer.get_child_at_index(this._selectedItemIndex);
                     item_actor._delegate.activate();
-                } else if (ctrlKey && this._activeContainer === this.applicationsBox) {
-                    item_actor = this.applicationsBox.get_child_at_index(this._selectedItemIndex);
-                    if (item_actor._delegate instanceof ApplicationButton || item_actor._delegate instanceof RecentButton)
+                } else if (ctrlKey && (this._activeContainer === this.applicationsBox || this._activeContainer === this.favoritesBox)) {
+                    item_actor = this._activeContainer.get_child_at_index(this._selectedItemIndex);
+                    if (item_actor._delegate instanceof ApplicationButton ||
+                        item_actor._delegate instanceof RecentButton ||
+                        item_actor._delegate instanceof FavoritesButton)
                         item_actor._delegate.activateContextMenus();
                 }
                 return true;
-            } else if (this._activeContainer === this.applicationsBox && symbol === Clutter.KEY_Menu) {
-                item_actor = this.applicationsBox.get_child_at_index(this._selectedItemIndex);
-                if (item_actor._delegate instanceof ApplicationButton || item_actor._delegate instanceof RecentButton)
-                    item_actor._delegate.activateContextMenus();
+            } else if ((this._activeContainer === this.applicationsBox || this._activeContainer === this.favoritesBox) &&
+                       symbol === Clutter.KEY_Menu) {
+                item_actor = this._activeContainer.get_child_at_index(this._selectedItemIndex);
+                    if (item_actor._delegate instanceof ApplicationButton ||
+                        item_actor._delegate instanceof RecentButton ||
+                        item_actor._delegate instanceof FavoritesButton)
+                        item_actor._delegate.activateContextMenus();
                 return true;
             } else if (this._activeContainer === this.favoritesBox && symbol === Clutter.Delete) {
                item_actor = this.favoritesBox.get_child_at_index(this._selectedItemIndex);
