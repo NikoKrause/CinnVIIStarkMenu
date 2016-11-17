@@ -2215,7 +2215,7 @@ FavoritesBox.prototype = {
             this._dragPlaceholder = new DND.GenericDragPlaceholderItem();
             this._dragPlaceholder.child.set_width (source.actor.height);
             this._dragPlaceholder.child.set_height (source.actor.height);
-            this.actor.insert_actor(this._dragPlaceholder.actor,
+            this.actor.insert_child_at_index(this._dragPlaceholder.actor,
                                              this._dragPlaceholderPos);
             if (fadeIn)
                 this._dragPlaceholder.animateIn();
@@ -3223,15 +3223,15 @@ MyApplet.prototype = {
                 let favorites = appFavorites.getFavorites();
                 let numFavorites = favorites.length;
                 let favPos = 0;
-                if (this._selectedItemIndex == (numFavorites-1) && symbol === Clutter.KEY_Down)
+                if (this._selectedItemIndex == (2*numFavorites-2) && symbol === Clutter.KEY_Down)
                     favPos = 0;
                 else if (this._selectedItemIndex == 0 && symbol === Clutter.KEY_Up)
-                    favPos = numFavorites-1;
+                    favPos = 2*numFavorites-2;
                 else if (symbol === Clutter.KEY_Down)
-                    favPos = this._selectedItemIndex + 1;
+                    favPos = this._selectedItemIndex + 2;
                 else
-                    favPos = this._selectedItemIndex - 1;
-                appFavorites.moveFavoriteToPos(id, favPos);
+                    favPos = this._selectedItemIndex - 2;
+                appFavorites.moveFavoriteToPos(id, favPos/2);
                 item_actor = this.favoritesBox.get_child_at_index(favPos);
             } else if (this.searchFilesystem && (this._fileFolderAccessActive || symbol === Clutter.slash)) {
                 if (symbol === Clutter.Return || symbol === Clutter.KP_Enter) {
@@ -3939,50 +3939,17 @@ MyApplet.prototype = {
         this.searchEntryText.connect('key-press-event', Lang.bind(this, this._onMenuKeyPress));
         this._previousSearchPattern = "";
 
-        this.selectedAppBox = new St.BoxLayout({
-            style_class: 'menu-selected-app-box',
-            vertical: true
-        });
-        //this.selectedAppBox.add_style_class_name("starkmenu-selected-app-box");
-
-        //if (this.selectedAppBox.peek_theme_node() == null || this.selectedAppBox.get_theme_node().get_length('height') == 0) this.selectedAppBox.set_height(0 * global.ui_scale);
-
-        this.selectedAppTitle = new St.Label({
-            style_class: 'menu-selected-app-title',
-            text: ""
-        });
-        this.selectedAppBox.add_actor(this.selectedAppTitle);
-        this.selectedAppDescription = new St.Label({
-            style_class: 'menu-selected-app-description',
-            text: ""
-        });
 
         this.categoriesApplicationsBox = new CategoriesApplicationsBox();
 
         this.categoriesBox = new St.BoxLayout({ style_class: 'menu-categories-box',
                                                 vertical: true,
                                                 accessible_role: Atk.Role.LIST });
-
-        this.categoriesScrollBox = new St.ScrollView({
-            x_fill: true,
-            y_fill: false,
-            y_align: St.Align.START,
-            style_class: 'vfade menu-applications-scrollbox'
-        });
-        //this.categoriesScrollBox.set_width(210);
-        this.applicationsBox = new St.BoxLayout({
-            style_class: 'menu-applications-inner-box',
-            vertical: true
-        });
-        this.applicationsBox.add_style_class_name('menu-applications-box'); //this is to support old themes
-        this.applicationsBox.add_style_class_name('starkmenu-applications-inner-box');
-        this.applicationsScrollBox = new St.ScrollView({
-            x_fill: true,
-            y_fill: false,
-            y_align: St.Align.START,
-            style_class: 'vfade menu-applications-scrollbox'
-        });
+        this.applicationsScrollBox = new St.ScrollView({ x_fill: true, y_fill: false, y_align: St.Align.START, style_class: 'vfade menu-applications-scrollbox' });
         //this.applicationsScrollBox.set_width(264);
+
+        this.categoriesScrollBox = new St.ScrollView({ x_fill: true, y_fill: false, y_align: St.Align.START, style_class: 'vfade menu-applications-scrollbox' });
+        //this.categoriesScrollBox.set_width(210);
 
         this.a11y_settings = new Gio.Settings({ schema_id: "org.cinnamon.desktop.a11y.applications" });
         this.a11y_settings.connect("changed::screen-magnifier-enabled", Lang.bind(this, this._updateVFade));
@@ -4006,20 +3973,29 @@ MyApplet.prototype = {
                                       this.menu.passEvents = false;
                                   }));
 
-        let vscroll = this.categoriesScrollBox.get_vscroll_bar();
-        vscroll.connect('scroll-start', Lang.bind(this, function() {
-            this.menu.passEvents = true;
-        }));
-        vscroll.connect('scroll-stop', Lang.bind(this, function() {
-            this.menu.passEvents = false;
-        }));
+        let vscrollCat = this.categoriesScrollBox.get_vscroll_bar();
+        vscrollCat.connect('scroll-start',
+                        Lang.bind(this, function() {
+                                      this.menu.passEvents = true;
+                                  }));
+        vscrollCat.connect('scroll-stop',
+                        Lang.bind(this, function() {
+                                       this.menu.passEvents = false;
+                                  }));
+
+        this.applicationsBox = new St.BoxLayout({ style_class: 'menu-applications-inner-box', vertical:true });
+        this.applicationsBox.add_style_class_name('menu-applications-box'); //this is to support old themes
+        this.applicationsBox.add_style_class_name('starkmenu-applications-inner-box');
+        this.applicationsScrollBox.add_actor(this.applicationsBox);
+        this.categoriesScrollBox.add_actor(this.categoriesBox);
+        this.applicationsScrollBox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        this.categoriesScrollBox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        this.categoriesApplicationsBox.actor.add_actor(this.categoriesScrollBox);
+        this.categoriesApplicationsBox.actor.add_actor(this.applicationsScrollBox);
 
         let fav_obj = new FavoritesBox();
         this.favoritesBox = fav_obj.actor;
-        this.favsBox.add_actor(this.favoritesBox, {
-            y_align: St.Align.END,
-            y_fill: false
-        });
+        this.favsBox.add_actor(this.favoritesBox, { y_align: St.Align.END, y_fill: false });
 
         this.separator = new PopupMenu.PopupSeparatorMenuItem();
         this.separator.actor.set_style("padding: 0em 1em;");
@@ -4042,14 +4018,17 @@ MyApplet.prototype = {
 
         this.leftPane.set_child(this.favsBox, { y_align: St.Align.END, y_fill: false });
 
+        this.selectedAppBox = new St.BoxLayout({ style_class: 'menu-selected-app-box', vertical: true });
+        //this.selectedAppBox.add_style_class_name("starkmenu-selected-app-box");
+
+        //if (this.selectedAppBox.peek_theme_node() == null ||
+        //    this.selectedAppBox.get_theme_node().get_length('height') == 0)
+        //    this.selectedAppBox.set_height(0 * global.ui_scale);
+
+        this.selectedAppTitle = new St.Label({ style_class: 'menu-selected-app-title', text: "" });
         this.selectedAppBox.add_actor(this.selectedAppTitle);
+        this.selectedAppDescription = new St.Label({ style_class: 'menu-selected-app-description', text: "" });
         this.selectedAppBox.add_actor(this.selectedAppDescription);
-        this.categoriesScrollBox.add_actor(this.categoriesBox);
-        this.categoriesScrollBox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        this.applicationsScrollBox.add_actor(this.applicationsBox);
-        this.applicationsScrollBox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        this.categoriesApplicationsBox.actor.add_actor(this.categoriesScrollBox);
-        this.categoriesApplicationsBox.actor.add_actor(this.applicationsScrollBox);
         //this.appsBox.add_actor(this.selectedAppBox);
         this.appsBox.add_actor(this.categoriesApplicationsBox.actor);
         this.searchBox.add_actor(this.searchEntry);
@@ -4122,8 +4101,10 @@ MyApplet.prototype = {
                      this.a11y_mag_settings.get_double("mag-factor") > 1.0;
         if (mag_on) {
             this.applicationsScrollBox.style_class = "menu-applications-scrollbox";
+            this.categoriesScrollBox.style_class = "menu-applications-scrollbox";
         } else {
             this.applicationsScrollBox.style_class = "vfade menu-applications-scrollbox";
+            this.categoriesScrollBox.style_class = "vfade menu-applications-scrollbox";
         }
     },
 
