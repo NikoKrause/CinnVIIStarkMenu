@@ -2990,42 +2990,39 @@ MyApplet.prototype = {
                             if(visiblePane == "favs") {
                                 this._activeContainer = this.favoritesBox;
                                 item_actor = this.favBoxIter.getLastVisible();
-                                //index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
                             } else {
                                 this._activeContainer = this.categoriesBox;
                                 item_actor = this.catBoxIter.getLastVisible();
-                                //index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                                this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                                this._scrollToCategoryButton(item_actor._delegate);
                             }
                             break;
                         case "down":
                             if(visiblePane == "favs") {
                                 this._activeContainer = this.favoritesBox;
                                 item_actor = this.favBoxIter.getFirstVisible();
-                                //index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
                             } else {
                                 this._activeContainer = this.categoriesBox;
                                 item_actor = this.catBoxIter.getFirstVisible();
                                 item_actor = this._activeContainer._vis_iter.getNextVisible(item_actor);
-                                //index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                                this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                                this._scrollToCategoryButton(item_actor._delegate);
                             }
-                            this._scrollToButton(item_actor._delegate);
                             break;
                         case "right":
                             if(visiblePane == "favs") {
                                 this._activeContainer = this.categoriesBox;
                                 item_actor = this.catBoxIter.getFirstVisible();
-                                //index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
                                 this.switchPanes("apps");
                             } else {
                                 this._activeContainer = this.applicationsBox;
                                 item_actor = this.appBoxIter.getFirstVisible();
-                                //index = this.appBoxIter.getAbsoluteIndexOfChild(item_actor);
+                                this._scrollToButton(item_actor._delegate);
                             }
                             break;
                         case "left":
                             this._activeContainer = this.favoritesBox;
                             item_actor = this.favBoxIter.getFirstVisible();
-                            //index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
                             if(visiblePane == "apps")
                                 this.switchPanes("favs");
                             break;
@@ -3033,23 +3030,22 @@ MyApplet.prototype = {
                             if(visiblePane == "favs") {
                                 this._activeContainer = this.favoritesBox;
                                 item_actor = this.favBoxIter.getFirstVisible();
-                                //index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
                             } else {
                                 this._activeContainer = this.categoriesBox;
                                 item_actor = this.catBoxIter.getFirstVisible();
-                                //index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                                this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                                this._scrollToCategoryButton(item_actor._delegate);
                             }
-                            this._scrollToButton(item_actor._delegate);
                             break;
                         case "bottom":
                             if(visiblePane == "favs") {
                                 this._activeContainer = this.favoritesBox;
                                 item_actor = this.favBoxIter.getLastVisible();
-                                //index = this.favBoxIter.getAbsoluteIndexOfChild(item_actor);
                             } else {
                                 this._activeContainer = this.categoriesBox;
                                 item_actor = this.catBoxIter.getLastVisible();
-                                //index = this.catBoxIter.getAbsoluteIndexOfChild(item_actor);
+                                this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                                this._scrollToCategoryButton(item_actor._delegate);
                             }
                             break;
                     }
@@ -3061,12 +3057,14 @@ MyApplet.prototype = {
                             this._previousTreeSelectedActor._delegate.isHovered = false;
                             item_actor = this.catBoxIter.getPrevVisible(this._activeActor);
                             this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                            this._scrollToCategoryButton(item_actor._delegate);
                             break;
                         case "down":
                             this._previousTreeSelectedActor = this.categoriesBox.get_child_at_index(index);
                             this._previousTreeSelectedActor._delegate.isHovered = false;
                             item_actor = this.catBoxIter.getNextVisible(this._activeActor);
                             this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                            this._scrollToCategoryButton(item_actor._delegate);
                             break;
                         case "right":
                             if ((this.categoriesBox.get_child_at_index(index))._delegate instanceof RecentCategoryButton &&
@@ -3092,12 +3090,14 @@ MyApplet.prototype = {
                             this._previousTreeSelectedActor._delegate.isHovered = false;
                             item_actor = this.catBoxIter.getFirstVisible();
                             this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                            this._scrollToCategoryButton(item_actor._delegate);
                             break;
                         case "bottom":
                             this._previousTreeSelectedActor = this.categoriesBox.get_child_at_index(index);
                             this._previousTreeSelectedActor._delegate.isHovered = false;
                             item_actor = this.catBoxIter.getLastVisible();
                             this._scrollToButton(this.appBoxIter.getFirstVisible()._delegate);
+                            this._scrollToCategoryButton(item_actor._delegate);
                             break;
                     }
                     break;
@@ -3317,9 +3317,8 @@ MyApplet.prototype = {
                     let favorites = AppFavorites.getAppFavorites().getFavorites();
                     let numFavorites = favorites.length;
                     AppFavorites.getAppFavorites().removeFavorite(item_actor._delegate.app.get_id());
-                    item_actor._delegate.toggleMenu();
-                    if (this._selectedItemIndex == (numFavorites-1))
-                        item_actor = this.favoritesBox.get_child_at_index(this._selectedItemIndex-1);
+                    if (this._selectedItemIndex == (2*numFavorites-2))
+                        item_actor = this.favoritesBox.get_child_at_index(this._selectedItemIndex-2);
                     else
                         item_actor = this.favoritesBox.get_child_at_index(this._selectedItemIndex);
                 }
