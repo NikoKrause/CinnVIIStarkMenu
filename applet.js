@@ -2345,9 +2345,9 @@ MyApplet.prototype = {
 
         this._updateKeybinding();
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "all-programs-label", "allProgramsLabel", null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "favorites-label", "favoritesLabel", null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "shutdown-label", "shutdownLabel", null, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "all-programs-label", "allProgramsLabel", this._updateCustomLabels, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "favorites-label", "favoritesLabel", this._updateCustomLabels, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "shutdown-label", "shutdownLabel", this._updateCustomLabels, null);
 
         Main.themeManager.connect("theme-set", Lang.bind(this, this._updateIconAndLabel));
         this._updateIconAndLabel();
@@ -2386,6 +2386,7 @@ MyApplet.prototype = {
         this._activeContextMenuItem = null;
         this._display();
         this._updateMenuLayout();
+        this._updateCustomLabels();
         appsys.connect('installed-changed', Lang.bind(this, this._refreshAll));
         AppFavorites.getAppFavorites().connect('changed', Lang.bind(this, this._refreshFavs));
         this.settings.bindProperty(Settings.BindingDirection.IN, "hover-delay", "hover_delay_ms", this._update_hover_delay, null);
@@ -2815,6 +2816,16 @@ MyApplet.prototype = {
             else
                 this.set_applet_label("");
         }
+    },
+
+    _updateCustomLabels: function(){
+        this.rightButtonsBox.shutdown.label.set_text(_(this.shutdownLabel));
+        this.rightButtonsBox.shutdown2.label.set_text(_(this.shutdownLabel));
+        this.rightButtonsBox.shutdown3.label.set_text(_(this.shutdownLabel));
+        if (visiblePane == "apps")
+            this.appsButton.label.set_text(" " + _(this.favoritesLabel));
+        else
+            this.appsButton.label.set_text(" " + _(this.allProgramsLabel));
     },
 
     _navigateContextMenu: function(actor, symbol, ctrlKey) {
@@ -4201,7 +4212,6 @@ MyApplet.prototype = {
             if (this._previousTreeSelectedActor == null)
                 this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
         }
-        this.rightButtonsBox.shutdown.label.set_text(_(this.shutdownLabel));
     },
 
     _updateVFade: function() {
