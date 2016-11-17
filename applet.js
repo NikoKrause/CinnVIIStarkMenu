@@ -272,8 +272,16 @@ GenericApplicationButton.prototype = {
 
     _subMenuOpenStateChanged: function() {
         if (this.menu.isOpen) {
+            this.appsMenuButton._activeContextMenuParent = this;
             this.appsMenuButton._scrollToButton(this.menu);
+        } else {
+            this.appsMenuButton._activeContextMenuItem = null;
+            this.appsMenuButton._activeContextMenuParent = null;
         }
+    },
+
+    get _contextIsOpen() {
+        return this.menu.isOpen;
     }
 }
 
@@ -728,7 +736,17 @@ RecentButton.prototype = {
     },
 
     _subMenuOpenStateChanged: function() {
-        if (this.menu.isOpen) this.appsMenuButton._scrollToButton(this.menu);
+        if (this.menu.isOpen) {
+            this.appsMenuButton._activeContextMenuParent = this;
+            this.appsMenuButton._scrollToButton(this.menu);
+        } else {
+            this.appsMenuButton._activeContextMenuItem = null;
+            this.appsMenuButton._activeContextMenuParent = null;
+        }
+    },
+
+    get _contextIsOpen() {
+        return this.menu.isOpen;
     }
 };
 
@@ -2364,6 +2382,8 @@ MyApplet.prototype = {
         this.RecentManager = new DocInfo.DocManager();
         this.privacy_settings = new Gio.Settings( {schema_id: PRIVACY_SCHEMA} );
         this.noRecentDocuments = true;
+        this._activeContextMenuParent = null;
+        this._activeContextMenuItem = null;
         this._display();
         this._updateMenuLayout();
         appsys.connect('installed-changed', Lang.bind(this, this._refreshAll));
@@ -2797,6 +2817,65 @@ MyApplet.prototype = {
         }
     },
 
+    _navigateContextMenu: function(actor, symbol, ctrlKey) {
+        if (symbol === Clutter.KEY_Menu || symbol === Clutter.Escape ||
+            (ctrlKey && (symbol === Clutter.KEY_Return || symbol === Clutter.KP_Enter))) {
+            actor.activateContextMenus();
+            return;
+        }
+
+        let goUp = symbol === Clutter.KEY_Up;
+        let nextActive = null;
+        let menuItems = actor.menu._getMenuItems(); // The context menu items
+
+        // The first context menu item of a RecentButton is used just as a label.
+        // So remove it from the iteration.
+        if (actor instanceof RecentButton)
+            menuItems.shift();
+
+        let menuItemsLength = menuItems.length;
+
+        switch (symbol) {
+            case Clutter.KEY_Page_Up:
+                this._activeContextMenuItem = menuItems[0];
+                this._activeContextMenuItem.setActive(true);
+                return;
+            case Clutter.KEY_Page_Down:
+                this._activeContextMenuItem = menuItems[menuItemsLength - 1];
+                this._activeContextMenuItem.setActive(true);
+                return;
+        }
+
+        if (!this._activeContextMenuItem) {
+            if (symbol === Clutter.KEY_Return || symbol === Clutter.KP_Enter) {
+                actor.activate();
+            } else {
+                this._activeContextMenuItem = menuItems[goUp ? menuItemsLength - 1 : 0];
+                this._activeContextMenuItem.setActive(true);
+            }
+            return;
+        } else if (this._activeContextMenuItem &&
+            (symbol === Clutter.KEY_Return || symbol === Clutter.KP_Enter)) {
+            this._activeContextMenuItem.activate();
+            this._activeContextMenuItem = null;
+            return;
+        }
+
+        let i = 0;
+        for (; i < menuItemsLength; i++) {
+            if (menuItems[i] === this._activeContextMenuItem) {
+                nextActive = goUp ? (menuItems[i - 1] || null) : (menuItems[i + 1] || null);
+                break;
+            }
+        }
+
+        if (!nextActive)
+            nextActive = goUp ? menuItems[menuItemsLength - 1] : menuItems[0];
+
+        nextActive.setActive(true);
+        this._activeContextMenuItem = nextActive;
+    },
+
     _onMenuKeyPress: function(actor, event) {
         let symbol = event.get_key_symbol();
         let item_actor;
@@ -2819,6 +2898,36 @@ MyApplet.prototype = {
         index = this._selectedItemIndex;
 
         let ctrlKey = modifierState & Clutter.ModifierType.CONTROL_MASK;
+
+        // If a context menu is open, hijack keyboard navigation and concentrate on the context menu.
+        if (this._activeContextMenuParent && this._activeContextMenuParent._contextIsOpen &&
+            (this._activeContainer === this.applicationsBox &&
+            (this._activeContextMenuParent instanceof ApplicationButton ||
+                this._activeContextMenuParent instanceof RecentButton)) ||
+            (this._activeContainer === this.favoritesBox &&
+                this._activeContextMenuParent instanceof FavoritesButton)) {
+            let continueNavigation = false;
+            switch (symbol) {
+                case Clutter.KEY_Up:
+                case Clutter.KEY_Down:
+                case Clutter.KEY_Return:
+                case Clutter.KP_Enter:
+                case Clutter.KEY_Menu:
+                case Clutter.KEY_Page_Up:
+                case Clutter.KEY_Page_Down:
+                case Clutter.Escape:
+                    this._navigateContextMenu(this._activeContextMenuParent, symbol, ctrlKey);
+                    break;
+                case Clutter.KEY_Right:
+                case Clutter.KEY_Left:
+                case Clutter.Tab:
+                case Clutter.ISO_Left_Tab:
+                    continueNavigation = true;
+                    break;
+            }
+            if (!continueNavigation)
+                return true;
+        }
 
         let navigationKey = true;
         let whichWay = "none";
