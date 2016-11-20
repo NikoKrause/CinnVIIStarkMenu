@@ -111,19 +111,30 @@ VisibleChildIterator.prototype = {
     }
 };
 
-function ApplicationContextMenuItem(appButton, label, action) {
-    this._init(appButton, label, action);
+function ApplicationContextMenuItem(appButton, label, action, iconName, showIcon) {
+    this._init(appButton, label, action, iconName, showIcon);
 }
 
 ApplicationContextMenuItem.prototype = {
     __proto__: PopupMenu.PopupBaseMenuItem.prototype,
 
-    _init: function (appButton, label, action) {
+    _init: function (appButton, label, action, iconName, showIcon) {
         PopupMenu.PopupBaseMenuItem.prototype._init.call(this, {focusOnHover: false});
 
         this._appButton = appButton;
         this._action = action;
         this.label = new St.Label({ text: label });
+
+        if (iconName != null && showIcon) {
+            this.icon_name = iconName;
+            let icon = new St.Icon({ icon_name: this.icon_name, icon_size: 12, icon_type: St.IconType.SYMBOLIC });
+            this.icon = icon;
+            if (this.icon) {
+                this.addActor(this.icon);
+                this.icon.realize();
+            }
+        }
+
         this.addActor(this.label);
     },
 
@@ -195,6 +206,8 @@ GenericApplicationButton.prototype = {
             this.menu.actor.set_style_class_name('menu-context-menu');
             this.menu.connect('open-state-changed', Lang.bind(this, this._subMenuOpenStateChanged));
         }
+
+        this.showContextIcon = false;
     },
 
     highlight: function() {
@@ -245,25 +258,25 @@ GenericApplicationButton.prototype = {
                 this.menu.box.remove_actor(children[i]);
             }
             let menuItem;
-            menuItem = new ApplicationContextMenuItem(this, _("Add to panel"), "add_to_panel");
+            menuItem = new ApplicationContextMenuItem(this, _("Add to panel"), "add_to_panel", "list-add", this.showContextIcon);
             this.menu.addMenuItem(menuItem);
             if (USER_DESKTOP_PATH){
-                menuItem = new ApplicationContextMenuItem(this, _("Add to desktop"), "add_to_desktop");
+                menuItem = new ApplicationContextMenuItem(this, _("Add to desktop"), "add_to_desktop", "computer", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }
             if (AppFavorites.getAppFavorites().isFavorite(this.app.get_id())){
-                menuItem = new ApplicationContextMenuItem(this, _("Remove from favorites"), "remove_from_favorites");
+                menuItem = new ApplicationContextMenuItem(this, _("Remove from favorites"), "remove_from_favorites", "non-starred", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }else{
-                menuItem = new ApplicationContextMenuItem(this, _("Add to favorites"), "add_to_favorites");
+                menuItem = new ApplicationContextMenuItem(this, _("Add to favorites"), "add_to_favorites", "starred", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }
             if (this.appsMenuButton._canUninstallApps) {
-                menuItem = new ApplicationContextMenuItem(this, _("Uninstall"), "uninstall");
+                menuItem = new ApplicationContextMenuItem(this, _("Uninstall"), "uninstall", "edit-delete", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }
             if (this.appsMenuButton._isBumblebeeInstalled) {
-                menuItem = new ApplicationContextMenuItem(this, _("Run with nVidia GPU"), "run_with_nvidia_gpu");
+                menuItem = new ApplicationContextMenuItem(this, _("Run with nVidia GPU"), "run_with_nvidia_gpu", "bumblebee", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }
         }
@@ -391,14 +404,14 @@ String.prototype.replaceAt=function(index, character) {
     return this.substr(0, index) + character + this.substr(index+character.length);
 }
 
-function ApplicationButton(appsMenuButton, app, showIcon) {
-    this._init(appsMenuButton, app, showIcon);
+function ApplicationButton(appsMenuButton, app, showIcon, showContextIcon) {
+    this._init(appsMenuButton, app, showIcon, showContextIcon);
 }
 
 ApplicationButton.prototype = {
     __proto__: GenericApplicationButton.prototype,
 
-    _init: function(appsMenuButton, app, showIcon) {
+    _init: function(appsMenuButton, app, showIcon, showContextIcon) {
         GenericApplicationButton.prototype._init.call(this, appsMenuButton, app, true);
         this.category = new Array();
         this.actor.set_style_class_name('menu-application-button');
@@ -420,6 +433,8 @@ ApplicationButton.prototype = {
             this.icon.realize();
         }
         this.label.realize();
+
+        this.showContextIcon = showContextIcon;
 
 
         let appDescriptionTooltipString = this.app.get_description() + "";
@@ -912,14 +927,14 @@ RecentCategoryButton.prototype = {
     }
 };
 
-function FavoritesButton(appsMenuButton, app, nbFavorites, iconSize) {
-    this._init(appsMenuButton, app, nbFavorites, iconSize);
+function FavoritesButton(appsMenuButton, app, nbFavorites, iconSize, showContextIcon) {
+    this._init(appsMenuButton, app, nbFavorites, iconSize, showContextIcon);
 }
 
 FavoritesButton.prototype = {
     __proto__: GenericApplicationButton.prototype,
 
-    _init: function(appsMenuButton, app, nbFavorites, iconSize) {
+    _init: function(appsMenuButton, app, nbFavorites, iconSize, showContextIcon) {
         GenericApplicationButton.prototype._init.call(this, appsMenuButton, app, true);
         let monitorHeight = Main.layoutManager.primaryMonitor.height;
         let real_size = (0.7 * monitorHeight) / nbFavorites;
@@ -940,6 +955,8 @@ FavoritesButton.prototype = {
         this._draggable = DND.makeDraggable(this.actor);
         this._draggable.connect('drag-end', Lang.bind(this, this._onDragEnd));
         this.isDraggableApp = true;
+
+        this.showContextIcon = showContextIcon;
 
         let appDescriptionTooltipString = this.app.get_description() + "";
         let lastSpacePosition = 0;
@@ -1883,7 +1900,7 @@ ShutdownContextMenuItem.prototype = {
 
     _init: function(parentMenu, menu, label, action) {
         this.parentMenu = parentMenu;
-        ApplicationContextMenuItem.prototype._init.call(this, menu, label, action);
+        ApplicationContextMenuItem.prototype._init.call(this, menu, label, action, null, false);
         this._screenSaverProxy = new ScreenSaver.ScreenSaverProxy();
     },
 
@@ -2367,6 +2384,7 @@ MyApplet.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "overlay-key", "overlayKey", this._updateKeybinding, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-category-icons", "showCategoryIcons", this._refreshAll, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-application-icons", "showApplicationIcons", this._refreshAll, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "show-context-menu-icons", "showContextMenuIcons", this._refreshAll, null);
 
         this.settings.bindProperty(Settings.BindingDirection.IN, "enable-animation", "enableAnimation", null, null);
 
@@ -3940,7 +3958,7 @@ MyApplet.prototype = {
         for ( let i = 0; i < launchers.length; ++i ) {
             let app = appSys.lookup_app(launchers[i]);
             if (app) {
-                let button = new FavoritesButton(this, app, launchers.length, this.favorite_icon_size); // + 3 because we're adding 3 system buttons at the bottom
+                let button = new FavoritesButton(this, app, launchers.length, this.favorite_icon_size, this.showContextMenuIcons); // + 3 because we're adding 3 system buttons at the bottom
                 this._favoritesButtons[app] = button;
                 this.favoritesBox.add_actor(button.actor, { y_align: St.Align.END, y_fill: false });
                 this.favoritesBox.add_actor(button.menu.actor, { y_align: St.Align.END, y_fill: false });
@@ -3973,7 +3991,7 @@ MyApplet.prototype = {
                     }
                     if (!(app_key in this._applicationsButtonFromApp)) {
 
-                        let applicationButton = new ApplicationButton(this, app, this.showApplicationIcons);
+                        let applicationButton = new ApplicationButton(this, app, this.showApplicationIcons, this.showContextMenuIcons);
 
                         var app_is_known = false;
                         for (var i = 0; i < this._knownApps.length; i++) {
