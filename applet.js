@@ -1125,13 +1125,21 @@ QuitButton.prototype = {
         this.label.add_style_class_name('starkmenu-quit-button-label');
 
         this.addActor(this.label_icon);
+        this.labelIconAdded = true;
         this.addActor(this.label);
+        this.labelAdded = true;
     },
 
     _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
 
-        this.removeActor(this.label_icon);
-        this.removeActor(this.label);
+        if (this.labelAdded) {
+            this.removeActor(this.label);
+            this.labelAdded = false;
+        }
+        if (this.labelIconAdded) {
+            this.removeActor(this.label_icon);
+            this.labelIconAdded = false;
+        }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
 
@@ -1172,6 +1180,7 @@ QuitButton.prototype = {
             }
 
             this.addActor(this.label_icon);
+            this.labelIconAdded = true;
         }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
@@ -1181,6 +1190,7 @@ QuitButton.prototype = {
             });
             this.label.add_style_class_name('starkmenu-quit-button-label');
             this.addActor(this.label);
+            this.labelAdded = true;
         }
     },
 
@@ -1272,13 +1282,21 @@ LogoutButton.prototype = {
         this.label.add_style_class_name('starkmenu-logout-button-label');
 
         this.addActor(this.label_icon);
+        this.labelIconAdded = true;
         this.addActor(this.label);
+        this.labelAdded = true;
     },
 
     _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
 
-        this.removeActor(this.label_icon);
-        this.removeActor(this.label);
+        if (this.labelAdded) {
+            this.removeActor(this.label);
+            this.labelAdded = false;
+        }
+        if (this.labelIconAdded) {
+            this.removeActor(this.label_icon);
+            this.labelIconAdded = false;
+        }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
 
@@ -1319,6 +1337,7 @@ LogoutButton.prototype = {
             }
 
             this.addActor(this.label_icon);
+            this.labelIconAdded = true;
         }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
@@ -1328,6 +1347,7 @@ LogoutButton.prototype = {
             });
             this.label.add_style_class_name('starkmenu-logout-button-label');
             this.addActor(this.label);
+            this.labelAdded = true;
         }
     },
 
@@ -1419,13 +1439,21 @@ LockScreenButton.prototype = {
         this.label.add_style_class_name('starkmenu-lockscreen-button-label');
 
         this.addActor(this.label_icon);
+        this.labelIconAdded = true;
         this.addActor(this.label);
+        this.labelAdded = true;
     },
 
     _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
 
-        this.removeActor(this.label_icon);
-        this.removeActor(this.label);
+        if (this.labelAdded) {
+            this.removeActor(this.label);
+            this.labelAdded = false;
+        }
+        if (this.labelIconAdded) {
+            this.removeActor(this.label_icon);
+            this.labelIconAdded = false;
+        }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
 
@@ -1466,6 +1494,7 @@ LockScreenButton.prototype = {
             }
 
             this.addActor(this.label_icon);
+            this.labelIconAdded = true;
         }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
@@ -1475,6 +1504,7 @@ LockScreenButton.prototype = {
             });
             this.label.add_style_class_name('starkmenu-lockscreen-button-label');
             this.addActor(this.label);
+            this.labelAdded = true;
         }
     },
 
@@ -1563,13 +1593,21 @@ TextBoxItem.prototype = {
         });
 
         this.addActor(this.label_icon);
+        this.labelIconAdded = true;
         this.addActor(this.label);
+        this.labelAdded = true;
     },
 
     _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
 
-        this.removeActor(this.label_icon);
-        this.removeActor(this.label);
+        if (this.labelAdded) {
+            this.removeActor(this.label);
+            this.labelAdded = false;
+        }
+        if (this.labelIconAdded) {
+            this.removeActor(this.label_icon);
+            this.labelIconAdded = false;
+        }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
 
@@ -1610,6 +1648,7 @@ TextBoxItem.prototype = {
             }
 
             this.addActor(this.label_icon);
+            this.labelIconAdded = true;
         }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
@@ -1618,6 +1657,7 @@ TextBoxItem.prototype = {
                 style_class: 'menu-category-button-label'
             });
             this.addActor(this.label);
+            this.labelAdded = true;
         }
     },
 
@@ -1957,35 +1997,15 @@ function RightButtonsBox(appsMenuButton, menu) {
 RightButtonsBox.prototype = {
     _init: function(appsMenuButton, menu) {
         this.appsMenuButton = appsMenuButton;
-        this.actor = new St.BoxLayout();
-        this.itemsBox = new St.BoxLayout({
-            vertical: true
-        });
+        this.actor = new St.BoxLayout({ vertical: true });
+        this.itemsBox = new St.BoxLayout({ vertical: true });
 
-        this.shutDownMenuBox = new St.BoxLayout({
-            style_class: 'hover-box',
-            vertical: true // ShutdownBox on the right panel
-        });
-        this.shutDownMenuBox.add_style_class_name("starkhover-box");
-
-        this.shutDownIconBox = new St.BoxLayout({
-            vertical: true
-        });
-        this.shutDownIconBoxXP = new St.BoxLayout({
-            vertical: false
-        });
-        this.shutdownBox = new St.BoxLayout({
-            vertical: false
-        });
         this.actor._delegate = this;
         this.menu = menu;
         this.addItems();
-        this._container = new Cinnamon.GenericContainer();
-        this.actor.add_actor(this._container);
-        this._container.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
-        this._container.connect('get-preferred-width', Lang.bind(this, this._getPreferredWidth));
-        this._container.connect('allocate', Lang.bind(this, this._allocate));
-        this._container.add_actor(this.itemsBox);
+
+        this.actor.add_actor(this.itemsBox);
+        this.addShutdownBoxes();
     },
 
     acceptDrop: function(source, actor, x, y, time) {
@@ -2003,6 +2023,7 @@ RightButtonsBox.prototype = {
         for (let i in this.quicklinks) {
             this.quicklinks[i]._update(quicklinkOptions);
         }
+
         this.shutdown._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
         this.shutdown2._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
         this.shutdown3._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
@@ -2017,7 +2038,6 @@ RightButtonsBox.prototype = {
             this.hoverIcon.icon.set_icon_size(22);
             this.shutDownMenuBox.set_style('min-height: 1px');
             this.shutdownMenu.actor.hide();
-            this.shutdownBox.remove_actor(this.shutdownMenu.actor);
 
         }
         else {
@@ -2034,14 +2054,11 @@ RightButtonsBox.prototype = {
             this.shutDownIconBox.hide();
             this.shutdownMenu.actor.show();
             this.shutDownMenuBox.set_style('min-height: 80px');
-            this.shutdownBox.add_actor(this.shutdownMenu.actor);
         }
     },
 
     addItems: function() {
-
         this.itemsBox.destroy_all_children();
-        this.shutdownBox.destroy_all_children();
 
         this.hoverIcon = new HoverIcon(this.menu);
         this.itemsBox.add_actor(this.hoverIcon.userBox);
@@ -2071,6 +2088,23 @@ RightButtonsBox.prototype = {
                 }
             }
         }
+    },
+
+    addShutdownBoxes: function() {
+        this.shutDownMenuBox = new St.BoxLayout({ style_class: 'hover-box', vertical: true });
+        this.shutDownMenuBox.add_style_class_name("starkhover-box");
+
+        this.shutDownIconBox = new St.BoxLayout({ vertical: true });
+        this.shutDownIconBoxXP = new St.BoxLayout({ vertical: false });
+        this.shutdownBox = new St.BoxLayout({ vertical: false });
+
+
+        this.actor.add(new St.Bin(), { expand: true });
+
+        this.actor.add_actor(this.shutDownMenuBox);
+        this.actor.add_actor(this.shutDownIconBox);
+        this.actor.add_actor(this.shutDownIconBoxXP);
+
 
         this.shutdown = new QuitButton(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, false);
         this.shutdown2 = new QuitButton(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, false);
@@ -2098,7 +2132,7 @@ RightButtonsBox.prototype = {
         this.shutdownBox.add_actor(this.shutdown.actor);
         this.shutdownBox.add_actor(this.shutdownMenu.actor);
 
-        this.shutDownMenuBox.add_actor(this.shutdownBox);
+        this.shutDownMenuBox.add(this.shutdownBox);
         this.shutDownMenuBox.add_actor(this.shutdownMenu.menu.actor);
 
         this.shutDownIconBox.add_actor(this.shutdown2.actor);
@@ -2108,12 +2142,6 @@ RightButtonsBox.prototype = {
         this.shutDownIconBoxXP.add_actor(this.shutdown3.actor);
         this.shutDownIconBoxXP.add_actor(this.logout2.actor);
         this.shutDownIconBoxXP.add_actor(this.lock2.actor);
-
-        this.itemsBox.add_actor(this.shutDownMenuBox);
-        this.shutDownMenuBox.set_style('min-height: 80px');
-
-        this.itemsBox.add_actor(this.shutDownIconBox);
-        this.itemsBox.add_actor(this.shutDownIconBoxXP);
     },
 
     _getPreferredHeight: function(actor, forWidth, alloc) {
@@ -2553,19 +2581,11 @@ MyApplet.prototype = {
                 }
             }
             else {
-                if (this.QuicklinksShutdownMenuOptions == 'horizontal') {
-                    this.rightButtonsBox.shutdown.actor.hide();
-                    this.rightButtonsBox.shutdownMenu.actor.hide();
-                    this.rightButtonsBox.shutDownMenuBox.hide();
-                    this.rightButtonsBox.shutDownIconBoxXP.show();
-                    this.rightButtonsBox.shutDownIconBox.hide();
-                } else {
-                    this.rightButtonsBox.shutdown.actor.hide();
-                    this.rightButtonsBox.shutdownMenu.actor.hide();
-                    this.rightButtonsBox.shutDownMenuBox.hide();
-                    this.rightButtonsBox.shutDownIconBoxXP.hide();
-                    this.rightButtonsBox.shutDownIconBox.show();
-                }
+                this.rightButtonsBox.shutdown.actor.hide();
+                this.rightButtonsBox.shutdownMenu.actor.hide();
+                this.rightButtonsBox.shutDownMenuBox.hide();
+                this.rightButtonsBox.shutDownIconBoxXP.hide();
+                this.rightButtonsBox.shutDownIconBox.show();
             }
         }
         else {
@@ -2576,7 +2596,7 @@ MyApplet.prototype = {
             this.rightButtonsBox.shutDownMenuBox.hide();
         }
 
-        if (this.rightButtonsBox.actor.get_height() > 421) {
+        if (this.rightButtonsBox.actor.get_height() > 415) {
             this.favsBox.style = "min-height: " + (this.rightButtonsBox.actor.get_height() - (this.leftPaneBox.get_theme_node().get_padding(St.Side.TOP) + this.leftPaneBox.get_theme_node().get_padding(St.Side.BOTTOM) + this.searchBox.get_height() + this.appsButton.box.get_height() + this.separator.actor.get_height())+1) + "px;min-width: 235px;";
         }
 
@@ -2641,7 +2661,7 @@ MyApplet.prototype = {
 
         this._updateQuickLinksShutdownView();
 
-        if (this.rightButtonsBox.actor.get_height() > 421) {
+        if (this.rightButtonsBox.actor.get_height() > 415) {
             this.favsBox.style = "min-height: " + (this.rightButtonsBox.actor.get_height() - (this.leftPaneBox.get_theme_node().get_padding(St.Side.TOP) + this.leftPaneBox.get_theme_node().get_padding(St.Side.BOTTOM) + this.searchBox.get_height() + this.appsButton.box.get_height() + this.separator.actor.get_height())+1) + "px;min-width: 235px;";
         }
 
@@ -2821,7 +2841,6 @@ MyApplet.prototype = {
     _updateCustomLabels: function(){
         this.rightButtonsBox.shutdown.label.set_text(_(this.shutdownLabel));
         this.rightButtonsBox.shutdown2.label.set_text(_(this.shutdownLabel));
-        this.rightButtonsBox.shutdown3.label.set_text(_(this.shutdownLabel));
         if (visiblePane == "apps")
             this.appsButton.label.set_text(" " + _(this.favoritesLabel));
         else
@@ -4039,7 +4058,7 @@ MyApplet.prototype = {
         this.leftPane = new St.Bin();
 
         this.favsBox = new St.BoxLayout({ vertical: true });
-        this.favsBox.style = "min-height: 421px;min-width: 235px;";
+        this.favsBox.style = "min-height: 415px;min-width: 235px;";
 
         this.appsBox = new St.BoxLayout({ vertical: true });
 
