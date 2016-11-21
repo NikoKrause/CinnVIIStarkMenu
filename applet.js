@@ -30,7 +30,7 @@ const Tooltips = imports.ui.tooltips;
 const Session = new GnomeSession.SessionManager();
 
 const ICON_SIZE = 16;
-const MAX_FAV_ICON_SIZE = 64;
+const MAX_FAV_BUTTON_SIZE = 64;
 const CATEGORY_ICON_SIZE = 22;
 const APPLICATION_ICON_SIZE = 22;
 const MAX_RECENT_FILES = 20;
@@ -465,8 +465,8 @@ ApplicationButton.prototype = {
         let monitorHeight = Main.layoutManager.primaryMonitor.height;
         let real_size = (0.7 * monitorHeight) / nbFavorites;
         let icon_size = 0.6 * real_size;
-        if (icon_size > MAX_FAV_ICON_SIZE)
-            icon_size = MAX_FAV_ICON_SIZE;
+        if (icon_size > MAX_FAV_BUTTON_SIZE)
+            icon_size = MAX_FAV_BUTTON_SIZE;
         return this.app.create_icon_texture(icon_size);
     },
 
@@ -927,27 +927,29 @@ RecentCategoryButton.prototype = {
     }
 };
 
-function FavoritesButton(appsMenuButton, app, nbFavorites, iconSize, showContextIcon) {
-    this._init(appsMenuButton, app, nbFavorites, iconSize, showContextIcon);
+function FavoritesButton(appsMenuButton, app, nbFavorites, buttonSize, showIcon, showContextIcon) {
+    this._init(appsMenuButton, app, nbFavorites, buttonSize, showIcon, showContextIcon);
 }
 
 FavoritesButton.prototype = {
     __proto__: GenericApplicationButton.prototype,
 
-    _init: function(appsMenuButton, app, nbFavorites, iconSize, showContextIcon) {
+    _init: function(appsMenuButton, app, nbFavorites, buttonSize, showIcon, showContextIcon) {
         GenericApplicationButton.prototype._init.call(this, appsMenuButton, app, true);
         let monitorHeight = Main.layoutManager.primaryMonitor.height;
         let real_size = (0.7 * monitorHeight) / nbFavorites;
-        let icon_size = iconSize; //0.6*real_size;
-        if (icon_size > MAX_FAV_ICON_SIZE)
-            icon_size = MAX_FAV_ICON_SIZE;
-        this.actor.style = "padding-top: "+(icon_size / 3)+"px;padding-bottom: "+(icon_size / 3)+"px; margin:auto;"
+        let button_size = buttonSize; //0.6*real_size;
+        if (button_size > MAX_FAV_BUTTON_SIZE)
+            button_size = MAX_FAV_BUTTON_SIZE;
+        this.actor.style = "padding-top: "+(button_size / 3)+"px;padding-bottom: "+(button_size / 3)+"px; margin:auto;"
 
         this.actor.add_style_class_name('menu-favorites-button');
-        let icon = app.create_icon_texture(icon_size);
 
-        this.addActor(icon);
-        icon.realize();
+        if (showIcon) {
+            let icon = app.create_icon_texture(button_size);
+            this.addActor(icon);
+            icon.realize();
+        }
 
         this.label = new St.Label({ text: this.app.get_name(), style_class: 'menu-application-button-label' });
         this.addActor(this.label);
@@ -1727,15 +1729,10 @@ AllProgramsItem.prototype = {
             style_class: 'menu-category-button'
         });
         this.parent = parent;
-        //this.removeActor(this.label);
         this.label.destroy();
-        //this.removeActor(this._triangle);
         this._triangle.destroy();
         this._triangle = new St.Label();
-        this.label = new St.Label({
-            text: " " + label,
-            style: "padding-left: 20px"
-        });
+        this.label = new St.Label({ text: label, style: "padding-left: 20px" });
         this.icon = new St.Icon({
             style_class: 'popup-menu-icon',
             icon_type: St.IconType.FULLCOLOR,
@@ -2385,6 +2382,7 @@ MyApplet.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-category-icons", "showCategoryIcons", this._refreshAll, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-application-icons", "showApplicationIcons", this._refreshAll, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-context-menu-icons", "showContextMenuIcons", this._refreshAll, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "show-favorite-icons", "showFavoriteIcons", this._refreshFavs, null);
 
         this.settings.bindProperty(Settings.BindingDirection.IN, "enable-animation", "enableAnimation", null, null);
 
@@ -2859,10 +2857,18 @@ MyApplet.prototype = {
     _updateCustomLabels: function(){
         this.rightButtonsBox.shutdown.label.set_text(_(this.shutdownLabel));
         this.rightButtonsBox.shutdown2.label.set_text(_(this.shutdownLabel));
-        if (visiblePane == "apps")
-            this.appsButton.label.set_text(" " + _(this.favoritesLabel));
-        else
-            this.appsButton.label.set_text(" " + _(this.allProgramsLabel));
+        if (visiblePane == "apps") {
+            if (this.favoritesLabel != "")
+                this.appsButton.label.set_text(_(this.favoritesLabel));
+            else
+                this.appsButton.label.set_text("");
+        }
+        else {
+            if (this.allProgramsLabel != "")
+                this.appsButton.label.set_text(_(this.allProgramsLabel));
+            else
+                this.appsButton.label.set_text("");
+        }
     },
 
     _navigateContextMenu: function(actor, symbol, ctrlKey) {
@@ -3958,7 +3964,7 @@ MyApplet.prototype = {
         for ( let i = 0; i < launchers.length; ++i ) {
             let app = appSys.lookup_app(launchers[i]);
             if (app) {
-                let button = new FavoritesButton(this, app, launchers.length, this.favorite_icon_size, this.showContextMenuIcons); // + 3 because we're adding 3 system buttons at the bottom
+                let button = new FavoritesButton(this, app, launchers.length, this.favorite_button_size, this.showFavoriteIcons, this.showContextMenuIcons); // + 3 because we're adding 3 system buttons at the bottom
                 this._favoritesButtons[app] = button;
                 this.favoritesBox.add_actor(button.actor, { y_align: St.Align.END, y_fill: false });
                 this.favoritesBox.add_actor(button.menu.actor, { y_align: St.Align.END, y_fill: false });
@@ -4117,7 +4123,7 @@ MyApplet.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "enable-autoscroll", "autoscroll_enabled", this._update_autoscroll, null);
         this._update_autoscroll();
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "favorite-icon-size", "favorite_icon_size", this._refreshFavs, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "favorite-button-size", "favorite_button_size", this._refreshFavs, null);
 
         let vscroll = this.applicationsScrollBox.get_vscroll_bar();
         vscroll.connect('scroll-start',
@@ -4156,7 +4162,7 @@ MyApplet.prototype = {
         this.separator = new PopupMenu.PopupSeparatorMenuItem();
         this.separator.actor.set_style("padding: 0em 1em;");
 
-        this.appsButton = new AllProgramsItem(_(this.allProgramsLabel), "forward", this, false);
+        this.appsButton = new AllProgramsItem("", "forward", this, false);
 
         this.leftPaneBox = new St.BoxLayout({
             style_class: 'menu-favorites-box',
@@ -4228,7 +4234,10 @@ MyApplet.prototype = {
         if (pane == "apps") {
             this.leftPane.set_child(this.appsBox);
             this.separator.actor.hide();
-            this.appsButton.label.set_text(" " + _(this.favoritesLabel));
+            if (this.favoritesLabel != "")
+                this.appsButton.label.set_text(_(this.favoritesLabel));
+            else
+                this.appsButton.label.set_text("");
             this.appsButton.icon.set_icon_name("back");
             if(this.menuLayout == "stark-menu")
                 this.rightButtonsBox.actor.hide();
@@ -4239,7 +4248,10 @@ MyApplet.prototype = {
         } else {
             this.leftPane.set_child(this.favsBox);
             this.separator.actor.show();
-            this.appsButton.label.set_text(" " + _(this.allProgramsLabel));
+            if (this.allProgramsLabel != "")
+                this.appsButton.label.set_text(_(this.allProgramsLabel));
+            else
+                this.appsButton.label.set_text("");
             this.appsButton.icon.set_icon_name("forward");
             if (this.menu.showQuicklinks) {
                 this.rightButtonsBox.actor.show();

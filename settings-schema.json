@@ -10,8 +10,8 @@
 	    "Stark-Menu": "stark-menu",
 	    "MATE-Menu": "mate-menu"
      },
-    "description" : "Layout of the menu: ",
-    "tooltip" : "Checking this box allows you to use MATE-Menu layout, else Stark-Menu layout is used"
+    "description" : "Menu layout",
+    "tooltip" : "Choose between Stark-Menu and MATE-Menu layout"
  },
  "separator-settings": {
     "type": "separator"
@@ -76,7 +76,7 @@
     "max" : 1000,
     "step" : 50,
     "units" : "milliseconds",
-    "description" : "Menu hover delay: ",
+    "description" : "Menu hover delay",
     "tooltip" : "Delay between switching categories"
  },
  "enable-animation" : {
@@ -96,7 +96,7 @@
  },
  "head-button-show-hide-icons" : {
     "type" : "header",
-    "description" : "Symbols"
+    "description" : "Icons"
  },
  "show-category-icons" : {
     "type" : "checkbox",
@@ -116,22 +116,27 @@
     "description" : "Show context menu icons",
     "tooltip" : "Choose whether or not to show icons on context menus."
  },
-  "favorite-icon-size" : {
+ "show-favorite-icons" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show favorite icons",
+    "tooltip" : "Choose whether or not to show icons on favorites."
+ },
+  "favorite-button-size" : {
     "type": "spinbutton",
     "default" : 32,
     "min" : 12,
     "max" : 64,
     "step" : 1,
-    "units" : "pixels",
-    "description" : "Size of the Favorite Button Icons: ",
-    "tooltip" : "Change the size of the Favorite Buttons Icons"
+    "description" : "Size of the favorite buttons",
+    "tooltip" : "Change the size of the favorite buttons"
  },
  "separator-button-label": {
     "type": "separator"
  },
  "head-button-label" : {
     "type" : "header",
-    "description" : "Labels on buttons in the menu"
+    "description" : "Button Labels"
  },
  "show-user-icon-label" : {
     "type" : "checkbox",
@@ -142,20 +147,20 @@
  "all-programs-label" : {
     "type" : "entry",
     "default" : "All Programs",
-    "description" : "All Programs Button Text: ",
-    "tooltip" : "Enter custom text for button."
+    "description" : "»All Programs« button label",
+    "tooltip" : "Enter custom text for the »All Programs« button."
  },
  "favorites-label" : {
     "type" : "entry",
     "default" : "Favorites",
-    "description" : "Favorites Button Text: ",
-    "tooltip" : "Enter custom text for button."
+    "description" : "»Favorites« button label",
+    "tooltip" : "Enter custom text for the »Favorites« button."
  },
  "shutdown-label" : {
     "type" : "entry",
     "default" : "Quit",
-    "description" : "Quit Button Text: ",
-    "tooltip" : "Enter custom text for button."
+    "description" : "»Quit« button label",
+    "tooltip" : "Enter custom text for the »Quit« button."
  },
  "separator-shutdown-menu": {
     "type": "separator"
@@ -167,8 +172,8 @@
  "show-quicklinks-shutdown-menu" : {
     "type" : "checkbox",
     "default" : true,
-    "description": "Show Quit Menu",
-    "tooltip": "Choose whether or not to show the Quit Menu."
+    "description": "Show quit options",
+    "tooltip": "Choose whether or not to show the quit options."
  },
  "quicklinks-shutdown-menu-options" : {
     "type": "combobox",
@@ -178,8 +183,8 @@
 	    "Vertical": "vertical",
         "Horizontal": "horizontal"
      },
-    "description": "Quit Menu Layout: ",
-    "tooltip": "Choose the layout of the Quit Menu.",
+    "description": "Quit options layout",
+    "tooltip": "Choose the layout of the quit options.",
     "dependency" : "show-quicklinks-shutdown-menu",
     "indent" : true
  },
