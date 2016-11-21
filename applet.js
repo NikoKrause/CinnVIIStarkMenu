@@ -2612,6 +2612,8 @@ MyApplet.prototype = {
             this.rightButtonsBox.shutDownMenuBox.hide();
         }
 
+        this._updateCustomLabels();
+
         if (this.rightButtonsBox.actor.get_height() > 415) {
             this.favsBox.style = "min-height: " + (this.rightButtonsBox.actor.get_height() - (this.leftPaneBox.get_theme_node().get_padding(St.Side.TOP) + this.leftPaneBox.get_theme_node().get_padding(St.Side.BOTTOM) + this.searchBox.get_height() + this.appsButton.box.get_height() + this.separator.actor.get_height())+1) + "px;min-width: 235px;";
         }
@@ -2855,8 +2857,13 @@ MyApplet.prototype = {
     },
 
     _updateCustomLabels: function(){
-        this.rightButtonsBox.shutdown.label.set_text(_(this.shutdownLabel));
-        this.rightButtonsBox.shutdown2.label.set_text(_(this.shutdownLabel));
+        if (this.shutdownLabel != "") {
+            this.rightButtonsBox.shutdown.label.set_text(_(this.shutdownLabel));
+            this.rightButtonsBox.shutdown2.label.set_text(_(this.shutdownLabel));
+        } else {
+            this.rightButtonsBox.shutdown.label.set_text("");
+            this.rightButtonsBox.shutdown2.label.set_text("");
+        }
         if (visiblePane == "apps") {
             if (this.favoritesLabel != "")
                 this.appsButton.label.set_text(_(this.favoritesLabel));
