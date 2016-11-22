@@ -128,6 +128,7 @@
     "min" : 12,
     "max" : 64,
     "step" : 1,
+    "units" : "pixels",
     "description" : "Size of the favorite buttons",
     "tooltip" : "Change the size of the favorite buttons"
  },
