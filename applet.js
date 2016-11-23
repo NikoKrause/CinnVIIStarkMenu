@@ -30,7 +30,7 @@ const Tooltips = imports.ui.tooltips;
 const Session = new GnomeSession.SessionManager();
 
 const ICON_SIZE = 16;
-const MAX_FAV_BUTTON_SIZE = 64;
+const MAX_FAV_ICON_SIZE = 64;
 const CATEGORY_ICON_SIZE = 22;
 const APPLICATION_ICON_SIZE = 22;
 const MAX_RECENT_FILES = 20;
@@ -465,8 +465,8 @@ ApplicationButton.prototype = {
         let monitorHeight = Main.layoutManager.primaryMonitor.height;
         let real_size = (0.7 * monitorHeight) / nbFavorites;
         let icon_size = 0.6 * real_size;
-        if (icon_size > MAX_FAV_BUTTON_SIZE)
-            icon_size = MAX_FAV_BUTTON_SIZE;
+        if (icon_size > MAX_FAV_ICON_SIZE)
+            icon_size = MAX_FAV_ICON_SIZE;
         return this.app.create_icon_texture(icon_size);
     },
 
@@ -918,7 +918,7 @@ RecentCategoryButton.prototype = {
         if (showIcon) {
             this.icon = new St.Icon({icon_name: "folder-recent", icon_size: CATEGORY_ICON_SIZE, icon_type: St.IconType.FULLCOLOR});
             this.addActor(this.icon);
-            this.icon.realize();
+            this.icon.realize()
         } else {
             this.icon = null;
         }
@@ -927,26 +927,26 @@ RecentCategoryButton.prototype = {
     }
 };
 
-function FavoritesButton(appsMenuButton, app, nbFavorites, buttonSize, showIcon, showContextIcon) {
-    this._init(appsMenuButton, app, nbFavorites, buttonSize, showIcon, showContextIcon);
+function FavoritesButton(appsMenuButton, app, nbFavorites, iconSize, showIcon, showContextIcon) {
+    this._init(appsMenuButton, app, nbFavorites, iconSize, showIcon, showContextIcon);
 }
 
 FavoritesButton.prototype = {
     __proto__: GenericApplicationButton.prototype,
 
-    _init: function(appsMenuButton, app, nbFavorites, buttonSize, showIcon, showContextIcon) {
+    _init: function(appsMenuButton, app, nbFavorites, iconSize, showIcon, showContextIcon) {
         GenericApplicationButton.prototype._init.call(this, appsMenuButton, app, true);
         let monitorHeight = Main.layoutManager.primaryMonitor.height;
         let real_size = (0.7 * monitorHeight) / nbFavorites;
-        let button_size = buttonSize; //0.6*real_size;
-        if (button_size > MAX_FAV_BUTTON_SIZE)
-            button_size = MAX_FAV_BUTTON_SIZE;
-        this.actor.style = "padding-top: "+(button_size / 3)+"px;padding-bottom: "+(button_size / 3)+"px; margin:auto;"
+        let icon_size = iconSize; //0.6*real_size;
+        if (icon_size > MAX_FAV_ICON_SIZE)
+            icon_size = MAX_FAV_ICON_SIZE;
+        this.actor.style = "padding-top: "+(icon_size / 3)+"px;padding-bottom: "+(icon_size / 3)+"px; margin:auto;"
 
         this.actor.add_style_class_name('menu-favorites-button');
 
         if (showIcon) {
-            let icon = app.create_icon_texture(button_size);
+            let icon = app.create_icon_texture(icon_size);
             this.addActor(icon);
             icon.realize();
         }
@@ -2554,7 +2554,7 @@ MyApplet.prototype = {
                     whichWay = "right";
                 if (this._activeContainer === this.applicationsBox)
                     whichWay = "none";
-                else if (this.activeContainer === this.categoriesBox && this.noRecentDocuments &&
+                else if (this._activeContainer === this.categoriesBox && this.noRecentDocuments &&
                          (this.categoriesBox.get_child_at_index(index))._delegate instanceof RecentCategoryButton)
                     whichWay = "none";
                 break;
@@ -2579,8 +2579,6 @@ MyApplet.prototype = {
             default:
                 navigationKey = false;
         }
-
-
 
         if (navigationKey) {
             switch (this._activeContainer) {
