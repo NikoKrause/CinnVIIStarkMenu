@@ -1094,494 +1094,26 @@ AppPopupSubMenuMenuItem.prototype = {
     }
 };
 
-function QuitButton(label, icon, func, parent, hoverIcon) {
-    this._init(label, icon, func, parent, hoverIcon);
-}
-
-QuitButton.prototype = {
-    __proto__: AppPopupSubMenuMenuItem.prototype,
-
-    _init: function(label, icon, func, parent, hoverIcon) {
-        this.parent = parent;
-        this.hoverIcon = hoverIcon;
-        this.icon = icon;
-        this.func = func;
-        this.active = false;
-        AppPopupSubMenuMenuItem.prototype._init.call(this, label);
-
-        this.actor.set_style_class_name('menu-category-button');
-        this.actor.add_style_class_name('menu-text-item-button');
-        this.actor.add_style_class_name('starkmenu-quit-button');
-        this.actor.connect('leave-event', Lang.bind(this, this._onLeaveEvent));
-        //this.removeActor(this.label);
-        this.label.destroy();
-        //this.removeActor(this._triangle);
-        this._triangle.destroy();
-        this._triangle = new St.Label();
-        this.label_text = label;
-
-        if(this.label_text == "") {
-            this.label_text = "  "
-            this.leftLabel = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
-            this.leftLabel.add_style_class_name('starkmenu-quit-button-label');
-            this.addActor(this.leftLabel);
-            //this.actor.style = "padding-top: 4px; padding-bottom: 4px;";
-        }
-
-        this.label_icon = new St.Icon({
-            icon_name: this.icon,
-            icon_size: 18,
-            icon_type: St.IconType.FULLCOLOR,
-        });
-
-        this.label = new St.Label({
-            text: this.label_text,
-            style_class: 'menu-category-button-label'
-        });
-        this.label.add_style_class_name('starkmenu-quit-button-label');
-
-        this.addActor(this.label_icon);
-        this.labelIconAdded = true;
-        this.addActor(this.label);
-        this.labelAdded = true;
-    },
-
-    _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
-
-        if (this.labelAdded) {
-            this.removeActor(this.label);
-            this.labelAdded = false;
-        }
-        if (this.labelIconAdded) {
-            this.removeActor(this.label_icon);
-            this.labelIconAdded = false;
-        }
-
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
-
-            let iconSize = 18;
-            if(quicklinkOptions == 'icons')
-                iconSize = 26;
-            else if(QuicklinksShutdownMenuOptions == "horizontal")
-                iconSize = 22;
-            else
-                iconSize = 18;
-
-            this.name_icon = new St.Icon({
-                icon_name: this.icon,
-                icon_size: iconSize,
-                icon_type: St.IconType.FULLCOLOR,
-            });
-
-            let iconFileName = this.icon;
-            let iconFile = Gio.file_new_for_path(iconFileName);
-            let icon;
-
-            if (iconFile.query_exists(null)) {
-                icon = new Gio.FileIcon({
-                    file: iconFile
-                });
-            } else {
-                icon = new Gio.ThemedIcon({
-                    name: this.icon
-                });
-            }
-
-            this.label_icon.set_gicon(icon);
-            this.label_icon.set_icon_size(iconSize);
-
-            if (!iconFile.query_exists(null)) {
-                this.label_icon = this.name_icon;
-
-            }
-
-            this.addActor(this.label_icon);
-            this.labelIconAdded = true;
-        }
-
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
-            this.label = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
-            this.label.add_style_class_name('starkmenu-quit-button-label');
-            this.addActor(this.label);
-            this.labelAdded = true;
-        }
-    },
-
-    _onLeaveEvent: function() {
-        this.hoverIcon.showUser = true;
-        Tweener.addTween(this, {
-            time: 1,
-            onComplete: function() {
-                if (!this.active) {
-                    this.hoverIcon._onUserChanged();
-                }
-            }
-        });
-    },
-
-    setActive: function(active) {
-        if (active) {
-            this.hoverIcon.showUser = false;
-            this.actor.set_style_class_name('menu-category-button-selected');
-            this.actor.add_style_class_name('starkmenu-quit-button-selected');
-            if (this.parent.quicklinkOptions != 'icons') {
-                this.hoverIcon._refresh(this.icon);
-            }
-        } else {
-            this.actor.set_style_class_name('menu-category-button');
-            this.actor.add_style_class_name('starkmenu-quit-button');
-        }
-    },
-
-    _onButtonReleaseEvent: function(actor, event) {
-        if (event.get_button() == 1) {
-            this.activate(event);
-        }
-    },
-
-    activate: function(event) {
-        eval(this.func);
-        this.parent.close();
-    }
-};
-
-function LogoutButton(label, icon, func, parent, hoverIcon) {
-    this._init(label, icon, func, parent, hoverIcon);
-}
-
-LogoutButton.prototype = {
-    __proto__: AppPopupSubMenuMenuItem.prototype,
-
-    _init: function(label, icon, func, parent, hoverIcon) {
-        this.parent = parent;
-        this.hoverIcon = hoverIcon;
-        this.icon = icon;
-        this.func = func;
-        this.active = false;
-        AppPopupSubMenuMenuItem.prototype._init.call(this, label);
-
-        this.actor.set_style_class_name('menu-category-button');
-        this.actor.add_style_class_name('menu-text-item-button');
-        this.actor.add_style_class_name('starkmenu-logout-button');
-        this.actor.connect('leave-event', Lang.bind(this, this._onLeaveEvent));
-        //this.removeActor(this.label);
-        this.label.destroy();
-        //this.removeActor(this._triangle);
-        this._triangle.destroy();
-        this._triangle = new St.Label();
-        this.label_text = label;
-
-        if(this.label_text == "") {
-            this.label_text = "  "
-            this.leftLabel = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
-            this.leftLabel.add_style_class_name('starkmenu-logout-button-label');
-            this.addActor(this.leftLabel);
-            //this.actor.style = "padding-top: 4px; padding-bottom: 4px;";
-        }
-
-        this.label_icon = new St.Icon({
-            icon_name: this.icon,
-            icon_size: 18,
-            icon_type: St.IconType.FULLCOLOR,
-        });
-
-        this.label = new St.Label({
-            text: this.label_text,
-            style_class: 'menu-category-button-label'
-        });
-        this.label.add_style_class_name('starkmenu-logout-button-label');
-
-        this.addActor(this.label_icon);
-        this.labelIconAdded = true;
-        this.addActor(this.label);
-        this.labelAdded = true;
-    },
-
-    _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
-
-        if (this.labelAdded) {
-            this.removeActor(this.label);
-            this.labelAdded = false;
-        }
-        if (this.labelIconAdded) {
-            this.removeActor(this.label_icon);
-            this.labelIconAdded = false;
-        }
-
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
-
-            let iconSize = 18;
-            if(quicklinkOptions == 'icons')
-                iconSize = 26;
-            else if(QuicklinksShutdownMenuOptions == "horizontal")
-                iconSize = 22;
-            else
-                iconSize = 18;
-
-            this.name_icon = new St.Icon({
-                icon_name: this.icon,
-                icon_size: iconSize,
-                icon_type: St.IconType.FULLCOLOR,
-            });
-
-            let iconFileName = this.icon;
-            let iconFile = Gio.file_new_for_path(iconFileName);
-            let icon;
-
-            if (iconFile.query_exists(null)) {
-                icon = new Gio.FileIcon({
-                    file: iconFile
-                });
-            } else {
-                icon = new Gio.ThemedIcon({
-                    name: this.icon
-                });
-            }
-
-            this.label_icon.set_gicon(icon);
-            this.label_icon.set_icon_size(iconSize);
-
-            if (!iconFile.query_exists(null)) {
-                this.label_icon = this.name_icon;
-
-            }
-
-            this.addActor(this.label_icon);
-            this.labelIconAdded = true;
-        }
-
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
-            this.label = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
-            this.label.add_style_class_name('starkmenu-logout-button-label');
-            this.addActor(this.label);
-            this.labelAdded = true;
-        }
-    },
-
-    _onLeaveEvent: function() {
-        this.hoverIcon.showUser = true;
-        Tweener.addTween(this, {
-            time: 1,
-            onComplete: function() {
-                if (!this.active) {
-                    this.hoverIcon._onUserChanged();
-                }
-            }
-        });
-    },
-
-    setActive: function(active) {
-        if (active) {
-            this.hoverIcon.showUser = false;
-            this.actor.set_style_class_name('menu-category-button-selected');
-            this.actor.add_style_class_name('starkmenu-logout-button-selected');
-            if (this.parent.quicklinkOptions != 'icons') {
-                this.hoverIcon._refresh(this.icon);
-            }
-        } else {
-            this.actor.set_style_class_name('menu-category-button');
-            this.actor.add_style_class_name('starkmenu-logout-button');
-        }
-    },
-
-    _onButtonReleaseEvent: function(actor, event) {
-        if (event.get_button() == 1) {
-            this.activate(event);
-        }
-    },
-
-    activate: function(event) {
-        eval(this.func);
-        this.parent.close();
-    }
-};
-
-function LockScreenButton(label, icon, func, parent, hoverIcon) {
-    this._init(label, icon, func, parent, hoverIcon);
-}
-
-LockScreenButton.prototype = {
-    __proto__: AppPopupSubMenuMenuItem.prototype,
-
-    _init: function(label, icon, func, parent, hoverIcon) {
-        this.parent = parent;
-        this.hoverIcon = hoverIcon;
-        this.icon = icon;
-        this.func = func;
-        this.active = false;
-        AppPopupSubMenuMenuItem.prototype._init.call(this, label);
-
-        this.actor.set_style_class_name('menu-category-button');
-        this.actor.add_style_class_name('menu-text-item-button');
-        this.actor.add_style_class_name('starkmenu-lockscreen-button');
-        this.actor.connect('leave-event', Lang.bind(this, this._onLeaveEvent));
-        //this.removeActor(this.label);
-        this.label.destroy();
-        //this.removeActor(this._triangle);
-        this._triangle.destroy();
-        this._triangle = new St.Label();
-        this.label_text = label;
-
-        if(this.label_text == "") {
-            this.label_text = "  "
-            this.leftLabel = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
-            this.leftLabel.add_style_class_name('starkmenu-lockscreen-button-label');
-            this.addActor(this.leftLabel);
-            //this.actor.style = "padding-top: 4px; padding-bottom: 4px;";
-        }
-
-        this.label_icon = new St.Icon({
-            icon_name: this.icon,
-            icon_size: 18,
-            icon_type: St.IconType.FULLCOLOR,
-        });
-
-        this.label = new St.Label({
-            text: this.label_text,
-            style_class: 'menu-category-button-label'
-        });
-        this.label.add_style_class_name('starkmenu-lockscreen-button-label');
-
-        this.addActor(this.label_icon);
-        this.labelIconAdded = true;
-        this.addActor(this.label);
-        this.labelAdded = true;
-    },
-
-    _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
-
-        if (this.labelAdded) {
-            this.removeActor(this.label);
-            this.labelAdded = false;
-        }
-        if (this.labelIconAdded) {
-            this.removeActor(this.label_icon);
-            this.labelIconAdded = false;
-        }
-
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
-
-            let iconSize = 18;
-            if(quicklinkOptions == 'icons')
-                iconSize = 26;
-            else if(QuicklinksShutdownMenuOptions == "horizontal")
-                iconSize = 22;
-            else
-                iconSize = 18;
-
-            this.name_icon = new St.Icon({
-                icon_name: this.icon,
-                icon_size: iconSize,
-                icon_type: St.IconType.FULLCOLOR,
-            });
-
-            let iconFileName = this.icon;
-            let iconFile = Gio.file_new_for_path(iconFileName);
-            let icon;
-
-            if (iconFile.query_exists(null)) {
-                icon = new Gio.FileIcon({
-                    file: iconFile
-                });
-            } else {
-                icon = new Gio.ThemedIcon({
-                    name: this.icon
-                });
-            }
-
-            this.label_icon.set_gicon(icon);
-            this.label_icon.set_icon_size(iconSize);
-
-            if (!iconFile.query_exists(null)) {
-                this.label_icon = this.name_icon;
-
-            }
-
-            this.addActor(this.label_icon);
-            this.labelIconAdded = true;
-        }
-
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
-            this.label = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
-            this.label.add_style_class_name('starkmenu-lockscreen-button-label');
-            this.addActor(this.label);
-            this.labelAdded = true;
-        }
-    },
-
-    _onLeaveEvent: function() {
-        this.hoverIcon.showUser = true;
-        Tweener.addTween(this, {
-            time: 1,
-            onComplete: function() {
-                if (!this.active) {
-                    this.hoverIcon._onUserChanged();
-                }
-            }
-        });
-    },
-
-    setActive: function(active) {
-        if (active) {
-            this.hoverIcon.showUser = false;
-            this.actor.set_style_class_name('menu-category-button-selected');
-            this.actor.add_style_class_name('starkmenu-lockscreen-button-selected');
-            if (this.parent.quicklinkOptions != 'icons') {
-                this.hoverIcon._refresh(this.icon);
-            }
-        } else {
-            this.actor.set_style_class_name('menu-category-button');
-            this.actor.add_style_class_name('starkmenu-lockscreen-button');
-        }
-    },
-
-    _onButtonReleaseEvent: function(actor, event) {
-        if (event.get_button() == 1) {
-            this.activate(event);
-        }
-    },
-
-    activate: function(event) {
-        eval(this.func);
-        this.parent.close();
-    }
-};
-
-function TextBoxItem(label, icon, func, parent, hoverIcon) {
-    this._init(label, icon, func, parent, hoverIcon);
+function TextBoxItem(label, icon, func, parent, hoverIcon, addStyleClassName) {
+    this._init(label, icon, func, parent, hoverIcon, addStyleClassName);
 }
 
 TextBoxItem.prototype = {
     __proto__: AppPopupSubMenuMenuItem.prototype,
 
-    _init: function(label, icon, func, parent, hoverIcon) {
+    _init: function(label, icon, func, parent, hoverIcon, addStyleClassName) {
         this.parent = parent;
         this.hoverIcon = hoverIcon;
         this.icon = icon;
         this.func = func;
         this.active = false;
         AppPopupSubMenuMenuItem.prototype._init.call(this, label);
+        
+        this.addStyleClassName = addStyleClassName;
 
         this.actor.set_style_class_name('menu-category-button');
         this.actor.add_style_class_name('menu-text-item-button');
+        this.actor.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button');
         this.actor.connect('leave-event', Lang.bind(this, this._onLeaveEvent));
         //this.removeActor(this.label);
         this.label.destroy();
@@ -1592,10 +1124,8 @@ TextBoxItem.prototype = {
 
         if(this.label_text == "") {
             this.label_text = "  "
-            this.leftLabel = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
+            this.leftLabel = new St.Label({ text: this.label_text, style_class: 'menu-category-button-label' });
+            this.leftLabel.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button-label');
             this.addActor(this.leftLabel);
             this.actor.style = "padding-top: 4px; padding-bottom: 4px;";
         }
@@ -1606,10 +1136,8 @@ TextBoxItem.prototype = {
             icon_type: St.IconType.FULLCOLOR,
         });
 
-        this.label = new St.Label({
-            text: this.label_text,
-            style_class: 'menu-category-button-label'
-        });
+        this.label = new St.Label({ text: this.label_text, style_class: 'menu-category-button-label' });
+        this.label.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button-label');
 
         this.addActor(this.label_icon);
         this.labelIconAdded = true;
@@ -1671,10 +1199,8 @@ TextBoxItem.prototype = {
         }
 
         if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
-            this.label = new St.Label({
-                text: this.label_text,
-                style_class: 'menu-category-button-label'
-            });
+            this.label = new St.Label({ text: this.label_text, style_class: 'menu-category-button-label' });
+            this.label.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button-label');
             this.addActor(this.label);
             this.labelAdded = true;
         }
@@ -1696,10 +1222,14 @@ TextBoxItem.prototype = {
         if (active) {
             this.hoverIcon.showUser = false;
             this.actor.set_style_class_name('menu-category-button-selected');
+            this.actor.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button-selected');
             if (this.parent.quicklinkOptions != 'icons') {
                 this.hoverIcon._refresh(this.icon);
             }
-        } else this.actor.set_style_class_name('menu-category-button');
+        } else {
+            this.actor.set_style_class_name('menu-category-button');
+            this.actor.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button');
+        }
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -1944,6 +1474,7 @@ ShutdownMenu.prototype = {
         this.parent = parent;
         AppPopupSubMenuMenuItem.prototype._init.call(this, label);
         this.actor.set_style_class_name('menu-category-button');
+        this.actor.add_style_class_name('starkmenu-arrow-dropdown-button');
         //this.removeActor(this.label);
         this.label.destroy();
         //this.removeActor(this._triangle);
@@ -1971,8 +1502,12 @@ ShutdownMenu.prototype = {
     setActive: function(active) {
         if (active) {
             this.actor.set_style_class_name('menu-category-button-selected');
+            this.actor.add_style_class_name('starkmenu-arrow-dropdown-button-selected');
             this.hoverIcon._refresh('system-log-out');
-        } else this.actor.set_style_class_name('menu-category-button');
+        } else {
+            this.actor.set_style_class_name('menu-category-button');
+            this.actor.add_style_class_name('starkmenu-arrow-dropdown-button');
+        }
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -2096,7 +1631,7 @@ RightButtonsBox.prototype = {
                 else {
                     let split = this.menu.quicklinks[i].split(',');
                     if (split.length == 3) {
-                        this.quicklinks[i] = new TextBoxItem(_(split[0]), _(split[1]), "Util.spawnCommandLine('" + _(split[2]) + "')", this.menu, this.hoverIcon, false);
+                        this.quicklinks[i] = new TextBoxItem(_(split[0]), _(split[1]), "Util.spawnCommandLine('" + _(split[2]) + "')", this.menu, this.hoverIcon, 'quicklink');
                         this.itemsBox.add_actor(this.quicklinks[i].actor);
                     }
                 }
@@ -2120,11 +1655,11 @@ RightButtonsBox.prototype = {
         this.actor.add_actor(this.shutDownIconBoxXP);
 
 
-        this.shutdown = new QuitButton(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, false);
-        this.shutdown2 = new QuitButton(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, false);
-        this.shutdown3 = new QuitButton("", "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, false);
-        this.logout = new LogoutButton(_("Logout"), "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, false);
-        this.logout2 = new LogoutButton("", "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, false);
+        this.shutdown = new TextBoxItem(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-dropdown');
+        this.shutdown2 = new TextBoxItem(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-vertical');
+        this.shutdown3 = new TextBoxItem("", "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-horizontal');
+        this.logout = new TextBoxItem(_("Logout"), "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, 'logout-vertical');
+        this.logout2 = new TextBoxItem("", "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, 'logout-horizontal');
 
         let screensaver_settings = new Gio.Settings({
             schema: "org.cinnamon.desktop.screensaver"
@@ -2132,12 +1667,12 @@ RightButtonsBox.prototype = {
         let screensaver_dialog = Gio.file_new_for_path("/usr/bin/cinnamon-screensaver-command");
         if (screensaver_dialog.query_exists(null)) {
             if (screensaver_settings.get_boolean("ask-for-away-message")) {
-                this.lock = new LockScreenButton(_("Lock screen"), "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, false);
-                this.lock2 = new LockScreenButton("", "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, false);
+                this.lock = new TextBoxItem(_("Lock screen"), "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, 'lockscreen-vertical');
+                this.lock2 = new TextBoxItem("", "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, 'lockscreen-horizontal');
             }
             else {
-                this.lock = new LockScreenButton(_("Lock screen"), "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, false);
-                this.lock2 = new LockScreenButton("", "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, false);
+                this.lock = new TextBoxItem(_("Lock screen"), "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, 'lockscreen-vertical');
+                this.lock2 = new TextBoxItem("", "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, 'lockscreen-horizontal');
             }
         }
 
