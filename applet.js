@@ -2086,10 +2086,6 @@ MyApplet.prototype = {
     },
 
     _appletStyles: function() {
-        let favsWidth = 0.95 * (this.favsBox.get_allocation_box().x2 - this.favsBox.get_allocation_box().x1);
-        //let scrollWidth = this.searchBox.get_width() + this.rightButtonsBox.actor.get_width();
-        this.searchEntry.style = "width:" + favsWidth + "px; padding-left: 6px; padding-right: 6px;";
-        this.appsButton.box.style = "width:" + favsWidth + "px";
         let scrollBoxHeight = (this.favsBox.get_allocation_box().y2 - this.favsBox.get_allocation_box().y1) + this.separator.actor.get_height() - (this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.TOP) + this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.BOTTOM));
         this.applicationsScrollBox.style = "width: 26.5em;height: " + scrollBoxHeight + "px;";
         this.categoriesScrollBox.style = "height: " + scrollBoxHeight + "px;";
@@ -2307,7 +2303,9 @@ MyApplet.prototype = {
             //this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
             Mainloop.idle_add(Lang.bind(this, this._initial_cat_selection, n));
 
-            this._appletStyles();
+            let favsWidth = 0.95 * (this.favsBox.get_allocation_box().x2 - this.favsBox.get_allocation_box().x1);
+            this.searchEntry.style = "width:" + favsWidth + "px; padding-left: 6px; padding-right: 6px;";
+            this.appsButton.box.style = "width:" + favsWidth + "px";
         } else {
             this.actor.remove_style_pseudo_class('active');
             if (this.searchActive) {
@@ -3640,6 +3638,7 @@ MyApplet.prototype = {
         this.appsBox.add_actor(this.categoriesApplicationsBox.actor);
         this.searchBox.add_actor(this.searchEntry);
         this.leftPaneBox.add_actor(this.leftPane);
+        this.leftPaneBox.add(new St.Bin(), { expand: true });
         this.leftPaneBox.add_actor(this.separator.actor);
         this.leftPaneBox.add_actor(this.appsButton.actor);
         this.leftPaneBox.add_actor(this.searchBox);
