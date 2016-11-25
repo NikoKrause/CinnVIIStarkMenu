@@ -126,9 +126,7 @@ ApplicationContextMenuItem.prototype = {
         this.label = new St.Label({ text: label });
 
         if (iconName != null && showIcon) {
-            this.icon_name = iconName;
-            let icon = new St.Icon({ icon_name: this.icon_name, icon_size: 12, icon_type: St.IconType.SYMBOLIC });
-            this.icon = icon;
+            this.icon = new St.Icon({ icon_name: iconName, icon_size: 12, icon_type: St.IconType.SYMBOLIC });
             if (this.icon) {
                 this.addActor(this.icon);
                 this.icon.realize();
@@ -265,10 +263,10 @@ GenericApplicationButton.prototype = {
                 this.menu.addMenuItem(menuItem);
             }
             if (AppFavorites.getAppFavorites().isFavorite(this.app.get_id())){
-                menuItem = new ApplicationContextMenuItem(this, _("Remove from favorites"), "remove_from_favorites", "non-starred", this.showContextIcon);
+                menuItem = new ApplicationContextMenuItem(this, _("Remove from favorites"), "remove_from_favorites", "starred", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }else{
-                menuItem = new ApplicationContextMenuItem(this, _("Add to favorites"), "add_to_favorites", "starred", this.showContextIcon);
+                menuItem = new ApplicationContextMenuItem(this, _("Add to favorites"), "add_to_favorites", "non-starred", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }
             if (this.appsMenuButton._canUninstallApps) {
@@ -276,7 +274,7 @@ GenericApplicationButton.prototype = {
                 this.menu.addMenuItem(menuItem);
             }
             if (this.appsMenuButton._isBumblebeeInstalled) {
-                menuItem = new ApplicationContextMenuItem(this, _("Run with nVidia GPU"), "run_with_nvidia_gpu", "bumblebee", this.showContextIcon);
+                menuItem = new ApplicationContextMenuItem(this, _("Run with NVIDIA GPU"), "run_with_nvidia_gpu", "cpu", this.showContextIcon);
                 this.menu.addMenuItem(menuItem);
             }
         }
