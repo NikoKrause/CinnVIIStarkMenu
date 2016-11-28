@@ -402,6 +402,55 @@ String.prototype.replaceAt=function(index, character) {
     return this.substr(0, index) + character + this.substr(index+character.length);
 }
 
+String.prototype.formatDescription=function() {
+    let descriptionString = this.toString();
+    let lastSpacePosition = 0;
+    if(descriptionString.length > 80) {
+        lastSpacePosition = descriptionString.lastIndexOf(" ", 79);
+        descriptionString = descriptionString.replaceAt(lastSpacePosition, "\n");
+    }
+    if(descriptionString.length > 160) {
+        lastSpacePosition = descriptionString.lastIndexOf(" ", lastSpacePosition+80);
+        descriptionString = descriptionString.replaceAt(lastSpacePosition, "\n");
+    }
+
+    if(descriptionString == "null")
+        return _("No description available");
+    else
+        return descriptionString;
+}
+
+function TooltipCustom(actor, string, multiline) {
+    this._init(actor, string, multiline);
+}
+
+TooltipCustom.prototype = {
+    __proto__: Tooltips.Tooltip.prototype,
+
+    _init: function(actor, string, multiline) {
+        let formatString = string;
+        if (multiline) {
+            let lastSpacePos = -1;
+            let tooltipWidth = 80;
+            let tooltipLines = Math.ceil(1.0 * formatString.length / tooltipWidth) - 1;
+
+            for (let i = 0; i < tooltipLines; i++) {
+                lastSpacePos = formatString.lastIndexOf(" ", lastSpacePos + tooltipWidth);
+                formatString = formatString.replaceAt(lastSpacePos, "\n");
+            }
+        }
+
+        if(formatString == "null")
+            formatString = _("No description available");
+
+        Tooltips.Tooltip.prototype._init.call(this, actor, formatString);
+        this._tooltip.set_style("text-align: left;");
+        this._tooltip.get_clutter_text().set_line_wrap(true);
+        this._tooltip.get_clutter_text().set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);
+        this._tooltip.get_clutter_text().ellipsize = Pango.EllipsizeMode.NONE;
+    }
+};
+
 function ApplicationButton(appsMenuButton, app, showIcon, showContextIcon) {
     this._init(appsMenuButton, app, showIcon, showContextIcon);
 }
@@ -434,23 +483,8 @@ ApplicationButton.prototype = {
 
         this.showContextIcon = showContextIcon;
 
-
-        let appDescriptionTooltipString = this.app.get_description() + "";
-        let lastSpacePosition = 0;
-        if(appDescriptionTooltipString.length > 80) {
-            lastSpacePosition = appDescriptionTooltipString.lastIndexOf(" ", 79);
-            appDescriptionTooltipString = appDescriptionTooltipString.replaceAt(lastSpacePosition, "\n");
-        }
-        if(appDescriptionTooltipString.length > 160) {
-            lastSpacePosition = appDescriptionTooltipString.lastIndexOf(" ", lastSpacePosition+80);
-            appDescriptionTooltipString = appDescriptionTooltipString.replaceAt(lastSpacePosition, "\n");
-        }
-
-        if(appDescriptionTooltipString == "null")
-            this.tooltip = new Tooltips.Tooltip(this.actor, _("No description available"));
-        else
-            this.tooltip = new Tooltips.Tooltip(this.actor, appDescriptionTooltipString);
-
+        let tooltipString = this.app.get_description() + "";
+        this.tooltip = new TooltipCustom(this.actor, tooltipString, true);
     },
 
     get_app_id: function() {
@@ -581,6 +615,15 @@ PlaceButton.prototype = {
         if (showIcon)
             this.icon.realize();
         this.label.realize();
+
+        let selectedAppId = decodeURIComponent(this.place.id);
+        selectedAppId = selectedAppId.substr(selectedAppId.indexOf(':') + 1);
+        let fileIndex = selectedAppId.indexOf('file:///');
+        if (fileIndex !== -1)
+            selectedAppId = selectedAppId.substr(fileIndex + 7);
+
+        let tooltipString = selectedAppId;
+        this.tooltip = new TooltipCustom(this.actor, tooltipString, true);
     },
 
     _onButtonReleaseEvent: function (actor, event) {
@@ -650,6 +693,19 @@ RecentButton.prototype = {
         this.menu = new PopupMenu.PopupSubMenu(this.actor);
         this.menu.actor.set_style_class_name('menu-context-menu');
         this.menu.connect('open-state-changed', Lang.bind(this, this._subMenuOpenStateChanged));
+
+        let selectedAppUri = decodeURIComponent(this.file.uri);
+        let fileIndex = selectedAppUri.indexOf("file:///");
+        if (fileIndex !== -1)
+            selectedAppUri = selectedAppUri.substr(fileIndex + 7);
+
+        let tooltipString = selectedAppUri;
+        this.tooltip = new TooltipCustom(this.actor, tooltipString, false);
+
+        let file = Gio.file_new_for_uri(decodeURIComponent(this.file.uri));
+        if (!file.query_exists(null))
+            this.tooltip._tooltip.get_clutter_text().set_markup('<span weight="bold">' + _("This file is no longer available") + '</span>' +
+                                                                "\n" + selectedAppUri);
     },
 
     _onButtonReleaseEvent: function (actor, event) {
@@ -958,21 +1014,8 @@ FavoritesButton.prototype = {
 
         this.showContextIcon = showContextIcon;
 
-        let appDescriptionTooltipString = this.app.get_description() + "";
-        let lastSpacePosition = 0;
-        if(appDescriptionTooltipString.length > 80) {
-            lastSpacePosition = appDescriptionTooltipString.lastIndexOf(" ", 79);
-            appDescriptionTooltipString = appDescriptionTooltipString.replaceAt(lastSpacePosition, "\n");
-        }
-        if(appDescriptionTooltipString.length > 160) {
-            lastSpacePosition = appDescriptionTooltipString.lastIndexOf(" ", lastSpacePosition+80);
-            appDescriptionTooltipString = appDescriptionTooltipString.replaceAt(lastSpacePosition, "\n");
-        }
-
-        if(appDescriptionTooltipString == "null")
-            this.tooltip = new Tooltips.Tooltip(this.actor, _("No description available"));
-        else
-            this.tooltip = new Tooltips.Tooltip(this.actor, appDescriptionTooltipString);
+        let tooltipString = this.app.get_description() + "";
+        this.tooltip = new TooltipCustom(this.actor, tooltipString, true);
     },
 
     _onDragEnd: function() {
@@ -1141,6 +1184,9 @@ TextBoxItem.prototype = {
         this.labelIconAdded = true;
         this.addActor(this.label);
         this.labelAdded = true;
+
+        let tooltipString = this.label_text;
+        this.tooltip = new TooltipCustom(this.actor, tooltipString, true);
     },
 
     _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
@@ -1273,8 +1319,10 @@ AllProgramsItem.prototype = {
     },
 
     setActive: function(active) {
-        if (active) this.box.set_style_class_name('menu-category-button-selected');
-        else this.box.set_style_class_name('menu-category-button');
+        if (active)
+            this.box.set_style_class_name('menu-category-button-selected');
+        else
+            this.box.set_style_class_name('menu-category-button');
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -1286,6 +1334,47 @@ AllProgramsItem.prototype = {
     activate: function(event) {
         if (this.parent.leftPane.get_child() == this.parent.favsBox) this.parent.switchPanes("apps");
         else this.parent.switchPanes("favs");
+    }
+};
+
+function ResultsFoundItem(label, icon, parent) {
+    this._init(label, icon, parent);
+}
+
+ResultsFoundItem.prototype = {
+    __proto__: AppPopupSubMenuMenuItem.prototype,
+
+    _init: function(label, icon, parent) {
+        AppPopupSubMenuMenuItem.prototype._init.call(this, label);
+
+        this.actor.set_style_class_name('');
+        this.box = new St.BoxLayout({
+            style_class: 'menu-category-button'
+        });
+        this.parent = parent;
+        this.label.destroy();
+        this._triangle.destroy();
+        this._triangle = new St.Label();
+        this.label = new St.Label({ text: label, style: "padding-left: 5px" });
+        this.icon = new St.Icon({
+            style_class: 'popup-menu-icon',
+            icon_type: St.IconType.SYMBOLIC,
+            icon_name: icon,
+            icon_size: ICON_SIZE
+        });
+        this.box.add_actor(this.icon);
+        this.box.add_actor(this.label);
+        this.addActor(this.box);
+    },
+
+    setActive: function(active) {
+        if (active)
+            this.box.set_style_class_name('menu-category-button-selected');
+        else
+            this.box.set_style_class_name('menu-category-button');
+    },
+
+    _onButtonReleaseEvent: function(actor, event) {
     }
 };
 
@@ -2304,6 +2393,7 @@ MyApplet.prototype = {
             let favsWidth = 0.95 * (this.favsBox.get_allocation_box().x2 - this.favsBox.get_allocation_box().x1);
             this.searchEntry.style = "width:" + favsWidth + "px; padding-left: 6px; padding-right: 6px;";
             this.appsButton.box.style = "width:" + favsWidth + "px";
+            this.resultsFoundButton.box.style = "width:" + favsWidth + "px";
         } else {
             this.actor.remove_style_pseudo_class('active');
             if (this.searchActive) {
@@ -3604,6 +3694,8 @@ MyApplet.prototype = {
         this.separator.actor.set_style("padding: 0em 1em;");
 
         this.appsButton = new AllProgramsItem("", "forward", this, false);
+        this.resultsFoundButton = new ResultsFoundItem("5 results found", "edit-find", this, false);
+        this.resultsFoundButton.actor.hide();
 
         this.leftPaneBox = new St.BoxLayout({
             style_class: 'menu-favorites-box',
@@ -3639,6 +3731,7 @@ MyApplet.prototype = {
         this.leftPaneBox.add(new St.Bin(), { expand: true });
         this.leftPaneBox.add_actor(this.separator.actor);
         this.leftPaneBox.add_actor(this.appsButton.actor);
+        this.leftPaneBox.add_actor(this.resultsFoundButton.actor);
         this.leftPaneBox.add_actor(this.searchBox);
         this.mainBox.add_actor(this.leftPaneBox);
         this.mainBox.add_actor(this.rightButtonsBox.actor);
@@ -3669,7 +3762,6 @@ MyApplet.prototype = {
             this.mainBox.add_actor(this.leftPaneBox);
             this.mainBox.add_actor(this.rightButtonsBox.actor);
         }
-        this._appletStyles();
     },
 
     switchPanes: function(pane) {
@@ -3945,6 +4037,8 @@ MyApplet.prototype = {
                 }
                 this._setCategoriesButtonActive(false);
                 this._doSearch();
+                this.appsButton.actor.hide();
+                this.resultsFoundButton.actor.show();
             } else {
                 if (this._searchIconClickedId > 0)
                     this.searchEntry.disconnect(this._searchIconClickedId);
@@ -3953,6 +4047,8 @@ MyApplet.prototype = {
                 this._previousSearchPattern = "";
                 this._setCategoriesButtonActive(true);
                 this._select_category(null, this._allAppsCategoryButton);
+                this.appsButton.actor.show();
+                this.resultsFoundButton.actor.hide();
             }
             return;
         }
@@ -3998,7 +4094,8 @@ MyApplet.prototype = {
     },
 
     _doSearch: function(){
-        if (this.leftPane.get_child() == this.favsBox) this.switchPanes("apps");
+        if (this.leftPane.get_child() == this.favsBox)
+            this.switchPanes("apps");
         this._searchTimeoutId = 0;
         let pattern = this.searchEntryText.get_text().replace(/^\s+/g, '').replace(/\s+$/g, '').toLowerCase();
         if (pattern==this._previousSearchPattern) return false;
@@ -4037,6 +4134,14 @@ MyApplet.prototype = {
         }
 
         this._displayButtons(null, placesResults, recentResults, appResults, acResults);
+
+        let numberResults = appResults.length + placesResults.length + recentResults.length + acResults.length;
+        if (numberResults == 0)
+            this.resultsFoundButton.label.set_text(_("No results found"));
+        else if (numberResults == 1)
+            this.resultsFoundButton.label.set_text(numberResults + " " + _("result found"));
+        else
+            this.resultsFoundButton.label.set_text(numberResults + " " + _("results found"));
 
         this.appBoxIter.reloadVisible();
         if (this.appBoxIter.getNumVisibleChildren() > 0) {
