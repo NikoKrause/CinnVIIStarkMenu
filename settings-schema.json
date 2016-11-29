@@ -213,284 +213,612 @@
     "description": "Quicklinks Options",
     "tooltip": "Choose whether to show icons and/or labels in the Quicklinks Sidebar."
  },
- "quicklink-0-checkbox" : {
+ "quicklauncher-0-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-0" : {
-    "type": "entry",
-    "default": "separator",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-0-checkbox",
+ "quicklauncher-0-label" : {
+    "type" : "entry",
+    "default" : "separator",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-0-checkbox",
     "indent" : true
  },
- "quicklink-1-checkbox" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
- },
- "quicklink-1" : {
-    "type": "entry",
-    "default": "Home,folder-home,nemo",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-1-checkbox",
+ "quicklauncher-0-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-0-checkbox",
     "indent" : true
  },
- "quicklink-2-checkbox" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
- },
- "quicklink-2" : {
-    "type": "entry",
-    "default": "Documents,folder-documents,nemo Documents",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-2-checkbox",
+  "quicklauncher-0-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-0-checkbox",
     "indent" : true
  },
- "quicklink-3-checkbox" : {
+ "quicklauncher-1-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-3" : {
-    "type": "entry",
-    "default": "Pictures,folder-pictures,nemo Pictures",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-3-checkbox",
+ "quicklauncher-1-label" : {
+    "type" : "entry",
+    "default" : "Home",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-1-checkbox",
     "indent" : true
  },
- "quicklink-4-checkbox" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
- },
- "quicklink-4" : {
-    "type": "entry",
-    "default": "Music,folder-music,nemo Music",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-4-checkbox",
+ "quicklauncher-1-icon": {
+    "type": "iconfilechooser",
+    "default" : "folder-home",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-1-checkbox",
     "indent" : true
  },
- "quicklink-5-checkbox" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
- },
- "quicklink-5" : {
-    "type": "entry",
-    "default": "Videos,folder-videos,nemo Videos",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-5-checkbox",
+  "quicklauncher-1-command" : {
+    "type" : "entry",
+    "default" : "nemo",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-1-checkbox",
     "indent" : true
  },
- "quicklink-6-checkbox" : {
+ "quicklauncher-2-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-6" : {
-    "type": "entry",
-    "default": "Downloads,folder-download,nemo Downloads",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-6-checkbox",
+ "quicklauncher-2-label" : {
+    "type" : "entry",
+    "default" : "Documents",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-2-checkbox",
     "indent" : true
  },
- "quicklink-7-checkbox" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
- },
- "quicklink-7" : {
-    "type": "entry",
-    "default": "separator",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-7-checkbox",
+ "quicklauncher-2-icon": {
+    "type": "iconfilechooser",
+    "default" : "folder-documents",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-2-checkbox",
     "indent" : true
  },
- "quicklink-8-checkbox" : {
+  "quicklauncher-2-command" : {
+    "type" : "entry",
+    "default" : "nemo documents",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-2-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-3-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-8" : {
+ "quicklauncher-3-label" : {
+    "type" : "entry",
+    "default" : "Pictures",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-3-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-3-icon": {
+    "type": "iconfilechooser",
+    "default" : "folder-pictures",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-3-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-3-command" : {
+    "type" : "entry",
+    "default" : "nemo Pictures",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-3-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-4-checkbox" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show Quicklink in menu",
+    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+ },
+ "quicklauncher-4-label" : {
+    "type" : "entry",
+    "default" : "Music",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-4-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-4-icon": {
+    "type": "iconfilechooser",
+    "default" : "folder-music",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-4-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-4-command" : {
+    "type" : "entry",
+    "default" : "nemo Music",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-4-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-5-checkbox" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show Quicklink in menu",
+    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+ },
+ "quicklauncher-5-label" : {
+    "type" : "entry",
+    "default" : "Videos",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-5-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-5-icon": {
+    "type": "iconfilechooser",
+    "default" : "folder-videos",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-5-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-5-command" : {
+    "type" : "entry",
+    "default" : "nemo Videos",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-5-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-6-checkbox" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show Quicklink in menu",
+    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+ },
+ "quicklauncher-6-label" : {
+    "type" : "entry",
+    "default" : "Downloads",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-6-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-6-icon": {
+    "type": "iconfilechooser",
+    "default" : "folder-download",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-6-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-6-command" : {
+    "type" : "entry",
+    "default" : "nemo Downloads",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-6-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-7-checkbox" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show Quicklink in menu",
+    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+ },
+ "quicklauncher-7-label" : {
+    "type" : "entry",
+    "default" : "separator",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-7-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-7-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-7-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-7-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-7-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-8-checkbox" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show Quicklink in menu",
+    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+ },
+ "quicklauncher-8" : {
     "type": "entry",
     "default": "Computer,computer,nemo computer:///",
     "description": "Quicklink",
     "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-8-checkbox",
+    "dependency" : "quicklauncher-8-checkbox",
     "indent" : true
  },
- "quicklink-9-checkbox" : {
+ "quicklauncher-8-label" : {
+    "type" : "entry",
+    "default" : "Computer",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-8-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-8-icon": {
+    "type": "iconfilechooser",
+    "default" : "computer",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-8-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-8-command" : {
+    "type" : "entry",
+    "default" : "nemo computer:///",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-8-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-9-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-9" : {
-    "type": "entry",
-    "default": "Software Manager,mintinstall,gksu mintinstall",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-9-checkbox",
+ "quicklauncher-9-label" : {
+    "type" : "entry",
+    "default" : "Software Manager",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-9-checkbox",
     "indent" : true
  },
- "quicklink-10-checkbox" : {
+ "quicklauncher-9-icon": {
+    "type": "iconfilechooser",
+    "default" : "mintinstall",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-9-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-9-command" : {
+    "type" : "entry",
+    "default" : "gksu mintinstall",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-9-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-10-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-10" : {
-    "type": "entry",
-    "default": "System Settings,preferences-system,cinnamon-settings",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-10-checkbox",
+ "quicklauncher-10-label" : {
+    "type" : "entry",
+    "default" : "System Settings",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-10-checkbox",
     "indent" : true
  },
- "quicklink-11-checkbox" : {
+ "quicklauncher-10-icon": {
+    "type": "iconfilechooser",
+    "default" : "preferences-system",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-10-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-10-command" : {
+    "type" : "entry",
+    "default" : "cinnamon-settings",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-10-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-11-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-11" : {
-    "type": "entry",
-    "default": "Terminal,terminal,gnome-terminal",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-11-checkbox",
+ "quicklauncher-11-label" : {
+    "type" : "entry",
+    "default" : "Terminal",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-11-checkbox",
     "indent" : true
  },
- "quicklink-12-checkbox" : {
+ "quicklauncher-11-icon": {
+    "type": "iconfilechooser",
+    "default" : "terminal",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-11-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-11-command" : {
+    "type" : "entry",
+    "default" : "gnome-terminal",
+    "description" : "Command",
+    "tooltip" : "Enter command for the quicklauncher",
+    "dependency" : "quicklauncher-11-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-12-checkbox" : {
     "type" : "checkbox",
     "default" : true,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-12" : {
-    "type": "entry",
-    "default": "separator",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-12-checkbox",
+ "quicklauncher-12-label" : {
+    "type" : "entry",
+    "default" : "separator",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-12-checkbox",
     "indent" : true
  },
- "quicklink-13-checkbox" : {
+ "quicklauncher-12-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-12-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-12-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-12-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-13-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-13" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-13-checkbox",
+ "quicklauncher-13-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-13-checkbox",
     "indent" : true
  },
- "quicklink-14-checkbox" : {
+ "quicklauncher-13-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-13-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-13-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-13-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-14-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-14" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-14-checkbox",
+ "quicklauncher-14-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-14-checkbox",
     "indent" : true
  },
- "quicklink-15-checkbox" : {
+ "quicklauncher-14-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-14-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-14-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-14-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-15-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-15" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-15-checkbox",
+ "quicklauncher-15-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-15-checkbox",
     "indent" : true
  },
- "quicklink-16-checkbox" : {
+ "quicklauncher-15-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-15-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-15-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-15-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-16-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-16" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-16-checkbox",
+ "quicklauncher-16-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-16-checkbox",
     "indent" : true
  },
- "quicklink-17-checkbox" : {
+ "quicklauncher-16-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-16-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-16-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-16-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-17-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-17" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-17-checkbox",
+ "quicklauncher-17-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-17-checkbox",
     "indent" : true
  },
- "quicklink-18-checkbox" : {
+ "quicklauncher-17-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-17-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-17-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-17-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-18-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-18" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-18-checkbox",
+ "quicklauncher-18-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-18-checkbox",
     "indent" : true
  },
- "quicklink-19-checkbox" : {
+ "quicklauncher-18-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-18-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-18-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-18-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-19-checkbox" : {
     "type" : "checkbox",
     "default" : false,
     "description" : "Show Quicklink in menu",
     "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
  },
- "quicklink-19" : {
-    "type": "entry",
-    "default": "",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklink-19-checkbox",
+ "quicklauncher-19-label" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Label",
+    "tooltip" : "Enter label for the quicklauncher",
+    "dependency" : "quicklauncher-19-checkbox",
+    "indent" : true
+ },
+ "quicklauncher-19-icon": {
+    "type": "iconfilechooser",
+    "default" : "",
+    "description" : "Icon",
+    "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
+    "dependency" : "quicklauncher-19-checkbox",
+    "indent" : true
+ },
+  "quicklauncher-19-command" : {
+    "type" : "entry",
+    "default" : "",
+    "description" : "Command",
+    "tooltip" : "Enter command to start the quicklauncher",
+    "dependency" : "quicklauncher-19-checkbox",
     "indent" : true
  }
 }

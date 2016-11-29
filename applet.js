@@ -1614,8 +1614,9 @@ RightButtonsBox.prototype = {
 
         this.quicklinks = [];
         for (let i in this.menu.quicklinks) {
-            if (this.menu.quicklinks[i] != '') {
-                if (this.menu.quicklinks[i] == 'separator') {
+            if (this.menu.quicklinks[i] != ',Dr Who,' && this.menu.quicklinks[i] != ',,') {
+                let split = this.menu.quicklinks[i].split(',');
+                if (split[0] == 'separator') {
                     this.separator = new PopupMenu.PopupSeparatorMenuItem();
 
                     if (this.menu.quicklinkOptions == 'labels') {
@@ -1988,47 +1989,12 @@ MyApplet.prototype = {
         this.lastAcResults = new Array();
         this.settings.bindProperty(Settings.BindingDirection.IN, "search-filesystem", "searchFilesystem", null, null);
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-0-checkbox", "quicklink_0_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-1-checkbox", "quicklink_1_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-2-checkbox", "quicklink_2_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-3-checkbox", "quicklink_3_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-4-checkbox", "quicklink_4_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-5-checkbox", "quicklink_5_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-6-checkbox", "quicklink_6_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-7-checkbox", "quicklink_7_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-8-checkbox", "quicklink_8_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-9-checkbox", "quicklink_9_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-10-checkbox", "quicklink_10_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-11-checkbox", "quicklink_11_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-12-checkbox", "quicklink_12_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-13-checkbox", "quicklink_13_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-14-checkbox", "quicklink_14_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-15-checkbox", "quicklink_15_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-16-checkbox", "quicklink_16_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-17-checkbox", "quicklink_17_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-18-checkbox", "quicklink_18_checkbox", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-19-checkbox", "quicklink_19_checkbox", this._updateQuickLinks, null);
-
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-0", "quicklink_0", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-1", "quicklink_1", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-2", "quicklink_2", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-3", "quicklink_3", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-4", "quicklink_4", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-5", "quicklink_5", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-6", "quicklink_6", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-7", "quicklink_7", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-8", "quicklink_8", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-9", "quicklink_9", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-10", "quicklink_10", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-11", "quicklink_11", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-12", "quicklink_12", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-13", "quicklink_13", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-14", "quicklink_14", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-15", "quicklink_15", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-16", "quicklink_16", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-17", "quicklink_17", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-18", "quicklink_18", this._updateQuickLinks, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-19", "quicklink_19", this._updateQuickLinks, null);
+        for (let i = 0; i < 20; i++) {
+            this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-" + i + "-checkbox", "quicklauncher_" + i + "_checkbox", this._updateQuickLinks, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-" + i + "-label", "quicklauncher_" + i + "_label", this._updateQuickLinks, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-" + i + "-icon", "quicklauncher_" + i + "_icon", this._updateQuickLinks, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-" + i + "-command", "quicklauncher_" + i + "_command", this._updateQuickLinks, null);
+        }
 
         this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-options", "quicklinkOptions", this._updateQuickLinks, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-user-icon-label", "showUserIconLabel", this._updateQuickLinks, null);
@@ -2154,48 +2120,48 @@ MyApplet.prototype = {
     _updateQuickLinks: function() {
 
         this.menu.quicklinksCheckboxes = [];
-        this.menu.quicklinksCheckboxes[0] = this.quicklink_0_checkbox;
-        this.menu.quicklinksCheckboxes[1] = this.quicklink_1_checkbox;
-        this.menu.quicklinksCheckboxes[2] = this.quicklink_2_checkbox;
-        this.menu.quicklinksCheckboxes[3] = this.quicklink_3_checkbox;
-        this.menu.quicklinksCheckboxes[4] = this.quicklink_4_checkbox;
-        this.menu.quicklinksCheckboxes[5] = this.quicklink_5_checkbox;
-        this.menu.quicklinksCheckboxes[6] = this.quicklink_6_checkbox;
-        this.menu.quicklinksCheckboxes[7] = this.quicklink_7_checkbox;
-        this.menu.quicklinksCheckboxes[8] = this.quicklink_8_checkbox;
-        this.menu.quicklinksCheckboxes[9] = this.quicklink_9_checkbox;
-        this.menu.quicklinksCheckboxes[10] = this.quicklink_10_checkbox;
-        this.menu.quicklinksCheckboxes[11] = this.quicklink_11_checkbox;
-        this.menu.quicklinksCheckboxes[12] = this.quicklink_12_checkbox;
-        this.menu.quicklinksCheckboxes[13] = this.quicklink_13_checkbox;
-        this.menu.quicklinksCheckboxes[14] = this.quicklink_14_checkbox;
-        this.menu.quicklinksCheckboxes[15] = this.quicklink_15_checkbox;
-        this.menu.quicklinksCheckboxes[16] = this.quicklink_16_checkbox;
-        this.menu.quicklinksCheckboxes[17] = this.quicklink_17_checkbox;
-        this.menu.quicklinksCheckboxes[18] = this.quicklink_18_checkbox;
-        this.menu.quicklinksCheckboxes[19] = this.quicklink_19_checkbox;
+        this.menu.quicklinksCheckboxes[0] = this.quicklauncher_0_checkbox;
+        this.menu.quicklinksCheckboxes[1] = this.quicklauncher_1_checkbox;
+        this.menu.quicklinksCheckboxes[2] = this.quicklauncher_2_checkbox;
+        this.menu.quicklinksCheckboxes[3] = this.quicklauncher_3_checkbox;
+        this.menu.quicklinksCheckboxes[4] = this.quicklauncher_4_checkbox;
+        this.menu.quicklinksCheckboxes[5] = this.quicklauncher_5_checkbox;
+        this.menu.quicklinksCheckboxes[6] = this.quicklauncher_6_checkbox;
+        this.menu.quicklinksCheckboxes[7] = this.quicklauncher_7_checkbox;
+        this.menu.quicklinksCheckboxes[8] = this.quicklauncher_8_checkbox;
+        this.menu.quicklinksCheckboxes[9] = this.quicklauncher_9_checkbox;
+        this.menu.quicklinksCheckboxes[10] = this.quicklauncher_10_checkbox;
+        this.menu.quicklinksCheckboxes[11] = this.quicklauncher_11_checkbox;
+        this.menu.quicklinksCheckboxes[12] = this.quicklauncher_12_checkbox;
+        this.menu.quicklinksCheckboxes[13] = this.quicklauncher_13_checkbox;
+        this.menu.quicklinksCheckboxes[14] = this.quicklauncher_14_checkbox;
+        this.menu.quicklinksCheckboxes[15] = this.quicklauncher_15_checkbox;
+        this.menu.quicklinksCheckboxes[16] = this.quicklauncher_16_checkbox;
+        this.menu.quicklinksCheckboxes[17] = this.quicklauncher_17_checkbox;
+        this.menu.quicklinksCheckboxes[18] = this.quicklauncher_18_checkbox;
+        this.menu.quicklinksCheckboxes[19] = this.quicklauncher_19_checkbox;
 
         this.menu.quicklinks = [];
-        this.menu.quicklinks[0] = this.quicklink_0;
-        this.menu.quicklinks[1] = this.quicklink_1;
-        this.menu.quicklinks[2] = this.quicklink_2;
-        this.menu.quicklinks[3] = this.quicklink_3;
-        this.menu.quicklinks[4] = this.quicklink_4;
-        this.menu.quicklinks[5] = this.quicklink_5;
-        this.menu.quicklinks[6] = this.quicklink_6;
-        this.menu.quicklinks[7] = this.quicklink_7;
-        this.menu.quicklinks[8] = this.quicklink_8;
-        this.menu.quicklinks[9] = this.quicklink_9;
-        this.menu.quicklinks[10] = this.quicklink_10;
-        this.menu.quicklinks[11] = this.quicklink_11;
-        this.menu.quicklinks[12] = this.quicklink_12;
-        this.menu.quicklinks[13] = this.quicklink_13;
-        this.menu.quicklinks[14] = this.quicklink_14;
-        this.menu.quicklinks[15] = this.quicklink_15;
-        this.menu.quicklinks[16] = this.quicklink_16;
-        this.menu.quicklinks[17] = this.quicklink_17;
-        this.menu.quicklinks[18] = this.quicklink_18;
-        this.menu.quicklinks[19] = this.quicklink_19;
+        this.menu.quicklinks[0] = this.quicklauncher_0_label + "," + this.quicklauncher_0_icon + "," + this.quicklauncher_0_command;
+        this.menu.quicklinks[1] = this.quicklauncher_1_label + "," + this.quicklauncher_1_icon + "," + this.quicklauncher_1_command;
+        this.menu.quicklinks[2] = this.quicklauncher_2_label + "," + this.quicklauncher_2_icon + "," + this.quicklauncher_2_command;
+        this.menu.quicklinks[3] = this.quicklauncher_3_label + "," + this.quicklauncher_3_icon + "," + this.quicklauncher_3_command;
+        this.menu.quicklinks[4] = this.quicklauncher_4_label + "," + this.quicklauncher_4_icon + "," + this.quicklauncher_4_command;
+        this.menu.quicklinks[5] = this.quicklauncher_5_label + "," + this.quicklauncher_5_icon + "," + this.quicklauncher_5_command;
+        this.menu.quicklinks[6] = this.quicklauncher_6_label + "," + this.quicklauncher_6_icon + "," + this.quicklauncher_6_command;
+        this.menu.quicklinks[7] = this.quicklauncher_7_label + "," + this.quicklauncher_7_icon + "," + this.quicklauncher_7_command;
+        this.menu.quicklinks[8] = this.quicklauncher_8_label + "," + this.quicklauncher_8_icon + "," + this.quicklauncher_8_command;
+        this.menu.quicklinks[9] = this.quicklauncher_9_label + "," + this.quicklauncher_9_icon + "," + this.quicklauncher_9_command;
+        this.menu.quicklinks[10] = this.quicklauncher_10_label + "," + this.quicklauncher_10_icon + "," + this.quicklauncher_10_command;
+        this.menu.quicklinks[11] = this.quicklauncher_11_label + "," + this.quicklauncher_11_icon + "," + this.quicklauncher_11_command;
+        this.menu.quicklinks[12] = this.quicklauncher_12_label + "," + this.quicklauncher_12_icon + "," + this.quicklauncher_12_command;
+        this.menu.quicklinks[13] = this.quicklauncher_13_label + "," + this.quicklauncher_13_icon + "," + this.quicklauncher_13_command;
+        this.menu.quicklinks[14] = this.quicklauncher_14_label + "," + this.quicklauncher_14_icon + "," + this.quicklauncher_14_command;
+        this.menu.quicklinks[15] = this.quicklauncher_15_label + "," + this.quicklauncher_15_icon + "," + this.quicklauncher_15_command;
+        this.menu.quicklinks[16] = this.quicklauncher_16_label + "," + this.quicklauncher_16_icon + "," + this.quicklauncher_16_command;
+        this.menu.quicklinks[17] = this.quicklauncher_17_label + "," + this.quicklauncher_17_icon + "," + this.quicklauncher_17_command;
+        this.menu.quicklinks[18] = this.quicklauncher_18_label + "," + this.quicklauncher_18_icon + "," + this.quicklauncher_18_command;
+        this.menu.quicklinks[19] = this.quicklauncher_19_label + "," + this.quicklauncher_19_icon + "," + this.quicklauncher_19_command;
 
         /* remove quicklink if checkbox "Show Quicklink" is false */
         for (let i in this.menu.quicklinksCheckboxes) {
