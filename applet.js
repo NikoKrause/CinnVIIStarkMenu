@@ -2949,6 +2949,9 @@ MyApplet.prototype = {
             }
         }
 
+        this.selectedAppTitle.set_text("");
+        this.selectedAppDescription.set_text("");
+
         this._selectedItemIndex = index;
         if (!item_actor || item_actor === this.searchEntry) {
             return false;
@@ -3250,17 +3253,28 @@ MyApplet.prototype = {
                             this._clearPrevSelection(button.actor);
                             button.actor.style_class = "menu-application-button-selected";
                             this.selectedAppTitle.set_text("");
-                        this.selectedAppDescription.set_text(button.file.uri.slice(7).replace(/%20/g, ' '));
-                    }));
+                            let selectedAppUri = decodeURIComponent(button.file.uri);
+                            let fileIndex = selectedAppUri.indexOf("file:///");
+                            if (fileIndex !== -1)
+                                selectedAppUri = selectedAppUri.substr(fileIndex + 7);
+                            this.selectedAppDescription.set_text(selectedAppUri);
+
+                            let file = Gio.file_new_for_uri(decodeURIComponent(button.file.uri));
+                            if (!file.query_exists(null))
+                                this.selectedAppTitle.set_text(_("This file is no longer available"));
+                            }));
                     button.actor.connect('leave-event', Lang.bind(this, function() {
                             button.actor.style_class = "menu-application-button";
                             this._previousSelectedActor = button.actor;
                             this.selectedAppTitle.set_text("");
                             this.selectedAppDescription.set_text("");
                             }));
-                    this._recentButtons.push(button);
-                    this.applicationsBox.add_actor(button.actor);
-                    this.applicationsBox.add_actor(button.menu.actor);
+                    let file = Gio.file_new_for_uri(decodeURIComponent(button.file.uri));
+                    if (file.query_exists(null)) {
+                        this._recentButtons.push(button);
+                        this.applicationsBox.add_actor(button.actor);
+                        this.applicationsBox.add_actor(button.menu.actor);
+                    }
                 }
 
                 let button = new RecentClearButton(this);
@@ -4019,9 +4033,13 @@ MyApplet.prototype = {
                 this._previousSearchPattern = "";
                 this._setCategoriesButtonActive(true);
                 this._select_category(null, this._allAppsCategoryButton);
+                this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
+                this._activeContainer = null;
+                this.selectedAppTitle.set_text("");
+                this.selectedAppDescription.set_text("");
                 this.appsButton.actor.show();
                 this.resultsFoundButton.actor.hide();
-            }
+	    }
             return;
         }
     },
@@ -4123,6 +4141,9 @@ MyApplet.prototype = {
             if (item_actor && item_actor != this.searchEntry) {
                 item_actor._delegate.emit('enter-event');
             }
+        } else {
+            this.selectedAppTitle.set_text("");
+            this.selectedAppDescription.set_text("");
         }
 
         SearchProviderManager.launch_all(pattern, Lang.bind(this, function(provider, results){
