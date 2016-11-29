@@ -139,12 +139,6 @@
     "type" : "header",
     "description" : "Button Labels"
  },
- "show-user-icon-label" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description" : "Show username",
-    "tooltip" : "Choose whether or not to show the username."
- },
  "all-programs-label" : {
     "type" : "entry",
     "default" : "All Programs",
@@ -157,50 +151,26 @@
     "description" : "»Favorites« button label",
     "tooltip" : "Enter custom text for the »Favorites« button."
  },
- "shutdown-label" : {
-    "type" : "entry",
-    "default" : "Quit",
-    "description" : "»Quit« button label",
-    "tooltip" : "Enter custom text for the »Quit« button."
- },
- "separator-shutdown-menu": {
+ "separator-sidebar-layout": {
     "type": "separator"
  },
- "head-shutdown-menu" : {
+ "head-sidebar-layout" : {
     "type" : "header",
-    "description" : "Quit/Logout/Lock screen"
- },
- "show-quicklinks-shutdown-menu" : {
-    "type" : "checkbox",
-    "default" : true,
-    "description": "Show quit options",
-    "tooltip": "Choose whether or not to show the quit options."
- },
- "quicklinks-shutdown-menu-options" : {
-    "type": "combobox",
-    "default": "vertical",
-    "options": {
-	    "DropDown": "dropdown",
-	    "Vertical": "vertical",
-        "Horizontal": "horizontal"
-     },
-    "description": "Quit options layout",
-    "tooltip": "Choose the layout of the quit options.",
-    "dependency" : "show-quicklinks-shutdown-menu",
-    "indent" : true
- },
- "separator-quicklinks-settings": {
-    "type": "separator"
- },
- "head-quicklinks-settings" : {
-    "type" : "header",
-    "description" : "Quicklinks Sidebar"
+    "description" : "Sidebar Layout"
  },
  "show-quicklinks" : {
     "type" : "checkbox",
     "default" : true,
-    "description": "Show Quicklinks Sidebar",
-    "tooltip": "Choose whether or not to show the Quicklinks Sidebar."
+    "description": "Show sidebar",
+    "tooltip": "Choose whether or not to show the sidebar."
+ },
+ "show-user-icon-label" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description" : "Show username",
+    "tooltip" : "Choose whether or not to show the username.",
+    "dependency" : "show-quicklinks",
+    "indent" : true
  },
  "quicklink-options" : {
     "type": "combobox",
@@ -211,13 +181,49 @@
          "Labels only": "labels"
      },
     "description": "Quicklinks Options",
-    "tooltip": "Choose whether to show icons and/or labels in the Quicklinks Sidebar."
+    "tooltip": "Choose whether to show icons and/or labels in the Quicklinks Sidebar.",
+    "dependency" : "show-quicklinks",
+    "indent" : true
+ },
+ "show-quicklinks-shutdown-menu" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description": "Show quit buttons",
+    "tooltip": "Choose whether or not to show the quit buttons."
+ },
+ "quicklinks-shutdown-menu-options" : {
+    "type": "combobox",
+    "default": "vertical",
+    "options": {
+	    "DropDown": "dropdown",
+	    "Vertical": "vertical",
+        "Horizontal": "horizontal"
+     },
+    "description": "Quit buttons layout",
+    "tooltip": "Choose the layout of the quit options.",
+    "dependency" : "show-quicklinks-shutdown-menu",
+    "indent" : true
+ },
+ "shutdown-label" : {
+    "type" : "entry",
+    "default" : "Quit",
+    "description" : "»Quit« button label",
+    "tooltip" : "Enter custom text for the »Quit« button.",
+    "dependency" : "show-quicklinks-shutdown-menu",
+    "indent" : true
+ },
+ "separator-custom-quicklauncher": {
+    "type": "separator"
+ },
+ "head-custom-quicklauncher" : {
+    "type" : "header",
+    "description" : "Custom Quicklauncher"
  },
  "quicklauncher-0-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-0-label" : {
     "type" : "entry",
@@ -246,8 +252,8 @@
  "quicklauncher-1-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-1-label" : {
     "type" : "entry",
@@ -276,8 +282,8 @@
  "quicklauncher-2-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-2-label" : {
     "type" : "entry",
@@ -306,8 +312,8 @@
  "quicklauncher-3-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-3-label" : {
     "type" : "entry",
@@ -336,8 +342,8 @@
  "quicklauncher-4-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-4-label" : {
     "type" : "entry",
@@ -366,8 +372,8 @@
  "quicklauncher-5-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-5-label" : {
     "type" : "entry",
@@ -396,8 +402,8 @@
  "quicklauncher-6-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-6-label" : {
     "type" : "entry",
@@ -426,8 +432,8 @@
  "quicklauncher-7-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-7-label" : {
     "type" : "entry",
@@ -456,16 +462,8 @@
  "quicklauncher-8-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
- },
- "quicklauncher-8" : {
-    "type": "entry",
-    "default": "Computer,computer,nemo computer:///",
-    "description": "Quicklink",
-    "tooltip": "Entry for your Quicklink. Title,icon,command. If the icon does not contain an extension then it will look for the closest icon by name in the current theme. Otherwise it will find the icon by path.",
-    "dependency" : "quicklauncher-8-checkbox",
-    "indent" : true
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-8-label" : {
     "type" : "entry",
@@ -494,8 +492,8 @@
  "quicklauncher-9-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-9-label" : {
     "type" : "entry",
@@ -524,8 +522,8 @@
  "quicklauncher-10-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-10-label" : {
     "type" : "entry",
@@ -554,8 +552,8 @@
  "quicklauncher-11-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-11-label" : {
     "type" : "entry",
@@ -584,8 +582,8 @@
  "quicklauncher-12-checkbox" : {
     "type" : "checkbox",
     "default" : true,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-12-label" : {
     "type" : "entry",
@@ -614,8 +612,8 @@
  "quicklauncher-13-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-13-label" : {
     "type" : "entry",
@@ -644,8 +642,8 @@
  "quicklauncher-14-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-14-label" : {
     "type" : "entry",
@@ -674,8 +672,8 @@
  "quicklauncher-15-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-15-label" : {
     "type" : "entry",
@@ -704,8 +702,8 @@
  "quicklauncher-16-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-16-label" : {
     "type" : "entry",
@@ -734,8 +732,8 @@
  "quicklauncher-17-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-17-label" : {
     "type" : "entry",
@@ -764,8 +762,8 @@
  "quicklauncher-18-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-18-label" : {
     "type" : "entry",
@@ -794,8 +792,8 @@
  "quicklauncher-19-checkbox" : {
     "type" : "checkbox",
     "default" : false,
-    "description" : "Show Quicklink in menu",
-    "tooltip" : "Choose whether or not to show this Quicklink in the Quicklinks sidebar."
+    "description" : "Show quicklauncher",
+    "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-19-label" : {
     "type" : "entry",
