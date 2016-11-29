@@ -1947,24 +1947,12 @@ FavoritesBox.prototype = {
     }
 }
 
-//----------------------------------------------------------------
-//
-// l10n
-//
-//----------------------------------------------------------------------
-
 const Gettext = imports.gettext
 Gettext.bindtextdomain("CinnXPStarkMenu@NikoKrause", GLib.get_home_dir() + "/.local/share/locale")
 
 function _(str) {
   return Gettext.dgettext("CinnXPStarkMenu@NikoKrause", str)
 }
-
-//----------------------------------------------------------------------
-//
-// MyApplet
-//
-//----------------------------------------------------------------------
 
 function MyApplet(orientation, panel_height, instance_id) {
     this._init(orientation, panel_height, instance_id);
@@ -2054,7 +2042,8 @@ MyApplet.prototype = {
         this._display();
         this._updateMenuLayout();
         this._updateCustomLabels();
-        appsys.connect('installed-changed', Lang.bind(this, this._refreshAll));
+
+        appsys.connect('installed-changed', Lang.bind(this, this.onAppSysChanged));
         AppFavorites.getAppFavorites().connect('changed', Lang.bind(this, this._refreshFavs));
         this.settings.bindProperty(Settings.BindingDirection.IN, "hover-delay", "hover_delay_ms", this._update_hover_delay, null);
         this._update_hover_delay();
@@ -2075,6 +2064,7 @@ MyApplet.prototype = {
         this._pathCompleter.set_dirs_only(false);
         this.lastAcResults = new Array();
         this.settings.bindProperty(Settings.BindingDirection.IN, "search-filesystem", "searchFilesystem", null, null);
+        this.refreshing = false; // used as a flag to know if we're currently refreshing (so we don't do it more than once concurrently)
 
         for (let i = 0; i < 20; i++) {
             this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-" + i + "-checkbox", "quicklauncher_" + i + "_checkbox", this._updateQuickLinks, null);
@@ -2103,14 +2093,30 @@ MyApplet.prototype = {
     },
 
     onIconThemeChanged: function() {
-        this._refreshAll();
+        if (this.refreshing == false) {
+            this.refreshing = true;
+            Mainloop.timeout_add_seconds(1, Lang.bind(this, this._refreshAll));
+        }
+    },
+
+    onAppSysChanged: function() {
+        if (this.refreshing == false) {
+            this.refreshing = true;
+            Mainloop.timeout_add_seconds(1, Lang.bind(this, this._refreshAll));
+        }
     },
 
     _refreshAll: function() {
-        this._refreshApps();
-        this._refreshFavs();
-        this._refreshPlaces();
-        this._refreshRecent();
+        try {
+            this._refreshApps();
+            this._refreshFavs();
+            this._refreshPlaces();
+            this._refreshRecent();
+        }
+        catch (exception) {
+            global.log(exception);
+        }
+        this.refreshing = false;
     },
 
     _refreshBelowApps: function() {
