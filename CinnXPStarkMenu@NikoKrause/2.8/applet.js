@@ -1454,7 +1454,7 @@ HoverIcon.prototype = {
     _onUserChanged: function() {
         if (this._user.is_loaded && this.showUser) {
             //this.set_applet_tooltip(this._user.get_real_name());
-            this.userLabel.set_text(this._user.get_real_name());
+            this.userLabel.set_text(this._user.get_real_name()); // Cinnamon WARNING: Possible orphan label being accessed via st_label_set_text().
             if (this._userIcon) {
                 let iconFileName = this._user.get_icon_file();
                 let iconFile = Gio.file_new_for_path(iconFileName);
@@ -3170,17 +3170,17 @@ MyApplet.prototype = {
                 let place = places[i];
                 let button = new PlaceButton(this, place, place.name, this.showApplicationIcons, this.showAppsDescriptionOnButtons);
                 this._addEnterEvent(button, Lang.bind(this, function() {
-                        this._clearPrevSelection(button.actor);
-                        button.actor.style_class = "menu-application-button-selected";
-                        this.selectedAppTitle.set_text("");
-                        this.selectedAppDescription.set_text(button.description);
-                        button.tooltip._tooltip.get_clutter_text().set_markup(button.description);
-                        }));
+                    this._clearPrevSelection(button.actor);
+                    button.actor.style_class = "menu-application-button-selected";
+                    this.selectedAppTitle.set_text("");
+                    this.selectedAppDescription.set_text(button.description);
+                    button.tooltip._tooltip.get_clutter_text().set_markup(button.description);
+                }));
                 button.actor.connect('leave-event', Lang.bind(this, function() {
-                            this._previousSelectedActor = button.actor;
-                            this.selectedAppTitle.set_text("");
-                            this.selectedAppDescription.set_text("");
-                            }));
+                    this._previousSelectedActor = button.actor;
+                    this.selectedAppTitle.set_text("");
+                    this.selectedAppDescription.set_text("");
+                }));
                 this._placesButtons.push(button);
                 this.applicationsBox.add_actor(button.actor);
             }
@@ -3253,26 +3253,26 @@ MyApplet.prototype = {
                 for (let id = 0; id < MAX_RECENT_FILES && id < this.RecentManager._infosByTimestamp.length; id++) {
                     let button = new RecentButton(this, this.RecentManager._infosByTimestamp[id], this.showApplicationIcons, this.showAppsDescriptionOnButtons);
                     this._addEnterEvent(button, Lang.bind(this, function() {
-                            this._clearPrevSelection(button.actor);
-                            button.actor.style_class = "menu-application-button-selected";
-                            this.selectedAppTitle.set_text("");
-                            this.selectedAppDescription.set_text(button.description);
-                            button.tooltip._tooltip.get_clutter_text().set_markup(button.description);
+                        this._clearPrevSelection(button.actor);
+                        button.actor.style_class = "menu-application-button-selected";
+                        this.selectedAppTitle.set_text("");
+                        this.selectedAppDescription.set_text(button.description);
+                        button.tooltip._tooltip.get_clutter_text().set_markup(button.description);
 
-                            let file = Gio.file_new_for_uri(decodeURIComponent(button.file.uri));
-                            if (!file.query_exists(null)) {
-                                let availableFileText = _("This file is no longer available");
-                                this.selectedAppTitle.set_text(availableFileText);
-                                button.tooltip._tooltip.get_clutter_text().set_markup('<span weight="bold">' + availableFileText + '</span>' + '\n' + button.description);
-                            }
-                            }));
+                        let file = Gio.file_new_for_uri(button.file.uri);
+                        if (!file.query_exists(null)) {
+                            let availableFileText = _("This file is no longer available");
+                            this.selectedAppTitle.set_text(availableFileText);
+                            button.tooltip._tooltip.get_clutter_text().set_markup('<span weight="bold">' + availableFileText + '</span>' + '\n' + button.description);
+                        }
+                    }));
                     button.actor.connect('leave-event', Lang.bind(this, function() {
-                            button.actor.style_class = "menu-application-button";
-                            this._previousSelectedActor = button.actor;
-                            this.selectedAppTitle.set_text("");
-                            this.selectedAppDescription.set_text("");
-                            }));
-                    let file = Gio.file_new_for_uri(decodeURIComponent(button.file.uri));
+                        button.actor.style_class = "menu-application-button";
+                        this._previousSelectedActor = button.actor;
+                        this.selectedAppTitle.set_text("");
+                        this.selectedAppDescription.set_text("");
+                    }));
+                    let file = Gio.file_new_for_uri(button.file.uri);
                     if (file.query_exists(null)) {
                         this._recentButtons.push(button);
                         this.applicationsBox.add_actor(button.actor);
@@ -3282,13 +3282,13 @@ MyApplet.prototype = {
 
                 let button = new RecentClearButton(this);
                 this._addEnterEvent(button, Lang.bind(this, function() {
-                        this._clearPrevSelection(button.actor);
-                        button.actor.style_class = "menu-application-button-selected";
-                        }));
+                    this._clearPrevSelection(button.actor);
+                    button.actor.style_class = "menu-application-button-selected";
+                }));
                 button.actor.connect('leave-event', Lang.bind(this, function() {
-                        button.actor.style_class = "menu-application-button";
-                        this._previousSelectedActor = button.actor;
-                        }));
+                    button.actor.style_class = "menu-application-button";
+                    this._previousSelectedActor = button.actor;
+                }));
                 this._recentButtons.push(button);
                 this.applicationsBox.add_actor(button.actor);
                 this.noRecentDocuments = false;

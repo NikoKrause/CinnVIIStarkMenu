@@ -42,8 +42,26 @@
  "menu-label" : {
     "type" : "entry",
     "default" : "Menu",
-    "description" : "Menu Text",
+    "description" : "»Menu«-Button label",
     "tooltip" : "Enter custom text to show in the panel."
+ },
+ "all-programs-label" : {
+    "type" : "entry",
+    "default" : "All Programs",
+    "description" : "»All Programs«-Button label",
+    "tooltip" : "Enter custom text for the »All Programs« button."
+ },
+ "favorites-label" : {
+    "type" : "entry",
+    "default" : "Favorites",
+    "description" : "»Favorites«-Button label",
+    "tooltip" : "Enter custom text for the »Favorites« button."
+ },
+ "show-apps-description-on-buttons" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description" : "Show application description on buttons",
+    "tooltip" : "Choose whether or not to show the application description on the application buttons."
  },
  "show-places" : {
     "type" : "checkbox",
@@ -132,31 +150,6 @@
     "description" : "Size of the favorite buttons",
     "tooltip" : "Change the size of the favorite buttons"
  },
- "separator-button-label": {
-    "type": "separator"
- },
- "head-button-label" : {
-    "type" : "header",
-    "description" : "Button Labels"
- },
- "all-programs-label" : {
-    "type" : "entry",
-    "default" : "All Programs",
-    "description" : "»All Programs« button label",
-    "tooltip" : "Enter custom text for the »All Programs« button."
- },
- "favorites-label" : {
-    "type" : "entry",
-    "default" : "Favorites",
-    "description" : "»Favorites« button label",
-    "tooltip" : "Enter custom text for the »Favorites« button."
- },
- "show-apps-description-on-buttons" : {
-    "type" : "checkbox",
-    "default" : false,
-    "description" : "Show application description on button",
-    "tooltip" : "Choose whether or not to show the application description on the application button."
- },
  "separator-sidebar-layout": {
     "type": "separator"
  },
@@ -213,7 +206,7 @@
  "shutdown-label" : {
     "type" : "entry",
     "default" : "Quit",
-    "description" : "»Quit« button label",
+    "description" : "»Quit«-Button label",
     "tooltip" : "Enter custom text for the »Quit« button.",
     "dependency" : "show-quicklinks-shutdown-menu",
     "indent" : true
