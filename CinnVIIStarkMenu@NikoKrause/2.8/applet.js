@@ -1949,10 +1949,10 @@ FavoritesBox.prototype = {
 }
 
 const Gettext = imports.gettext
-Gettext.bindtextdomain("CinnXPStarkMenu@NikoKrause", GLib.get_home_dir() + "/.local/share/locale")
+Gettext.bindtextdomain("CinnVIIStarkMenu@NikoKrause", GLib.get_home_dir() + "/.local/share/locale")
 
 function _(str) {
-  return Gettext.dgettext("CinnXPStarkMenu@NikoKrause", str)
+  return Gettext.dgettext("CinnVIIStarkMenu@NikoKrause", str)
 }
 
 function MyApplet(orientation, panel_height, instance_id) {
@@ -1974,7 +1974,7 @@ MyApplet.prototype = {
 
         this.actor.connect('key-press-event', Lang.bind(this, this._onSourceKeyPress));
 
-        this.settings = new Settings.AppletSettings(this, "CinnXPStarkMenu@NikoKrause", instance_id);
+        this.settings = new Settings.AppletSettings(this, "CinnVIIStarkMenu@NikoKrause", instance_id);
 
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-places", "showPlaces", this._refreshBelowApps, null);
 

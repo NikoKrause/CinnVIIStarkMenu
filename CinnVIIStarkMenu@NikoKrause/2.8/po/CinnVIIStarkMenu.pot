@@ -1,0 +1,564 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-05 18:03+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+
+#: applet.js:176
+msgid "Please provide your password to uninstall this application"
+msgstr ""
+
+#: applet.js:259
+msgid "Add to panel"
+msgstr ""
+
+#: applet.js:262
+msgid "Add to desktop"
+msgstr ""
+
+#: applet.js:266
+msgid "Remove from favorites"
+msgstr ""
+
+#: applet.js:269
+msgid "Add to favorites"
+msgstr ""
+
+#: applet.js:273
+msgid "Uninstall"
+msgstr ""
+
+#: applet.js:277
+msgid "Run with NVIDIA GPU"
+msgstr ""
+
+#: applet.js:426
+msgid "No description available"
+msgstr ""
+
+#: applet.js:745
+msgid "Open with"
+msgstr ""
+
+#: applet.js:791
+msgid "Other application..."
+msgstr ""
+
+#: applet.js:868
+msgid "Clear list"
+msgstr ""
+
+#: applet.js:916
+msgid "All Applications"
+msgstr ""
+
+#: applet.js:944
+msgid "Places"
+msgstr ""
+
+#: applet.js:968
+msgid "Recent Files"
+msgstr ""
+
+#: applet.js:1580 applet.js:1750
+msgid "Logout"
+msgstr ""
+
+#: applet.js:1582
+msgid "Lock Screen"
+msgstr ""
+
+#: applet.js:1743
+msgid "Shutdown the computer"
+msgstr ""
+
+#: applet.js:1744
+msgid "Leave the session"
+msgstr ""
+
+#: applet.js:1745
+msgid "Lock the screen"
+msgstr ""
+
+#: applet.js:1747 applet.js:1748
+msgid "Quit"
+msgstr ""
+
+#: applet.js:1759 applet.js:1763
+msgid "Lock screen"
+msgstr ""
+
+#: applet.js:1969
+msgid "Menu"
+msgstr ""
+
+#: applet.js:3264
+msgid "This file is no longer available"
+msgstr ""
+
+#: applet.js:3296
+msgid "No recent documents"
+msgstr ""
+
+#: applet.js:3614
+msgid "Type to search..."
+msgstr ""
+
+#: applet.js:4133
+msgid "No results found"
+msgstr ""
+
+#: applet.js:4135
+msgid "result found"
+msgstr ""
+
+#: applet.js:4137
+msgid "results found"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-9-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-3-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-14-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-10-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-0-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-2-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-11-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-13-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-7-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-15-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-4-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-1-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-12-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-18-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-5-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-8-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-16-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-19-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-6-checkbox->description
+#. 2.8->settings-schema.json->quicklauncher-17-checkbox->description
+msgid "Show quicklauncher"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-9-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-3-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-14-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-10-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-0-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-2-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-11-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-13-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-7-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-15-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-4-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-1-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-12-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-18-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-5-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-8-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-16-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-19-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-6-checkbox->tooltip
+#. 2.8->settings-schema.json->quicklauncher-17-checkbox->tooltip
+msgid "Choose whether or not to show this quicklauncher in the sidebar."
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-19-label->description
+#. 2.8->settings-schema.json->quicklauncher-2-label->description
+#. 2.8->settings-schema.json->quicklauncher-5-label->description
+#. 2.8->settings-schema.json->quicklauncher-10-label->description
+#. 2.8->settings-schema.json->quicklauncher-18-label->description
+#. 2.8->settings-schema.json->quicklauncher-0-label->description
+#. 2.8->settings-schema.json->quicklauncher-11-label->description
+#. 2.8->settings-schema.json->quicklauncher-8-label->description
+#. 2.8->settings-schema.json->quicklauncher-13-label->description
+#. 2.8->settings-schema.json->quicklauncher-14-label->description
+#. 2.8->settings-schema.json->quicklauncher-1-label->description
+#. 2.8->settings-schema.json->quicklauncher-15-label->description
+#. 2.8->settings-schema.json->quicklauncher-4-label->description
+#. 2.8->settings-schema.json->quicklauncher-12-label->description
+#. 2.8->settings-schema.json->quicklauncher-6-label->description
+#. 2.8->settings-schema.json->quicklauncher-17-label->description
+#. 2.8->settings-schema.json->quicklauncher-3-label->description
+#. 2.8->settings-schema.json->quicklauncher-7-label->description
+#. 2.8->settings-schema.json->quicklauncher-16-label->description
+#. 2.8->settings-schema.json->quicklauncher-9-label->description
+msgid "Label"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-19-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-2-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-5-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-10-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-18-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-0-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-11-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-8-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-13-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-14-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-1-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-15-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-4-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-12-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-6-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-17-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-3-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-7-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-16-label->tooltip
+#. 2.8->settings-schema.json->quicklauncher-9-label->tooltip
+msgid "Enter label for the quicklauncher"
+msgstr ""
+
+#. 2.8->settings-schema.json->search-filesystem->description
+msgid "Enable filesystem path entry in search box"
+msgstr ""
+
+#. 2.8->settings-schema.json->search-filesystem->tooltip
+msgid "Allows path entry in the menu search box."
+msgstr ""
+
+#. 2.8->settings-schema.json->activate-on-hover->description
+msgid "Open the menu when I move my mouse over it"
+msgstr ""
+
+#. 2.8->settings-schema.json->activate-on-hover->tooltip
+msgid "Enable opening the menu when the mouse enters the applet"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-6-command->description
+#. 2.8->settings-schema.json->quicklauncher-10-command->description
+#. 2.8->settings-schema.json->quicklauncher-7-command->description
+#. 2.8->settings-schema.json->quicklauncher-16-command->description
+#. 2.8->settings-schema.json->quicklauncher-8-command->description
+#. 2.8->settings-schema.json->quicklauncher-19-command->description
+#. 2.8->settings-schema.json->quicklauncher-12-command->description
+#. 2.8->settings-schema.json->quicklauncher-15-command->description
+#. 2.8->settings-schema.json->quicklauncher-13-command->description
+#. 2.8->settings-schema.json->quicklauncher-9-command->description
+#. 2.8->settings-schema.json->quicklauncher-4-command->description
+#. 2.8->settings-schema.json->quicklauncher-5-command->description
+#. 2.8->settings-schema.json->quicklauncher-14-command->description
+#. 2.8->settings-schema.json->quicklauncher-11-command->description
+#. 2.8->settings-schema.json->quicklauncher-17-command->description
+#. 2.8->settings-schema.json->quicklauncher-2-command->description
+#. 2.8->settings-schema.json->quicklauncher-0-command->description
+#. 2.8->settings-schema.json->quicklauncher-1-command->description
+#. 2.8->settings-schema.json->quicklauncher-3-command->description
+#. 2.8->settings-schema.json->quicklauncher-18-command->description
+msgid "Command"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-6-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-10-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-8-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-9-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-4-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-5-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-11-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-2-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-1-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-3-command->tooltip
+msgid "Enter command for the quicklauncher"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-17-icon->description
+#. 2.8->settings-schema.json->quicklauncher-15-icon->description
+#. 2.8->settings-schema.json->quicklauncher-11-icon->description
+#. 2.8->settings-schema.json->quicklauncher-12-icon->description
+#. 2.8->settings-schema.json->quicklauncher-3-icon->description
+#. 2.8->settings-schema.json->quicklauncher-5-icon->description
+#. 2.8->settings-schema.json->quicklauncher-1-icon->description
+#. 2.8->settings-schema.json->menu-icon->description
+#. 2.8->settings-schema.json->quicklauncher-4-icon->description
+#. 2.8->settings-schema.json->quicklauncher-8-icon->description
+#. 2.8->settings-schema.json->quicklauncher-6-icon->description
+#. 2.8->settings-schema.json->quicklauncher-13-icon->description
+#. 2.8->settings-schema.json->quicklauncher-2-icon->description
+#. 2.8->settings-schema.json->quicklauncher-16-icon->description
+#. 2.8->settings-schema.json->quicklauncher-7-icon->description
+#. 2.8->settings-schema.json->quicklauncher-0-icon->description
+#. 2.8->settings-schema.json->quicklauncher-14-icon->description
+#. 2.8->settings-schema.json->quicklauncher-19-icon->description
+#. 2.8->settings-schema.json->quicklauncher-18-icon->description
+#. 2.8->settings-schema.json->quicklauncher-9-icon->description
+#. 2.8->settings-schema.json->quicklauncher-10-icon->description
+msgid "Icon"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-17-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-15-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-11-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-12-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-3-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-5-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-1-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-4-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-8-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-6-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-13-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-2-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-16-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-7-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-0-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-14-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-19-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-18-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-9-icon->tooltip
+#. 2.8->settings-schema.json->quicklauncher-10-icon->tooltip
+msgid ""
+"Select an icon file or type an icon name into the entry box for the "
+"quicklauncher"
+msgstr ""
+
+#. 2.8->settings-schema.json->head-menu-layout->description
+msgid "Stark-Menu/MATE-Menu"
+msgstr ""
+
+#. 2.8->settings-schema.json->head-settings->description
+msgid "General Settings"
+msgstr ""
+
+#. 2.8->settings-schema.json->favorite-button-size->description
+msgid "Size of the favorite buttons"
+msgstr ""
+
+#. 2.8->settings-schema.json->favorite-button-size->tooltip
+msgid "Change the size of the favorite buttons"
+msgstr ""
+
+#. 2.8->settings-schema.json->favorite-button-size->units
+msgid "pixels"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-layout->options
+msgid "Stark-Menu"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-layout->options
+msgid "MATE-Menu"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-layout->tooltip
+msgid "Choose between Stark-Menu and MATE-Menu layout"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-layout->description
+msgid "Menu layout"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-7-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-16-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-19-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-12-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-15-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-13-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-14-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-17-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-0-command->tooltip
+#. 2.8->settings-schema.json->quicklauncher-18-command->tooltip
+msgid "Enter command to start the quicklauncher"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-context-menu-icons->description
+msgid "Show context menu icons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-context-menu-icons->tooltip
+msgid "Choose whether or not to show icons on context menus."
+msgstr ""
+
+#. 2.8->settings-schema.json->show-quicklinks->description
+msgid "Show sidebar"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-quicklinks->tooltip
+msgid "Choose whether or not to show the sidebar."
+msgstr ""
+
+#. 2.8->settings-schema.json->show-apps-description-on-buttons->description
+msgid "Show application description on buttons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-apps-description-on-buttons->tooltip
+msgid ""
+"Choose whether or not to show the application description on the application"
+" buttons."
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-label->tooltip
+msgid "Enter custom text to show in the panel."
+msgstr ""
+
+#. 2.8->settings-schema.json->show-category-icons->description
+msgid "Show category icons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-category-icons->tooltip
+msgid "Choose whether or not to show icons on categories."
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-icon->tooltip
+msgid "Select an icon to show in the panel."
+msgstr ""
+
+#. 2.8->settings-schema.json->show-application-icons->description
+msgid "Show application icons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-application-icons->tooltip
+msgid "Choose whether or not to show icons on applications."
+msgstr ""
+
+#. 2.8->settings-schema.json->overlay-key->description
+msgid "Keyboard shortcut to open and close the menu"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-user-icon-label->description
+msgid "Show username"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-user-icon-label->tooltip
+msgid "Choose whether or not to show the username."
+msgstr ""
+
+#. 2.8->settings-schema.json->enable-autoscroll->description
+msgid "Enable autoscrolling in application list"
+msgstr ""
+
+#. 2.8->settings-schema.json->enable-autoscroll->tooltip
+msgid ""
+"Choose whether or not to enable smooth autoscrolling in the application "
+"list."
+msgstr ""
+
+#. 2.8->settings-schema.json->enable-animation->description
+msgid "Use menu animations"
+msgstr ""
+
+#. 2.8->settings-schema.json->enable-animation->tooltip
+msgid "Allow the menu to animate on open and close"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-places->description
+msgid "Show bookmarks and places"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-places->tooltip
+msgid "Choose whether or not to show bookmarks and places in the menu."
+msgstr ""
+
+#. 2.8->settings-schema.json->head-custom-quicklauncher->description
+msgid "Custom Quicklauncher"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-favorite-icons->description
+msgid "Show favorite icons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-favorite-icons->tooltip
+msgid "Choose whether or not to show icons on favorites."
+msgstr ""
+
+#. 2.8->settings-schema.json->head-sidebar-layout->description
+msgid "Sidebar Layout"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-editor-button->description
+msgid "Open the menu editor"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-editor-button->tooltip
+msgid "Press this button to customize your menu entries."
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklink-options->description
+msgid "Quicklinks Options"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklink-options->tooltip
+msgid "Choose whether to show icons and/or labels in the Quicklinks Sidebar."
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklink-options->options
+msgid "Icons and Labels"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklink-options->options
+msgid "Labels only"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklink-options->options
+msgid "Icons only"
+msgstr ""
+
+#. 2.8->settings-schema.json->head-button-show-hide-icons->description
+msgid "Icons"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->description
+msgid "Quit buttons layout"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->tooltip
+msgid "Choose the layout of the quit options."
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->options
+msgid "Horizontal"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->options
+msgid "Vertical"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->options
+msgid "DropDown"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-icon-custom->description
+msgid "Use a custom icon"
+msgstr ""
+
+#. 2.8->settings-schema.json->menu-icon-custom->tooltip
+msgid "Unchecking this allows the theme to set the icon"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-quicklinks-shutdown-menu->description
+msgid "Show quit buttons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-quicklinks-shutdown-menu->tooltip
+msgid "Choose whether or not to show the quit buttons."
+msgstr ""
+
+#. 2.8->settings-schema.json->hover-delay->description
+msgid "Category hover delay"
+msgstr ""
+
+#. 2.8->settings-schema.json->hover-delay->tooltip
+msgid "Delay between switching categories"
+msgstr ""
+
+#. 2.8->settings-schema.json->hover-delay->units
+msgid "milliseconds"
+msgstr ""
+
+#. 2.8->metadata.json->description
+msgid "Cinnamon Menu with the look and feel of the Windows 7 Start Menu"
+msgstr ""
+
+#. 2.8->metadata.json->name
+msgid "CinnVIIStarkMenu"
+msgstr ""
