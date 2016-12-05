@@ -8,6 +8,7 @@ Cinnamon Menu with the look and feel of the Windows 7 Start Menu
 
 #### Preview:
 See this review video of CinnXPStarkMenu by @BigDaddyonTech for installation instructions and for a preview before installing this applet:
+
 [![Review of CinnXPStarkMenu by Big Daddy](https://img.youtube.com/vi/OmUpLNsWgC4/0.jpg)](https://www.youtube.com/watch?v=OmUpLNsWgC4)
 
 #### Installation instructions:
