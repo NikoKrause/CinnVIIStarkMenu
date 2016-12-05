@@ -151,6 +151,12 @@
     "description" : "»Favorites« button label",
     "tooltip" : "Enter custom text for the »Favorites« button."
  },
+ "show-apps-description-on-buttons" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description" : "Show application description on button",
+    "tooltip" : "Choose whether or not to show the application description on the application button."
+ },
  "separator-sidebar-layout": {
     "type": "separator"
  },

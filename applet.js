@@ -402,24 +402,6 @@ String.prototype.replaceAt=function(index, character) {
     return this.substr(0, index) + character + this.substr(index+character.length);
 }
 
-String.prototype.formatDescription=function() {
-    let descriptionString = this.toString();
-    let lastSpacePosition = 0;
-    if(descriptionString.length > 80) {
-        lastSpacePosition = descriptionString.lastIndexOf(" ", 79);
-        descriptionString = descriptionString.replaceAt(lastSpacePosition, "\n");
-    }
-    if(descriptionString.length > 160) {
-        lastSpacePosition = descriptionString.lastIndexOf(" ", lastSpacePosition+80);
-        descriptionString = descriptionString.replaceAt(lastSpacePosition, "\n");
-    }
-
-    if(descriptionString == "null")
-        return _("No description available");
-    else
-        return descriptionString;
-}
-
 function TooltipCustom(actor, string, multiline) {
     this._init(actor, string, multiline);
 }
@@ -451,14 +433,14 @@ TooltipCustom.prototype = {
     }
 };
 
-function ApplicationButton(appsMenuButton, app, showIcon, showContextIcon) {
-    this._init(appsMenuButton, app, showIcon, showContextIcon);
+function ApplicationButton(appsMenuButton, app, showIcon, showContextIcon, showAppsDescription) {
+    this._init(appsMenuButton, app, showIcon, showContextIcon, showAppsDescription);
 }
 
 ApplicationButton.prototype = {
     __proto__: GenericApplicationButton.prototype,
 
-    _init: function(appsMenuButton, app, showIcon, showContextIcon) {
+    _init: function(appsMenuButton, app, showIcon, showContextIcon, showAppsDescription) {
         GenericApplicationButton.prototype._init.call(this, appsMenuButton, app, true);
         this.category = new Array();
         this.actor.set_style_class_name('menu-application-button');
@@ -471,6 +453,14 @@ ApplicationButton.prototype = {
         this.label = new St.Label({ text: this.name, style_class: 'menu-application-button-label' });
         this.label.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         this.label.set_style(MAX_BUTTON_WIDTH);
+
+        if (showAppsDescription) {
+            let appDescription = this.app.get_description();
+            if (appDescription == null)
+                appDescription = "";
+            this.label.get_clutter_text().set_markup(this.app.get_name() + '\n' + '<span size="small">' + appDescription + '</span>');
+        }
+
         this.addActor(this.label);
         this._draggable = DND.makeDraggable(this.actor);
         this._draggable.connect('drag-end', Lang.bind(this, this._onDragEnd));
@@ -587,14 +577,14 @@ SearchProviderResultButton.prototype = {
     }
 }
 
-function PlaceButton(appsMenuButton, place, button_name, showIcon) {
-    this._init(appsMenuButton, place, button_name, showIcon);
+function PlaceButton(appsMenuButton, place, button_name, showIcon, showAppsDescription) {
+    this._init(appsMenuButton, place, button_name, showIcon, showAppsDescription);
 }
 
 PlaceButton.prototype = {
     __proto__: PopupMenu.PopupBaseMenuItem.prototype,
 
-    _init: function(appsMenuButton, place, button_name, showIcon) {
+    _init: function(appsMenuButton, place, button_name, showIcon, showAppsDescription) {
         PopupMenu.PopupBaseMenuItem.prototype._init.call(this, {hover: false});
         this.appsMenuButton = appsMenuButton;
         this.place = place;
@@ -604,6 +594,18 @@ PlaceButton.prototype = {
         this.label = new St.Label({ text: this.button_name, style_class: 'menu-application-button-label' });
         this.label.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         this.label.set_style(MAX_BUTTON_WIDTH);
+
+        let selectedAppId = decodeURIComponent(this.place.id);
+        selectedAppId = selectedAppId.substr(selectedAppId.indexOf(':') + 1);
+        let fileIndex = selectedAppId.indexOf('file:///');
+        if (fileIndex !== -1)
+            selectedAppId = selectedAppId.substr(fileIndex + 7);
+        this.description = selectedAppId;
+
+        if (showAppsDescription) {
+            this.label.get_clutter_text().set_markup(this.button_name + '\n' + '<span size="small">' + this.description + '</span>');
+        }
+
         if (showIcon) {
             this.icon = place.iconFactory(APPLICATION_ICON_SIZE);
             if (!this.icon)
@@ -616,13 +618,7 @@ PlaceButton.prototype = {
             this.icon.realize();
         this.label.realize();
 
-        let selectedAppId = decodeURIComponent(this.place.id);
-        selectedAppId = selectedAppId.substr(selectedAppId.indexOf(':') + 1);
-        let fileIndex = selectedAppId.indexOf('file:///');
-        if (fileIndex !== -1)
-            selectedAppId = selectedAppId.substr(fileIndex + 7);
-
-        let tooltipString = selectedAppId;
+        let tooltipString = "";
         this.tooltip = new TooltipCustom(this.actor, tooltipString, true);
     },
 
@@ -664,14 +660,14 @@ RecentContextMenuItem.prototype = {
     }
 };
 
-function RecentButton(appsMenuButton, file, showIcon) {
-    this._init(appsMenuButton, file, showIcon);
+function RecentButton(appsMenuButton, file, showIcon, showAppsDescription) {
+    this._init(appsMenuButton, file, showIcon, showAppsDescription);
 }
 
 RecentButton.prototype = {
     __proto__: PopupMenu.PopupSubMenuMenuItem.prototype,
 
-    _init: function(appsMenuButton, file, showIcon) {
+    _init: function(appsMenuButton, file, showIcon, showAppsDescription) {
         PopupMenu.PopupBaseMenuItem.prototype._init.call(this, {hover: false});
         this.file = file;
         this.appsMenuButton = appsMenuButton;
@@ -681,6 +677,17 @@ RecentButton.prototype = {
         this.label = new St.Label({ text: this.button_name, style_class: 'menu-application-button-label' });
         this.label.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         this.label.set_style(MAX_BUTTON_WIDTH);
+
+        let selectedAppUri = decodeURIComponent(this.file.uri);
+        let fileIndex = selectedAppUri.indexOf("file:///");
+        if (fileIndex !== -1)
+            selectedAppUri = selectedAppUri.substr(fileIndex + 7);
+        this.description = selectedAppUri;
+
+        if (showAppsDescription) {
+            this.label.get_clutter_text().set_markup(this.button_name + '\n' + '<span size="small">' + this.description + '</span>');
+        }
+
         if (showIcon) {
             this.icon = file.createIcon(APPLICATION_ICON_SIZE);
             this.addActor(this.icon);
@@ -694,18 +701,8 @@ RecentButton.prototype = {
         this.menu.actor.set_style_class_name('menu-context-menu');
         this.menu.connect('open-state-changed', Lang.bind(this, this._subMenuOpenStateChanged));
 
-        let selectedAppUri = decodeURIComponent(this.file.uri);
-        let fileIndex = selectedAppUri.indexOf("file:///");
-        if (fileIndex !== -1)
-            selectedAppUri = selectedAppUri.substr(fileIndex + 7);
-
-        let tooltipString = selectedAppUri;
+        let tooltipString = "";
         this.tooltip = new TooltipCustom(this.actor, tooltipString, false);
-
-        let file = Gio.file_new_for_uri(decodeURIComponent(this.file.uri));
-        if (!file.query_exists(null))
-            this.tooltip._tooltip.get_clutter_text().set_markup('<span weight="bold">' + _("This file is no longer available") + '</span>' +
-                                                                "\n" + selectedAppUri);
     },
 
     _onButtonReleaseEvent: function (actor, event) {
@@ -1135,14 +1132,14 @@ AppPopupSubMenuMenuItem.prototype = {
     }
 };
 
-function TextBoxItem(label, icon, func, parent, hoverIcon, addStyleClassName) {
-    this._init(label, icon, func, parent, hoverIcon, addStyleClassName);
+function TextBoxItem(label, description, icon, func, parent, hoverIcon, addStyleClassName) {
+    this._init(label, description, icon, func, parent, hoverIcon, addStyleClassName);
 }
 
 TextBoxItem.prototype = {
     __proto__: AppPopupSubMenuMenuItem.prototype,
 
-    _init: function(label, icon, func, parent, hoverIcon, addStyleClassName) {
+    _init: function(label, description, icon, func, parent, hoverIcon, addStyleClassName) {
         this.parent = parent;
         this.hoverIcon = hoverIcon;
         this.icon = icon;
@@ -1185,8 +1182,9 @@ TextBoxItem.prototype = {
         this.addActor(this.label);
         this.labelAdded = true;
 
-        let tooltipString = this.label_text;
-        this.tooltip = new TooltipCustom(this.actor, tooltipString, true);
+        this.description = description;
+        if (this.description != "No tooltip")
+            this.tooltip = new TooltipCustom(this.actor, this.description, true);
     },
 
     _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
@@ -1719,7 +1717,7 @@ RightButtonsBox.prototype = {
                 else {
                     let split = this.menu.quicklinks[i].split(',');
                     if (split.length == 3) {
-                        this.quicklinks[i] = new TextBoxItem(_(split[0]), _(split[1]), "Util.spawnCommandLine('" + _(split[2]) + "')", this.menu, this.hoverIcon, 'quicklink');
+                        this.quicklinks[i] = new TextBoxItem(_(split[0]), "No tooltip", _(split[1]), "Util.spawnCommandLine('" + _(split[2]) + "')", this.menu, this.hoverIcon, 'quicklink');
                         this.itemsBox.add_actor(this.quicklinks[i].actor);
                     }
                 }
@@ -1742,12 +1740,15 @@ RightButtonsBox.prototype = {
         this.actor.add_actor(this.shutDownIconBox);
         this.actor.add_actor(this.shutDownIconBoxXP);
 
+        let shutdownDescription = _("Shutdown the computer");
+        let logoutDescription = _("Leave the session");
+        let lockDescription = _("Lock the screen");
 
-        this.shutdown = new TextBoxItem(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-dropdown');
-        this.shutdown2 = new TextBoxItem(_("Quit"), "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-vertical');
-        this.shutdown3 = new TextBoxItem("", "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-horizontal');
-        this.logout = new TextBoxItem(_("Logout"), "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, 'logout-vertical');
-        this.logout2 = new TextBoxItem("", "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, 'logout-horizontal');
+        this.shutdown = new TextBoxItem(_("Quit"), shutdownDescription, "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-dropdown');
+        this.shutdown2 = new TextBoxItem(_("Quit"), shutdownDescription, "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-vertical');
+        this.shutdown3 = new TextBoxItem("", shutdownDescription, "system-shutdown", "Session.ShutdownRemote()", this.menu, this.hoverIcon, 'quit-horizontal');
+        this.logout = new TextBoxItem(_("Logout"), logoutDescription, "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, 'logout-vertical');
+        this.logout2 = new TextBoxItem("", logoutDescription, "system-log-out", "Session.LogoutRemote(0)", this.menu, this.hoverIcon, 'logout-horizontal');
 
         let screensaver_settings = new Gio.Settings({
             schema: "org.cinnamon.desktop.screensaver"
@@ -1755,12 +1756,12 @@ RightButtonsBox.prototype = {
         let screensaver_dialog = Gio.file_new_for_path("/usr/bin/cinnamon-screensaver-command");
         if (screensaver_dialog.query_exists(null)) {
             if (screensaver_settings.get_boolean("ask-for-away-message")) {
-                this.lock = new TextBoxItem(_("Lock screen"), "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, 'lockscreen-vertical');
-                this.lock2 = new TextBoxItem("", "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, 'lockscreen-horizontal');
+                this.lock = new TextBoxItem(_("Lock screen"), lockDescription, "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, 'lockscreen-vertical');
+                this.lock2 = new TextBoxItem("", lockDescription, "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-lock-dialog')", this.menu, this.hoverIcon, 'lockscreen-horizontal');
             }
             else {
-                this.lock = new TextBoxItem(_("Lock screen"), "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, 'lockscreen-vertical');
-                this.lock2 = new TextBoxItem("", "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, 'lockscreen-horizontal');
+                this.lock = new TextBoxItem(_("Lock screen"), lockDescription, "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, 'lockscreen-vertical');
+                this.lock2 = new TextBoxItem("", lockDescription, "system-lock-screen", "Util.spawnCommandLine('cinnamon-screensaver-command --lock')", this.menu, this.hoverIcon, 'lockscreen-horizontal');
             }
         }
 
@@ -1994,6 +1995,7 @@ MyApplet.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-application-icons", "showApplicationIcons", this._refreshAll, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-context-menu-icons", "showContextMenuIcons", this._refreshAll, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-favorite-icons", "showFavoriteIcons", this._refreshFavs, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "show-apps-description-on-buttons", "showAppsDescriptionOnButtons", this._refreshAll, null);
 
         this.settings.bindProperty(Settings.BindingDirection.IN, "enable-animation", "enableAnimation", null, null);
 
@@ -2292,7 +2294,7 @@ MyApplet.prototype = {
         this._updateIconAndLabel();
 
         this._updateQuickLinksShutdownView();
-	this._updateQuickLinksView();
+        this._updateQuickLinksView();
         this._updateQuickLinks();
     },
 
@@ -3166,13 +3168,14 @@ MyApplet.prototype = {
             let places = bookmarks.concat(devices);
             for (let i = 0; i < places.length; i++) {
                 let place = places[i];
-                let button = new PlaceButton(this, place, place.name, this.showApplicationIcons);
+                let button = new PlaceButton(this, place, place.name, this.showApplicationIcons, this.showAppsDescriptionOnButtons);
                 this._addEnterEvent(button, Lang.bind(this, function() {
                         this._clearPrevSelection(button.actor);
                         button.actor.style_class = "menu-application-button-selected";
                         this.selectedAppTitle.set_text("");
-                    this.selectedAppDescription.set_text(button.place.id.slice(16).replace(/%20/g, ' '));
-                }));
+                        this.selectedAppDescription.set_text(button.description);
+                        button.tooltip._tooltip.get_clutter_text().set_markup(button.description);
+                        }));
                 button.actor.connect('leave-event', Lang.bind(this, function() {
                             this._previousSelectedActor = button.actor;
                             this.selectedAppTitle.set_text("");
@@ -3248,20 +3251,20 @@ MyApplet.prototype = {
 
             if (this.RecentManager._infosByTimestamp.length > 0) {
                 for (let id = 0; id < MAX_RECENT_FILES && id < this.RecentManager._infosByTimestamp.length; id++) {
-                    let button = new RecentButton(this, this.RecentManager._infosByTimestamp[id], this.showApplicationIcons);
+                    let button = new RecentButton(this, this.RecentManager._infosByTimestamp[id], this.showApplicationIcons, this.showAppsDescriptionOnButtons);
                     this._addEnterEvent(button, Lang.bind(this, function() {
                             this._clearPrevSelection(button.actor);
                             button.actor.style_class = "menu-application-button-selected";
                             this.selectedAppTitle.set_text("");
-                            let selectedAppUri = decodeURIComponent(button.file.uri);
-                            let fileIndex = selectedAppUri.indexOf("file:///");
-                            if (fileIndex !== -1)
-                                selectedAppUri = selectedAppUri.substr(fileIndex + 7);
-                            this.selectedAppDescription.set_text(selectedAppUri);
+                            this.selectedAppDescription.set_text(button.description);
+                            button.tooltip._tooltip.get_clutter_text().set_markup(button.description);
 
                             let file = Gio.file_new_for_uri(decodeURIComponent(button.file.uri));
-                            if (!file.query_exists(null))
-                                this.selectedAppTitle.set_text(_("This file is no longer available"));
+                            if (!file.query_exists(null)) {
+                                let availableFileText = _("This file is no longer available");
+                                this.selectedAppTitle.set_text(availableFileText);
+                                button.tooltip._tooltip.get_clutter_text().set_markup('<span weight="bold">' + availableFileText + '</span>' + '\n' + button.description);
+                            }
                             }));
                     button.actor.connect('leave-event', Lang.bind(this, function() {
                             button.actor.style_class = "menu-application-button";
@@ -3514,7 +3517,7 @@ MyApplet.prototype = {
                     }
                     if (!(app_key in this._applicationsButtonFromApp)) {
 
-                        let applicationButton = new ApplicationButton(this, app, this.showApplicationIcons, this.showContextMenuIcons);
+                        let applicationButton = new ApplicationButton(this, app, this.showApplicationIcons, this.showContextMenuIcons, this.showAppsDescriptionOnButtons);
 
                         var app_is_known = false;
                         for (var i = 0; i < this._knownApps.length; i++) {
@@ -3704,7 +3707,7 @@ MyApplet.prototype = {
 
         //if (this.selectedAppBox.peek_theme_node() == null ||
         //    this.selectedAppBox.get_theme_node().get_length('height') == 0)
-        //    this.selectedAppBox.set_height(0 * global.ui_scale);
+        //    this.selectedAppBox.set_height(30 * global.ui_scale);
 
         this.selectedAppTitle = new St.Label({ style_class: 'menu-selected-app-title', text: "" });
         this.selectedAppBox.add_actor(this.selectedAppTitle);
@@ -4039,7 +4042,7 @@ MyApplet.prototype = {
                 this.selectedAppDescription.set_text("");
                 this.appsButton.actor.show();
                 this.resultsFoundButton.actor.hide();
-	    }
+            }
             return;
         }
     },
