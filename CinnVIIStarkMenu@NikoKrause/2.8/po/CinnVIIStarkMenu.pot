@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-05 18:03+0100\n"
+"POT-Creation-Date: 2016-12-05 23:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,6 +397,10 @@ msgid ""
 " buttons."
 msgstr ""
 
+#. 2.8->settings-schema.json->menu-label->description
+msgid "'Menu'-Button label"
+msgstr ""
+
 #. 2.8->settings-schema.json->menu-label->tooltip
 msgid "Enter custom text to show in the panel."
 msgstr ""
@@ -459,6 +463,14 @@ msgstr ""
 msgid "Choose whether or not to show bookmarks and places in the menu."
 msgstr ""
 
+#. 2.8->settings-schema.json->shutdown-label->description
+msgid "'Quit'-Button label"
+msgstr ""
+
+#. 2.8->settings-schema.json->shutdown-label->tooltip
+msgid "Enter custom text for the 'Quit' button."
+msgstr ""
+
 #. 2.8->settings-schema.json->head-custom-quicklauncher->description
 msgid "Custom Quicklauncher"
 msgstr ""
@@ -469,6 +481,14 @@ msgstr ""
 
 #. 2.8->settings-schema.json->show-favorite-icons->tooltip
 msgid "Choose whether or not to show icons on favorites."
+msgstr ""
+
+#. 2.8->settings-schema.json->all-programs-label->description
+msgid "'All Programs'-Button label"
+msgstr ""
+
+#. 2.8->settings-schema.json->all-programs-label->tooltip
+msgid "Enter custom text for the 'All Programs' button."
 msgstr ""
 
 #. 2.8->settings-schema.json->head-sidebar-layout->description
@@ -555,10 +575,88 @@ msgstr ""
 msgid "milliseconds"
 msgstr ""
 
+#. 2.8->settings-schema.json->favorites-label->description
+msgid "'Favorites'-Button label"
+msgstr ""
+
+#. 2.8->settings-schema.json->favorites-label->tooltip
+msgid "Enter custom text for the 'Favorites' button."
+msgstr ""
+
 #. 2.8->metadata.json->description
 msgid "Cinnamon Menu with the look and feel of the Windows 7 Start Menu"
 msgstr ""
 
 #. 2.8->metadata.json->name
 msgid "CinnVIIStarkMenu"
+msgstr ""
+
+#########################################################################
+
+#. 2.8->settings-schema.json->all-programs-label->default
+msgid "All Programs"
+msgstr ""
+
+#. 2.8->settings-schema.json->favorites-label->default
+msgid "Favorites"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-1-label->default
+msgid "Home"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-2-label->default
+msgid "Documents"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-2-command->default
+msgid "nemo Documents"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-3-label->default
+msgid "Pictures"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-3-command->default
+msgid "nemo Pictures"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-4-label->default
+msgid "Music"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-4-command->default
+msgid "nemo Music"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-5-label->default
+msgid "Videos"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-5-command->default
+msgid "nemo Videos"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-6-label->default
+msgid "Downloads"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-6-command->default
+msgid "nemo Downloads"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-8-label->default
+msgid "Computer"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-9-label->default
+msgid "Software Manager"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-10-label->default
+msgid "System Settings"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-11-label->default
+msgid "Terminal"
 msgstr ""

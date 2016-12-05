@@ -42,20 +42,20 @@
  "menu-label" : {
     "type" : "entry",
     "default" : "Menu",
-    "description" : "»Menu«-Button label",
+    "description" : "'Menu'-Button label",
     "tooltip" : "Enter custom text to show in the panel."
  },
  "all-programs-label" : {
     "type" : "entry",
     "default" : "All Programs",
-    "description" : "»All Programs«-Button label",
-    "tooltip" : "Enter custom text for the »All Programs« button."
+    "description" : "'All Programs'-Button label",
+    "tooltip" : "Enter custom text for the 'All Programs' button."
  },
  "favorites-label" : {
     "type" : "entry",
     "default" : "Favorites",
-    "description" : "»Favorites«-Button label",
-    "tooltip" : "Enter custom text for the »Favorites« button."
+    "description" : "'Favorites'-Button label",
+    "tooltip" : "Enter custom text for the 'Favorites' button."
  },
  "show-apps-description-on-buttons" : {
     "type" : "checkbox",
@@ -206,8 +206,8 @@
  "shutdown-label" : {
     "type" : "entry",
     "default" : "Quit",
-    "description" : "»Quit«-Button label",
-    "tooltip" : "Enter custom text for the »Quit« button.",
+    "description" : "'Quit'-Button label",
+    "tooltip" : "Enter custom text for the 'Quit' button.",
     "dependency" : "show-quicklinks-shutdown-menu",
     "indent" : true
  },
@@ -302,7 +302,7 @@
  },
  "quicklauncher-2-command" : {
     "type" : "entry",
-    "default" : "nemo documents",
+    "default" : "nemo Documents",
     "description" : "Command",
     "tooltip" : "Enter command for the quicklauncher",
     "dependency" : "quicklauncher-2-checkbox",
