@@ -76,7 +76,7 @@
     "max" : 1000,
     "step" : 50,
     "units" : "milliseconds",
-    "description" : "Menu hover delay",
+    "description" : "Category hover delay",
     "tooltip" : "Delay between switching categories"
  },
  "enable-animation" : {
