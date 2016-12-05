@@ -7,7 +7,7 @@ Cinnamon Menu with the look and feel of the Windows 7 Start Menu
 * Cinnamon-Version 3.2 (Linux Mint 18.1)
 
 #### Preview:
-See this review video of CinnXPStarkMenu by @BigDaddyonTech for installation instructions and for a preview before installing this applet:
+Click on the image below to see a review video of CinnXPStarkMenu by @BigDaddyonTech:
 
 [![Review of CinnXPStarkMenu by Big Daddy](https://img.youtube.com/vi/OmUpLNsWgC4/0.jpg)](https://www.youtube.com/watch?v=OmUpLNsWgC4)
 
