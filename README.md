@@ -32,3 +32,7 @@ Click on the image below to see a review video of CinnXPStarkMenu by @BigDaddyon
 * @BigDaddyonTech for his review video of CinnXPStarkMenu
 * @Odyseus for helping me out with a bunch of stuff
 * @collinss for his hint to expand space with St.Bin
+
+License
+=======
+CinnVIIStarkMenu is distributed under the terms of the GNU General Public License, version 2 or later. See the COPYING file for details.
