@@ -1187,7 +1187,7 @@ TextBoxItem.prototype = {
             this.tooltip = new TooltipCustom(this.actor, this.description, true);
     },
 
-    _update: function(quicklinkOptions, QuicklinksShutdownMenuOptions) {
+    _update: function(quicklauncherLayout, shutdownMenuLayout) {
 
         if (this.labelAdded) {
             this.removeActor(this.label);
@@ -1198,12 +1198,12 @@ TextBoxItem.prototype = {
             this.labelIconAdded = false;
         }
 
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'icons' || QuicklinksShutdownMenuOptions == "horizontal") {
+        if (quicklauncherLayout == 'both' || quicklauncherLayout == 'icons' || shutdownMenuLayout == "horizontal") {
 
             let iconSize = 18;
-            if(quicklinkOptions == 'icons')
+            if(quicklauncherLayout == 'icons')
                 iconSize = 26;
-            else if(QuicklinksShutdownMenuOptions == "horizontal")
+            else if(shutdownMenuLayout == "horizontal")
                 iconSize = 22;
             else
                 iconSize = 18;
@@ -1240,7 +1240,7 @@ TextBoxItem.prototype = {
             this.labelIconAdded = true;
         }
 
-        if (quicklinkOptions == 'both' || quicklinkOptions == 'labels') {
+        if (quicklauncherLayout == 'both' || quicklauncherLayout == 'labels') {
             this.label = new St.Label({ text: this.label_text, style_class: 'menu-category-button-label' });
             this.label.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button-label');
             this.addActor(this.label);
@@ -1265,7 +1265,7 @@ TextBoxItem.prototype = {
             this.hoverIcon.showUser = false;
             this.actor.set_style_class_name('menu-category-button-selected');
             this.actor.add_style_class_name('starkmenu-' + this.addStyleClassName + '-button-selected');
-            if (this.parent.quicklinkOptions != 'icons') {
+            if (this.parent.quicklauncherLayout != 'icons') {
                 this.hoverIcon._refresh(this.icon);
             }
         } else {
@@ -1652,21 +1652,21 @@ RightButtonsBox.prototype = {
         return false;
     },
 
-    _update_quicklinks: function(quicklinkOptions, showUserIconLabel, QuicklinksShutdownMenuOptions) {
+    _update_quicklinks: function(quicklauncherLayout, showUserIconLabel, shutdownMenuLayout) {
 
         for (let i in this.quicklinks) {
-            this.quicklinks[i]._update(quicklinkOptions);
+            this.quicklinks[i]._update(quicklauncherLayout);
         }
 
-        this.shutdown._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
-        this.shutdown2._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
-        this.shutdown3._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
-        this.logout._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
-        this.logout2._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
-        this.lock._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
-        this.lock2._update(quicklinkOptions, QuicklinksShutdownMenuOptions);
+        this.shutdown._update(quicklauncherLayout, shutdownMenuLayout);
+        this.shutdown2._update(quicklauncherLayout, shutdownMenuLayout);
+        this.shutdown3._update(quicklauncherLayout, shutdownMenuLayout);
+        this.logout._update(quicklauncherLayout, shutdownMenuLayout);
+        this.logout2._update(quicklauncherLayout, shutdownMenuLayout);
+        this.lock._update(quicklauncherLayout, shutdownMenuLayout);
+        this.lock2._update(quicklauncherLayout, shutdownMenuLayout);
 
-        if (quicklinkOptions == 'icons') {
+        if (quicklauncherLayout == 'icons') {
             this.hoverIcon.userLabel.hide();
             this.hoverIcon._userIcon.set_icon_size(22);
             this.hoverIcon.icon.set_icon_size(22);
@@ -1704,9 +1704,9 @@ RightButtonsBox.prototype = {
                 if (split[0] == 'separator') {
                     this.separator = new PopupMenu.PopupSeparatorMenuItem();
 
-                    if (this.menu.quicklinkOptions == 'labels') {
+                    if (this.menu.quicklauncherLayout == 'labels') {
                         this.separator.actor.set_style("padding: 0em 1.0em; min-width: 1px;");
-                    } else if (this.menu.quicklinkOptions == 'both') {
+                    } else if (this.menu.quicklauncherLayout == 'both') {
                         this.separator.actor.set_style("padding: 0em 2.25em; min-width: 1px;");
                     } else {
                         this.separator.actor.set_style("padding: 0em 1em; min-width: 1px;");
@@ -2053,12 +2053,12 @@ MyApplet.prototype = {
         this.RecentManager.connect('changed', Lang.bind(this, this._refreshRecent));
         this.privacy_settings.connect("changed::" + REMEMBER_RECENT_KEY, Lang.bind(this, this._refreshRecent));
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "show-quicklinks", "showQuicklinks", this._updateQuickLinksView, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "show-sidebar", "showSidebar", this._updateQuickLinksView, null);
         this._updateQuickLinksView();
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "show-quicklinks-shutdown-menu", "showQuicklinksShutdownMenu", this._updateQuickLinksShutdownView, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "show-shutdown-menu", "showShutdownMenu", this._updateQuickLinksShutdownView, null);
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklinks-shutdown-menu-options", "QuicklinksShutdownMenuOptions", this._updateQuickLinks, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "shutdown-menu-layout", "shutdownMenuLayout", this._updateQuickLinks, null);
         this._updateQuickLinksShutdownView();
 
         this._fileFolderAccessActive = false;
@@ -2075,7 +2075,7 @@ MyApplet.prototype = {
             this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-" + i + "-command", "quicklauncher_" + i + "_command", this._updateQuickLinks, null);
         }
 
-        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklink-options", "quicklinkOptions", this._updateQuickLinks, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "quicklauncher-layout", "quicklauncherLayout", this._updateQuickLinks, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "show-user-icon-label", "showUserIconLabel", this._updateQuickLinks, null);
         this._updateQuickLinks();
 
@@ -2153,8 +2153,8 @@ MyApplet.prototype = {
     },
 
     _updateQuickLinksView: function() {
-        this.menu.showQuicklinks = this.showQuicklinks;
-        if (this.menu.showQuicklinks) {
+        this.menu.showSidebar = this.showSidebar;
+        if (this.menu.showSidebar) {
             this.rightButtonsBox.actor.show();
         }
         else {
@@ -2163,18 +2163,18 @@ MyApplet.prototype = {
     },
 
     _updateQuickLinksShutdownView: function() {
-        this.menu.showQuicklinksShutdownMenu = this.showQuicklinksShutdownMenu;
-        this.menu.QuicklinksShutdownMenuOptions = this.QuicklinksShutdownMenuOptions;
-        if (this.menu.showQuicklinksShutdownMenu) {
-            if (this.quicklinkOptions != 'icons') {
-                if (this.QuicklinksShutdownMenuOptions == 'dropdown') {
+        this.menu.showShutdownMenu = this.showShutdownMenu;
+        this.menu.shutdownMenuLayout = this.shutdownMenuLayout;
+        if (this.menu.showShutdownMenu) {
+            if (this.quicklauncherLayout != 'icons') {
+                if (this.shutdownMenuLayout == 'dropdown') {
                     this.rightButtonsBox.shutdown.actor.show();
                     this.rightButtonsBox.shutdownMenu.actor.show();
                     this.rightButtonsBox.shutDownIconBox.hide();
                     this.rightButtonsBox.shutDownIconBoxXP.hide();
                     this.rightButtonsBox.shutDownMenuBox.show();
                     this.rightButtonsBox.shutDownMenuBox.set_style('min-height: 80px');
-                } else if (this.QuicklinksShutdownMenuOptions == 'vertical') {
+                } else if (this.shutdownMenuLayout == 'vertical') {
                     this.rightButtonsBox.shutdown.actor.hide();
                     this.rightButtonsBox.shutdownMenu.actor.hide();
                     this.rightButtonsBox.shutDownIconBox.show();
@@ -2265,9 +2265,9 @@ MyApplet.prototype = {
             }
         }
 
-        this.menu.quicklinkOptions = this.quicklinkOptions;
+        this.menu.quicklauncherLayout = this.quicklauncherLayout;
         this.rightButtonsBox.addItems();
-        this.rightButtonsBox._update_quicklinks(this.quicklinkOptions, this.showUserIconLabel, this.QuicklinksShutdownMenuOptions);
+        this.rightButtonsBox._update_quicklinks(this.quicklauncherLayout, this.showUserIconLabel, this.shutdownMenuLayout);
 
         this._updateQuickLinksShutdownView();
 
@@ -3776,7 +3776,7 @@ MyApplet.prototype = {
             else
                 this.appsButton.label.set_text("");
             this.appsButton.icon.set_icon_name("forward");
-            if (this.menu.showQuicklinks) {
+            if (this.menu.showSidebar) {
                 this.rightButtonsBox.actor.show();
             }
             this._appletStyles();

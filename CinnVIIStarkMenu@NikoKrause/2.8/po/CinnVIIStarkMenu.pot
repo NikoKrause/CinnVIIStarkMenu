@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-05 23:25+0100\n"
+"POT-Creation-Date: 2016-12-06 01:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,6 +342,14 @@ msgstr ""
 msgid "pixels"
 msgstr ""
 
+#. 2.8->settings-schema.json->show-shutdown-menu->description
+msgid "Show quit buttons"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-shutdown-menu->tooltip
+msgid "Choose whether or not to show the quit buttons."
+msgstr ""
+
 #. 2.8->settings-schema.json->menu-layout->options
 msgid "Stark-Menu"
 msgstr ""
@@ -379,14 +387,6 @@ msgstr ""
 msgid "Choose whether or not to show icons on context menus."
 msgstr ""
 
-#. 2.8->settings-schema.json->show-quicklinks->description
-msgid "Show sidebar"
-msgstr ""
-
-#. 2.8->settings-schema.json->show-quicklinks->tooltip
-msgid "Choose whether or not to show the sidebar."
-msgstr ""
-
 #. 2.8->settings-schema.json->show-apps-description-on-buttons->description
 msgid "Show application description on buttons"
 msgstr ""
@@ -415,6 +415,47 @@ msgstr ""
 
 #. 2.8->settings-schema.json->menu-icon->tooltip
 msgid "Select an icon to show in the panel."
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-layout->description
+msgid "Quicklauncher layout"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-layout->tooltip
+msgid ""
+"Choose whether to show icons and/or labels on the quicklauncher buttons."
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-layout->options
+msgid "Icons and Labels"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-layout->options
+msgid "Labels only"
+msgstr ""
+
+#. 2.8->settings-schema.json->quicklauncher-layout->options
+msgid "Icons only"
+msgstr ""
+
+#. 2.8->settings-schema.json->shutdown-menu-layout->description
+msgid "Quit buttons layout"
+msgstr ""
+
+#. 2.8->settings-schema.json->shutdown-menu-layout->tooltip
+msgid "Choose the layout of the quit options."
+msgstr ""
+
+#. 2.8->settings-schema.json->shutdown-menu-layout->options
+msgid "Horizontal"
+msgstr ""
+
+#. 2.8->settings-schema.json->shutdown-menu-layout->options
+msgid "Vertical"
+msgstr ""
+
+#. 2.8->settings-schema.json->shutdown-menu-layout->options
+msgid "DropDown"
 msgstr ""
 
 #. 2.8->settings-schema.json->show-application-icons->description
@@ -503,48 +544,8 @@ msgstr ""
 msgid "Press this button to customize your menu entries."
 msgstr ""
 
-#. 2.8->settings-schema.json->quicklink-options->description
-msgid "Quicklinks Options"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklink-options->tooltip
-msgid "Choose whether to show icons and/or labels in the Quicklinks Sidebar."
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklink-options->options
-msgid "Icons and Labels"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklink-options->options
-msgid "Labels only"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklink-options->options
-msgid "Icons only"
-msgstr ""
-
 #. 2.8->settings-schema.json->head-button-show-hide-icons->description
 msgid "Icons"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->description
-msgid "Quit buttons layout"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->tooltip
-msgid "Choose the layout of the quit options."
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->options
-msgid "Horizontal"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->options
-msgid "Vertical"
-msgstr ""
-
-#. 2.8->settings-schema.json->quicklinks-shutdown-menu-options->options
-msgid "DropDown"
 msgstr ""
 
 #. 2.8->settings-schema.json->menu-icon-custom->description
@@ -553,14 +554,6 @@ msgstr ""
 
 #. 2.8->settings-schema.json->menu-icon-custom->tooltip
 msgid "Unchecking this allows the theme to set the icon"
-msgstr ""
-
-#. 2.8->settings-schema.json->show-quicklinks-shutdown-menu->description
-msgid "Show quit buttons"
-msgstr ""
-
-#. 2.8->settings-schema.json->show-quicklinks-shutdown-menu->tooltip
-msgid "Choose whether or not to show the quit buttons."
 msgstr ""
 
 #. 2.8->settings-schema.json->hover-delay->description
@@ -573,6 +566,14 @@ msgstr ""
 
 #. 2.8->settings-schema.json->hover-delay->units
 msgid "milliseconds"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-sidebar->description
+msgid "Show sidebar"
+msgstr ""
+
+#. 2.8->settings-schema.json->show-sidebar->tooltip
+msgid "Choose whether or not to show the sidebar."
 msgstr ""
 
 #. 2.8->settings-schema.json->favorites-label->description

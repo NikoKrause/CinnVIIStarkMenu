@@ -157,7 +157,7 @@
     "type" : "header",
     "description" : "Sidebar Layout"
  },
- "show-quicklinks" : {
+ "show-sidebar" : {
     "type" : "checkbox",
     "default" : true,
     "description": "Show sidebar",
@@ -168,10 +168,10 @@
     "default" : true,
     "description" : "Show username",
     "tooltip" : "Choose whether or not to show the username.",
-    "dependency" : "show-quicklinks",
+    "dependency" : "show-sidebar",
     "indent" : true
  },
- "quicklink-options" : {
+ "quicklauncher-layout" : {
     "type": "combobox",
     "default": "both",
     "options": {
@@ -179,18 +179,18 @@
          "Icons only": "icons",
          "Labels only": "labels"
      },
-    "description": "Quicklinks Options",
-    "tooltip": "Choose whether to show icons and/or labels in the Quicklinks Sidebar.",
-    "dependency" : "show-quicklinks",
+    "description": "Quicklauncher layout",
+    "tooltip": "Choose whether to show icons and/or labels on the quicklauncher buttons.",
+    "dependency" : "show-sidebar",
     "indent" : true
  },
- "show-quicklinks-shutdown-menu" : {
+ "show-shutdown-menu" : {
     "type" : "checkbox",
     "default" : true,
     "description": "Show quit buttons",
     "tooltip": "Choose whether or not to show the quit buttons."
  },
- "quicklinks-shutdown-menu-options" : {
+ "shutdown-menu-layout" : {
     "type": "combobox",
     "default": "vertical",
     "options": {
@@ -200,7 +200,7 @@
      },
     "description": "Quit buttons layout",
     "tooltip": "Choose the layout of the quit options.",
-    "dependency" : "show-quicklinks-shutdown-menu",
+    "dependency" : "show-shutdown-menu",
     "indent" : true
  },
  "shutdown-label" : {
@@ -208,7 +208,7 @@
     "default" : "Quit",
     "description" : "'Quit'-Button label",
     "tooltip" : "Enter custom text for the 'Quit' button.",
-    "dependency" : "show-quicklinks-shutdown-menu",
+    "dependency" : "show-shutdown-menu",
     "indent" : true
  },
  "separator-custom-quicklauncher": {
