@@ -2,6 +2,7 @@
 Cinnamon Menu with the look and feel of the Windows 7 Start Menu
 
 #### Supported Cinnamon Versions:
+* Cinnamon-Version 2.6 (Linux Mint 17.2)
 * Cinnamon-Version 2.8 (Linux Mint 17.3)
 * Cinnamon-Version 3.0 (Linux Mint 18)
 * Cinnamon-Version 3.2 (Linux Mint 18.1)

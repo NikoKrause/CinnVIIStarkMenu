@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-06 01:20+0100\n"
+"POT-Creation-Date: 2016-12-06 15:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,115 +17,115 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
-#: applet.js:176
+#: 2.8/applet.js:176
 msgid "Please provide your password to uninstall this application"
 msgstr ""
 
-#: applet.js:259
+#: 2.8/applet.js:259
 msgid "Add to panel"
 msgstr ""
 
-#: applet.js:262
+#: 2.8/applet.js:262
 msgid "Add to desktop"
 msgstr ""
 
-#: applet.js:266
+#: 2.8/applet.js:266
 msgid "Remove from favorites"
 msgstr ""
 
-#: applet.js:269
+#: 2.8/applet.js:269
 msgid "Add to favorites"
 msgstr ""
 
-#: applet.js:273
+#: 2.8/applet.js:273
 msgid "Uninstall"
 msgstr ""
 
-#: applet.js:277
+#: 2.8/applet.js:277
 msgid "Run with NVIDIA GPU"
 msgstr ""
 
-#: applet.js:426
+#: 2.8/applet.js:426
 msgid "No description available"
 msgstr ""
 
-#: applet.js:745
+#: 2.8/applet.js:745
 msgid "Open with"
 msgstr ""
 
-#: applet.js:791
+#: 2.8/applet.js:791
 msgid "Other application..."
 msgstr ""
 
-#: applet.js:868
+#: 2.8/applet.js:868
 msgid "Clear list"
 msgstr ""
 
-#: applet.js:916
+#: 2.8/applet.js:916
 msgid "All Applications"
 msgstr ""
 
-#: applet.js:944
+#: 2.8/applet.js:944
 msgid "Places"
 msgstr ""
 
-#: applet.js:968
+#: 2.8/applet.js:968
 msgid "Recent Files"
 msgstr ""
 
-#: applet.js:1580 applet.js:1750
+#: 2.8/applet.js:1580 2.8/applet.js:1750
 msgid "Logout"
 msgstr ""
 
-#: applet.js:1582
+#: 2.8/applet.js:1582
 msgid "Lock Screen"
 msgstr ""
 
-#: applet.js:1743
+#: 2.8/applet.js:1743
 msgid "Shutdown the computer"
 msgstr ""
 
-#: applet.js:1744
+#: 2.8/applet.js:1744
 msgid "Leave the session"
 msgstr ""
 
-#: applet.js:1745
+#: 2.8/applet.js:1745
 msgid "Lock the screen"
 msgstr ""
 
-#: applet.js:1747 applet.js:1748
+#: 2.8/applet.js:1747 2.8/applet.js:1748
 msgid "Quit"
 msgstr ""
 
-#: applet.js:1759 applet.js:1763
+#: 2.8/applet.js:1759 2.8/applet.js:1763
 msgid "Lock screen"
 msgstr ""
 
-#: applet.js:1969
+#: 2.8/applet.js:1969
 msgid "Menu"
 msgstr ""
 
-#: applet.js:3264
+#: 2.8/applet.js:3264
 msgid "This file is no longer available"
 msgstr ""
 
-#: applet.js:3296
+#: 2.8/applet.js:3296
 msgid "No recent documents"
 msgstr ""
 
-#: applet.js:3614
+#: 2.8/applet.js:3614
 msgid "Type to search..."
 msgstr ""
 
-#: applet.js:4133
+#: 2.8/applet.js:4133
 msgid "No results found"
 msgstr ""
 
-#: applet.js:4135
+#: 2.8/applet.js:4135
 msgid "result found"
 msgstr ""
 
-#: applet.js:4137
+#: 2.8/applet.js:4137
 msgid "results found"
 msgstr ""
 
@@ -584,11 +584,11 @@ msgstr ""
 msgid "Enter custom text for the 'Favorites' button."
 msgstr ""
 
-#. 2.8->metadata.json->description
+#. CinnVIIStarkMenu@NikoKrause->metadata.json->description
 msgid "Cinnamon Menu with the look and feel of the Windows 7 Start Menu"
 msgstr ""
 
-#. 2.8->metadata.json->name
+#. CinnVIIStarkMenu@NikoKrause->metadata.json->name
 msgid "CinnVIIStarkMenu"
 msgstr ""
 
