@@ -37,10 +37,10 @@ Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy]
 #### History of CinnVIIStarkMenu
 
 ##### GitHub history:
-[menu@cinnamon.org](https://github.com/linuxmint/Cinnamon/tree/master/files/usr/share/cinnamon/applets/menu%40cinnamon.org) by [@linuxmint](https://github.com/linuxmint)
-....[win7Menu@physics](https://github.com/jake-phy/win7Menu) by [@jake-phy](https://github.com/jake-phy)
-........[StarkMenu@mintystark](https://github.com/mintystark/starkmenu) by [@mintystark](https://github.com/mintystark)
-............[StarkMenu@mintystark](https://github.com/bluedxca93/starkmenu/blob/master/metadata.json) by [@bluedxca93](https://github.com/bluedxca93)
+[menu@cinnamon.org](https://github.com/linuxmint/Cinnamon/tree/master/files/usr/share/cinnamon/applets/menu%40cinnamon.org) by [@linuxmint](https://github.com/linuxmint) <br />
+....[win7Menu@physics](https://github.com/jake-phy/win7Menu) by [@jake-phy](https://github.com/jake-phy) <br />
+........[StarkMenu@mintystark](https://github.com/mintystark/starkmenu) by [@mintystark](https://github.com/mintystark) <br />
+............[StarkMenu@mintystark](https://github.com/bluedxca93/starkmenu/blob/master/metadata.json) by [@bluedxca93](https://github.com/bluedxca93) <br />
 ................[CinnVIIStarkMenu@NikoKrause](https://github.com/NikoKrause/CinnVIIStarkMenu) by [@NikoKrause](https://github.com/NikoKrause) (previous: CinnXPStarkMenu)
 
 ##### Spices history:
