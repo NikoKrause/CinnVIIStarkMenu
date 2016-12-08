@@ -9,12 +9,17 @@ Cinnamon Menu with the look and feel of the Windows 7 Start Menu
 
 #### Translations:
 
-Translations are handled on [launchpad.net/cinnviistarkmenu](https://launchpad.net/cinnviistarkmenu)
+Translations are handled on [launchpad.net/cinnviistarkmenu](https://launchpad.net/cinnviistarkmenu).
+Feel free to contribute to the translations of CinnVIIStarkMenu.
 
-Language | Translated | Language | Translated
------------- | -------------- | ------------- | -------------
-[German (de)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de)  | 100% | [French (fr)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr)  | 0%
-[Russian (ru)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru) | 31% | [Spanish (es)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es) | 0%
+##### [Translation status](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/):
+
+Language | Status | Untranslated | By
+--------------|:--------:|:----------------:|:---:
+[French (fr)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr)  | ![0%](http://progressed.io/bar/0) | [121](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr/+translate?show=untranslated) | &mdash;
+[German (de)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de)  | ![100%](http://progressed.io/bar/100) | [&mdash;](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
+[Russian (ru)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru) | ![31%](http://progressed.io/bar/31) | [84](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
+[Spanish (es)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es) | ![0%](http://progressed.io/bar/0) | [121](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es/+translate?show=untranslated) | &mdash;
 
 #### Preview:
 Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy](https://www.youtube.com/channel/UCtZRKfyvx7GUEi-Lr7f4Nxg):
@@ -29,19 +34,19 @@ Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy]
 
 ##### Manual installation:
 1. Download ZIP
-2. Extract "starkmenu-master.zip"
-3. Move the "CinnVIIStarkMenu@NikoKrause" folder to path "~/.local/share/cinnamon/applets/"
+2. Extract `CinnVIIStarkMenu-master.zip`
+3. Move the `CinnVIIStarkMenu@NikoKrause` folder to `~/.local/share/cinnamon/applets/`
 4. Add applet to panel
 
 ================================
 #### History of CinnVIIStarkMenu
 
 ##### GitHub history:
-[menu@cinnamon.org](https://github.com/linuxmint/Cinnamon/tree/master/files/usr/share/cinnamon/applets/menu%40cinnamon.org) by [@linuxmint](https://github.com/linuxmint) <br />
-....[win7Menu@physics](https://github.com/jake-phy/win7Menu) by [@jake-phy](https://github.com/jake-phy) <br />
-........[StarkMenu@mintystark](https://github.com/mintystark/starkmenu) by [@mintystark](https://github.com/mintystark) <br />
-............[StarkMenu@mintystark](https://github.com/bluedxca93/starkmenu/blob/master/metadata.json) by [@bluedxca93](https://github.com/bluedxca93) <br />
-................[CinnVIIStarkMenu@NikoKrause](https://github.com/NikoKrause/CinnVIIStarkMenu) by [@NikoKrause](https://github.com/NikoKrause) (previous: CinnXPStarkMenu)
+> [menu@cinnamon.org](https://github.com/linuxmint/Cinnamon/tree/master/files/usr/share/cinnamon/applets/menu%40cinnamon.org) by [@linuxmint](https://github.com/linuxmint) <br />
+>>[win7Menu@physics](https://github.com/jake-phy/win7Menu) by [@jake-phy](https://github.com/jake-phy) <br />
+>>>[StarkMenu@mintystark](https://github.com/mintystark/starkmenu) by [@mintystark](https://github.com/mintystark) <br />
+>>>>[StarkMenu@mintystark](https://github.com/bluedxca93/starkmenu) by [@bluedxca93](https://github.com/bluedxca93) <br />
+>>>>>[CinnVIIStarkMenu@NikoKrause](https://github.com/NikoKrause/CinnVIIStarkMenu) by [@NikoKrause](https://github.com/NikoKrause) (previous: CinnXPStarkMenu)
 
 ##### Spices history:
 * [Win7 menu emulator (win7Menu@physics)](https://cinnamon-spices.linuxmint.com/applets/view/84)
@@ -61,4 +66,4 @@ Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy]
 ===========
 ####License
 CinnVIIStarkMenu is distributed under the terms of the GNU General Public License, version 2 or later.
-See the COPYING file for details.
+See the [COPYING](https://github.com/NikoKrause/CinnVIIStarkMenu/blob/master/COPYING) file for details.
