@@ -1,7 +1,7 @@
 ## CinnVIIStarkMenu (CinnVIIStarkMenu@NikoKrause)
 Cinnamon Menu with the look and feel of the Windows 7 Start Menu
 
-#### Supported Cinnamon Versions:
+#### Compatible Cinnamon Versions:
 - [x] Cinnamon-Version 2.6 (Linux Mint 17.2)
 - [x] Cinnamon-Version 2.8 (Linux Mint 17.3)
 - [x] Cinnamon-Version 3.0 (Linux Mint 18)
@@ -19,7 +19,7 @@ Language | Status | Untranslated | By
 [French (fr)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr)  | ![0%](http://progressed.io/bar/0) | [121](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr/+translate?show=untranslated) | &mdash;
 [German (de)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de)  | ![100%](http://progressed.io/bar/100) | [&mdash;](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
 [Russian (ru)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru) | ![31%](http://progressed.io/bar/31) | [84](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
-[Spanish (es)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es) | ![0%](http://progressed.io/bar/0) | [121](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es/+translate?show=untranslated) | &mdash;
+[Spanish (es)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es) | ![8%](http://progressed.io/bar/8) | [111](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es/+translate?show=untranslated) | [Bob](https://launchpad.net/~basura1-p)
 
 #### Preview:
 Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy](https://www.youtube.com/channel/UCtZRKfyvx7GUEi-Lr7f4Nxg):
@@ -37,6 +37,9 @@ Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy]
 2. Extract `CinnVIIStarkMenu-master.zip`
 3. Move the `CinnVIIStarkMenu@NikoKrause` folder to `~/.local/share/cinnamon/applets/`
 4. Add applet to panel
+
+#### Websites:
+[![cinnamon-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019403/9d65ad52-bd70-11e6-9f75-9515c81a24a0.png)](https://cinnamon-spices.linuxmint.com/applets)     [![github-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019404/9d6a8c0a-bd70-11e6-939f-4436572c8d56.png)](https://github.com/NikoKrause/CinnVIIStarkMenu/)     [![launchpad-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019405/9d875a1a-bd70-11e6-93f4-eb5d6595b823.png)](https://launchpad.net/cinnviistarkmenu/)
 
 ================================
 #### History of CinnVIIStarkMenu
