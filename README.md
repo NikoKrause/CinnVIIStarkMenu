@@ -1,6 +1,9 @@
 ## CinnVIIStarkMenu (CinnVIIStarkMenu@NikoKrause)
 Cinnamon Menu with the look and feel of the Windows 7 Start Menu
 
+#### Web presence:
+[![cinnamon-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019403/9d65ad52-bd70-11e6-9f75-9515c81a24a0.png)](https://cinnamon-spices.linuxmint.com/applets)     [![github-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019404/9d6a8c0a-bd70-11e6-939f-4436572c8d56.png)](https://github.com/NikoKrause/CinnVIIStarkMenu/)     [![launchpad-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019405/9d875a1a-bd70-11e6-93f4-eb5d6595b823.png)](https://launchpad.net/cinnviistarkmenu/)
+
 #### Compatible Cinnamon Versions:
 - [x] Cinnamon-Version 2.6 (Linux Mint 17.2)
 - [x] Cinnamon-Version 2.8 (Linux Mint 17.3)
@@ -37,9 +40,6 @@ Click on the image below to see a review video of CinnXPStarkMenu by [Big Daddy]
 2. Extract `CinnVIIStarkMenu-master.zip`
 3. Move the `CinnVIIStarkMenu@NikoKrause` folder to `~/.local/share/cinnamon/applets/`
 4. Add applet to panel
-
-#### Websites:
-[![cinnamon-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019403/9d65ad52-bd70-11e6-9f75-9515c81a24a0.png)](https://cinnamon-spices.linuxmint.com/applets)     [![github-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019404/9d6a8c0a-bd70-11e6-939f-4436572c8d56.png)](https://github.com/NikoKrause/CinnVIIStarkMenu/)     [![launchpad-logo-and-name](https://cloud.githubusercontent.com/assets/8415124/21019405/9d875a1a-bd70-11e6-93f4-eb5d6595b823.png)](https://launchpad.net/cinnviistarkmenu/)
 
 ================================
 #### History of CinnVIIStarkMenu
