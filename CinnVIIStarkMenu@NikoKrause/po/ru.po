@@ -1,4 +1,4 @@
-# German translation for cinnviistarkmenu
+# Russian translation for cinnviistarkmenu
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the cinnviistarkmenu package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
@@ -8,126 +8,127 @@ msgstr ""
 "Project-Id-Version: cinnviistarkmenu\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-08 12:44+0100\n"
-"PO-Revision-Date: 2016-12-14 10:15+0000\n"
+"PO-Revision-Date: 2016-12-16 17:11+0100\n"
 "Last-Translator: Niko Krause <nikokrause@gmx.de>\n"
-"Language-Team: German <de@li.org>\n"
+"Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-16 11:44+0000\n"
-"X-Generator: Launchpad (build 18293)\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Language: ru\n"
 
 #: 2.6/applet.js:176
 msgid "Please provide your password to uninstall this application"
-msgstr "Bitte Ihr Passwort eingeben, um diese Anwendung zu deinstallieren"
+msgstr "Пожалуйста, укажите ваш пароль для удаление этого приложения"
 
 #: 2.6/applet.js:259
 msgid "Add to panel"
-msgstr "Zur Leiste hinzufügen"
+msgstr "Добавить на панель"
 
 #: 2.6/applet.js:262
 msgid "Add to desktop"
-msgstr "Zum Schreibtisch hinzufügen"
+msgstr "Добавить на рабочий стол"
 
 #: 2.6/applet.js:266
 msgid "Remove from favorites"
-msgstr "Aus den Favoriten entfernen"
+msgstr "Удалить из избранного"
 
 #: 2.6/applet.js:269
 msgid "Add to favorites"
-msgstr "Zu den Favoriten hinzufügen"
+msgstr "Добавить в избранное"
 
 #: 2.6/applet.js:273
 msgid "Uninstall"
-msgstr "Deinstallieren"
+msgstr "Удалить"
 
 #: 2.6/applet.js:277
 msgid "Run with NVIDIA GPU"
-msgstr "Mit NVIDIA-GPU ausführen"
+msgstr "Запустить вместе с графическим процессором NVIDIA"
 
 #: 2.6/applet.js:426
 msgid "No description available"
-msgstr "Keine Beschreibung vorhanden"
+msgstr "Описание недоступно"
 
 #: 2.6/applet.js:745
 msgid "Open with"
-msgstr "Öffnen mit"
+msgstr "Открыть с помощью"
 
 #: 2.6/applet.js:791
 msgid "Other application..."
-msgstr "Andere Anwendung …"
+msgstr "Другое приложение…"
 
 #: 2.6/applet.js:868
 msgid "Clear list"
-msgstr "Liste leeren"
+msgstr "Очистить список"
 
 #: 2.6/applet.js:916
 msgid "All Applications"
-msgstr "Alle Anwendungen"
+msgstr "Все приложения"
 
 #: 2.6/applet.js:944
 msgid "Places"
-msgstr "Orte"
+msgstr "Места"
 
 #: 2.6/applet.js:968
 msgid "Recent Files"
-msgstr "Zuletzt verwendete Dateien"
+msgstr "Недавние файлы"
 
 #: 2.6/applet.js:1580 2.6/applet.js:1750
 msgid "Logout"
-msgstr "Abmelden"
+msgstr "Завершить сеанс"
 
 #: 2.6/applet.js:1582
 msgid "Lock Screen"
-msgstr "Bildschirm sperren"
+msgstr "Заблокировать экран"
 
 #: 2.6/applet.js:1743
 msgid "Shutdown the computer"
-msgstr "Den Rechner herunterfahren"
+msgstr "Выключить компьютер"
 
 #: 2.6/applet.js:1744
 msgid "Leave the session"
-msgstr "Sitzung verlassen"
+msgstr "Покинуть сеанс"
 
 #: 2.6/applet.js:1745
 msgid "Lock the screen"
-msgstr "Diesen Bildschirm sperren"
+msgstr "Заблокировать экран"
 
 #: 2.6/applet.js:1747 2.6/applet.js:1748
 msgid "Quit"
-msgstr "Beenden"
+msgstr "Выход"
 
 #: 2.6/applet.js:1759 2.6/applet.js:1763
 msgid "Lock screen"
-msgstr "Bildschirm sperren"
+msgstr "Заблокировать экран"
 
 #: 2.6/applet.js:1969
 msgid "Menu"
-msgstr "Menü"
+msgstr "Меню"
 
 #: 2.6/applet.js:3264
 msgid "This file is no longer available"
-msgstr "Diese Datei ist nicht mehr verfügbar"
+msgstr "Этот файл больше не доступен"
 
 #: 2.6/applet.js:3296
 msgid "No recent documents"
-msgstr "Keine kürzlich verwendeten Dokumente"
+msgstr "Список пуст"
 
 #: 2.6/applet.js:3614
 msgid "Type to search..."
-msgstr "Suchbegriff eingeben …"
+msgstr "Найти…"
 
 #: 2.6/applet.js:4133
 msgid "No results found"
-msgstr "Keine Ergebnisse gefunden"
+msgstr "Результатов не найдено"
 
 #: 2.6/applet.js:4135
 msgid "result found"
-msgstr "Ergebnis gefunden"
+msgstr ""
 
 #: 2.6/applet.js:4137
 msgid "results found"
-msgstr "Ergebnisse gefunden"
+msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-9-checkbox->description
 #. 2.6->settings-schema.json->quicklauncher-3-checkbox->description
@@ -150,7 +151,7 @@ msgstr "Ergebnisse gefunden"
 #. 2.6->settings-schema.json->quicklauncher-6-checkbox->description
 #. 2.6->settings-schema.json->quicklauncher-17-checkbox->description
 msgid "Show quicklauncher"
-msgstr "Schnellstarter anzeigen"
+msgstr "Показывать быстрого запуска"
 
 #. 2.6->settings-schema.json->quicklauncher-9-checkbox->tooltip
 #. 2.6->settings-schema.json->quicklauncher-3-checkbox->tooltip
@@ -174,7 +175,6 @@ msgstr "Schnellstarter anzeigen"
 #. 2.6->settings-schema.json->quicklauncher-17-checkbox->tooltip
 msgid "Choose whether or not to show this quicklauncher in the sidebar."
 msgstr ""
-"Legt fest, ob dieser Schnellstarter in der Seitenleiste angezeigt wird."
 
 #. 2.6->settings-schema.json->quicklauncher-19-label->description
 #. 2.6->settings-schema.json->quicklauncher-2-label->description
@@ -197,7 +197,7 @@ msgstr ""
 #. 2.6->settings-schema.json->quicklauncher-16-label->description
 #. 2.6->settings-schema.json->quicklauncher-9-label->description
 msgid "Label"
-msgstr "Beschriftung"
+msgstr "Метка"
 
 #. 2.6->settings-schema.json->quicklauncher-19-label->tooltip
 #. 2.6->settings-schema.json->quicklauncher-2-label->tooltip
@@ -220,24 +220,23 @@ msgstr "Beschriftung"
 #. 2.6->settings-schema.json->quicklauncher-16-label->tooltip
 #. 2.6->settings-schema.json->quicklauncher-9-label->tooltip
 msgid "Enter label for the quicklauncher"
-msgstr "Beschriftung für den Schnellstarter eingeben"
+msgstr ""
 
 #. 2.6->settings-schema.json->search-filesystem->description
 msgid "Enable filesystem path entry in search box"
-msgstr "Eingabe des Dateisystempfades im Suchfeld erlauben"
+msgstr "Включить путь файловой системы в окне поиска"
 
 #. 2.6->settings-schema.json->search-filesystem->tooltip
 msgid "Allows path entry in the menu search box."
-msgstr "Ermöglicht die Pfadeingabe im Suchfeld des Menüs."
+msgstr "Позволяет вводить путь в окне поиска меню."
 
 #. 2.6->settings-schema.json->activate-on-hover->description
 msgid "Open the menu when I move my mouse over it"
-msgstr "Das Menü öffnen, wenn die Maus darüber bewegt wird"
+msgstr "Открывать меню при наведении на него указателя"
 
 #. 2.6->settings-schema.json->activate-on-hover->tooltip
 msgid "Enable opening the menu when the mouse enters the applet"
-msgstr ""
-"Öffnen des Menüs aktivieren, wenn sich die Maus auf das Applet bewegt"
+msgstr "Открывает меню, когда указатель мышки находится над апплетом"
 
 #. 2.6->settings-schema.json->quicklauncher-6-command->description
 #. 2.6->settings-schema.json->quicklauncher-10-command->description
@@ -260,7 +259,7 @@ msgstr ""
 #. 2.6->settings-schema.json->quicklauncher-3-command->description
 #. 2.6->settings-schema.json->quicklauncher-18-command->description
 msgid "Command"
-msgstr "Befehl"
+msgstr "Команда"
 
 #. 2.6->settings-schema.json->quicklauncher-6-command->tooltip
 #. 2.6->settings-schema.json->quicklauncher-10-command->tooltip
@@ -273,7 +272,7 @@ msgstr "Befehl"
 #. 2.6->settings-schema.json->quicklauncher-1-command->tooltip
 #. 2.6->settings-schema.json->quicklauncher-3-command->tooltip
 msgid "Enter command for the quicklauncher"
-msgstr "Befehl für den Schnellstarter eingeben"
+msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-17-icon->description
 #. 2.6->settings-schema.json->quicklauncher-15-icon->description
@@ -297,7 +296,7 @@ msgstr "Befehl für den Schnellstarter eingeben"
 #. 2.6->settings-schema.json->quicklauncher-9-icon->description
 #. 2.6->settings-schema.json->quicklauncher-10-icon->description
 msgid "Icon"
-msgstr "Symbol"
+msgstr "Значок"
 
 #. 2.6->settings-schema.json->quicklauncher-17-icon->tooltip
 #. 2.6->settings-schema.json->quicklauncher-15-icon->tooltip
@@ -323,52 +322,50 @@ msgid ""
 "Select an icon file or type an icon name into the entry box for the "
 "quicklauncher"
 msgstr ""
-"Für den Schnellstarter eine Symboldatei wählen oder einen Symbolnamen in das "
-"Eingabefeld tippen"
 
 #. 2.6->settings-schema.json->head-menu-layout->description
 msgid "Stark-Menu/MATE-Menu"
-msgstr "Stark-Menü/MATE-Menü"
+msgstr "Старк-Меню/MATE-Меню"
 
 #. 2.6->settings-schema.json->head-settings->description
 msgid "General Settings"
-msgstr "Allgemeine Einstellungen"
+msgstr "Общие настройки"
 
 #. 2.6->settings-schema.json->favorite-button-size->description
 msgid "Size of the favorite buttons"
-msgstr "Größe der Favoritenknöpfe"
+msgstr ""
 
 #. 2.6->settings-schema.json->favorite-button-size->tooltip
 msgid "Change the size of the favorite buttons"
-msgstr "Die Größe der Favoritenknöpfe ändern"
+msgstr ""
 
 #. 2.6->settings-schema.json->favorite-button-size->units
 msgid "pixels"
-msgstr "Pixel"
+msgstr "пикселей"
 
 #. 2.6->settings-schema.json->show-shutdown-menu->description
 msgid "Show quit buttons"
-msgstr "Beendenknöpfe anzeigen"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-shutdown-menu->tooltip
 msgid "Choose whether or not to show the quit buttons."
-msgstr "Legt fest, ob die Beendenknöpfe angezeigt werden."
+msgstr ""
 
 #. 2.6->settings-schema.json->menu-layout->options
 msgid "Stark-Menu"
-msgstr "Stark-Menü"
+msgstr "Старк-Меню"
 
 #. 2.6->settings-schema.json->menu-layout->options
 msgid "MATE-Menu"
-msgstr "MATE-Menü"
+msgstr "MATE-Меню"
 
 #. 2.6->settings-schema.json->menu-layout->tooltip
 msgid "Choose between Stark-Menu and MATE-Menu layout"
-msgstr "Zwischen Stark-Menü- und MATE-Menü-Layout wählen"
+msgstr ""
 
 #. 2.6->settings-schema.json->menu-layout->description
 msgid "Menu layout"
-msgstr "Menü-Layout"
+msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-7-command->tooltip
 #. 2.6->settings-schema.json->quicklauncher-16-command->tooltip
@@ -381,290 +378,284 @@ msgstr "Menü-Layout"
 #. 2.6->settings-schema.json->quicklauncher-0-command->tooltip
 #. 2.6->settings-schema.json->quicklauncher-18-command->tooltip
 msgid "Enter command to start the quicklauncher"
-msgstr "Befehl eingeben, welcher den Schnellstarter startet"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-context-menu-icons->description
 msgid "Show context menu icons"
-msgstr "Kontextmenüsymbole anzeigen"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-context-menu-icons->tooltip
 msgid "Choose whether or not to show icons on context menus."
-msgstr "Legt fest, ob Symbole in Kontextmenüs angezeigt werden."
+msgstr ""
 
 #. 2.6->settings-schema.json->show-apps-description-on-buttons->description
 msgid "Show application description on buttons"
-msgstr "Anwendungsbeschreibung auf Knöpfen anzeigen"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-apps-description-on-buttons->tooltip
 msgid ""
 "Choose whether or not to show the application description on the application "
 "buttons."
 msgstr ""
-"Legt fest, ob die Anwendungsbeschreibung auf den Anwendungsknöpfen angezeigt "
-"wird."
 
 #. 2.6->settings-schema.json->menu-label->description
 msgid "'Menu'-Button label"
-msgstr "»Menü«-Knopfbeschriftung"
+msgstr ""
 
 #. 2.6->settings-schema.json->menu-label->tooltip
 msgid "Enter custom text to show in the panel."
-msgstr ""
-"Einen eigenen Text eingeben, der in der Leiste angezeigt werden soll."
+msgstr "Введите свой текст для отображения на панели."
 
 #. 2.6->settings-schema.json->show-category-icons->description
 msgid "Show category icons"
-msgstr "Kategoriesymbole anzeigen"
+msgstr "Показывать значки категорий"
 
 #. 2.6->settings-schema.json->show-category-icons->tooltip
 msgid "Choose whether or not to show icons on categories."
-msgstr "Legt fest, ob Symbole an Kategorien angezeigt werden."
+msgstr "Выбрать показывать или нет иконки в категориях."
 
 #. 2.6->settings-schema.json->menu-icon->tooltip
 msgid "Select an icon to show in the panel."
-msgstr "Symbol auswählen, welches in der Leiste angezeigt wird."
+msgstr "Выберите отображаемый на панели значок."
 
 #. 2.6->settings-schema.json->quicklauncher-layout->description
 msgid "Quicklauncher layout"
-msgstr "Schnellstarter-Layout"
+msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-layout->tooltip
 msgid ""
 "Choose whether to show icons and/or labels on the quicklauncher buttons."
 msgstr ""
-"Legt fest, ob Symbole und/oder Beschriftungen an den Schnellstarterknöpfen "
-"angezeigt werden."
 
 #. 2.6->settings-schema.json->quicklauncher-layout->options
 msgid "Icons and Labels"
-msgstr "Symbole und Beschriftungen"
+msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-layout->options
 msgid "Labels only"
-msgstr "Nur Beschriftungen"
+msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-layout->options
 msgid "Icons only"
-msgstr "Nur Symbole"
+msgstr "Только значки"
 
 #. 2.6->settings-schema.json->shutdown-menu-layout->description
 msgid "Quit buttons layout"
-msgstr "Layout der Beendenknöpfe"
+msgstr ""
 
 #. 2.6->settings-schema.json->shutdown-menu-layout->tooltip
 msgid "Choose the layout of the quit options."
-msgstr "Das Layout der Beendenknöpfe wählen."
+msgstr ""
 
 #. 2.6->settings-schema.json->shutdown-menu-layout->options
 msgid "Horizontal"
-msgstr "Horizontal"
+msgstr "Горизонтальный"
 
 #. 2.6->settings-schema.json->shutdown-menu-layout->options
 msgid "Vertical"
-msgstr "Vertikal"
+msgstr "Вертикальный"
 
 #. 2.6->settings-schema.json->shutdown-menu-layout->options
 msgid "DropDown"
-msgstr "Dropdown"
+msgstr "Выпадающий список"
 
 #. 2.6->settings-schema.json->show-application-icons->description
 msgid "Show application icons"
-msgstr "Anwendungssymbole anzeigen"
+msgstr "Показывать значки приложений"
 
 #. 2.6->settings-schema.json->show-application-icons->tooltip
 msgid "Choose whether or not to show icons on applications."
-msgstr "Legt fest, ob Symbole an Anwendungen angezeigt werden."
+msgstr "Выбрать показывать или нет иконки в приложениях."
 
 #. 2.6->settings-schema.json->overlay-key->description
 msgid "Keyboard shortcut to open and close the menu"
-msgstr "Tastenkombinationen zum Öffnen und Schließen des Menüs"
+msgstr "Быстрый вызов меню с клавиатуры"
 
 #. 2.6->settings-schema.json->show-user-icon-label->description
 msgid "Show username"
-msgstr "Benutzernamen anzeigen"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-user-icon-label->tooltip
 msgid "Choose whether or not to show the username."
-msgstr "Legt fest, ob der Benutzername angezeigt werden soll."
+msgstr ""
 
 #. 2.6->settings-schema.json->enable-autoscroll->description
 msgid "Enable autoscrolling in application list"
-msgstr "Automatischen Bildlauf in der Anwendungsliste aktivieren"
+msgstr "Включить автопрокрутку в списке приложений"
 
 #. 2.6->settings-schema.json->enable-autoscroll->tooltip
 msgid ""
 "Choose whether or not to enable smooth autoscrolling in the application list."
-msgstr ""
-"Legt fest, ob weicher Bildlauf in der Anwendungsliste aktiviert wird."
+msgstr "Выберите,  включить ли плавную автопрокрутку в списке приложений."
 
 #. 2.6->settings-schema.json->enable-animation->description
 msgid "Use menu animations"
-msgstr "Menüanimationen verwenden"
+msgstr "Использовать анимацию меню"
 
 #. 2.6->settings-schema.json->enable-animation->tooltip
 msgid "Allow the menu to animate on open and close"
-msgstr "Dem Menü erlauben beim Öffnen und Schließen zu animieren"
+msgstr "Использовать анимацию меню при открытии и закрытии"
 
 #. 2.6->settings-schema.json->show-places->description
 msgid "Show bookmarks and places"
-msgstr "Lesezeichen und Orte anzeigen"
+msgstr "Показывать закладки и места"
 
 #. 2.6->settings-schema.json->show-places->tooltip
 msgid "Choose whether or not to show bookmarks and places in the menu."
-msgstr "Legt fest, ob Lesezeichen und Orte im Menü angezeigt werden."
+msgstr "Выберите, следует ли показывать закладки и места в меню."
 
 #. 2.6->settings-schema.json->shutdown-label->description
 msgid "'Quit'-Button label"
-msgstr "»Beenden«-Knopfbeschriftung"
+msgstr ""
 
 #. 2.6->settings-schema.json->shutdown-label->tooltip
 msgid "Enter custom text for the 'Quit' button."
-msgstr "Eigenen Text für den »Beenden«-Knopf eingeben."
+msgstr ""
 
 #. 2.6->settings-schema.json->head-custom-quicklauncher->description
 msgid "Custom Quicklauncher"
-msgstr "Benutzerdefinierte Schnellstarter"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-favorite-icons->description
 msgid "Show favorite icons"
-msgstr "Favoritensymbole anzeigen"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-favorite-icons->tooltip
 msgid "Choose whether or not to show icons on favorites."
-msgstr "Legt fest, ob Symbole an Favoriten angezeigt werden."
+msgstr ""
 
 #. 2.6->settings-schema.json->all-programs-label->description
 msgid "'All Programs'-Button label"
-msgstr "»Alle Programme«-Knopfbeschriftung"
+msgstr ""
 
 #. 2.6->settings-schema.json->all-programs-label->tooltip
 msgid "Enter custom text for the 'All Programs' button."
-msgstr "Eigenen Text für den »Alle Programme«-Knopf eingeben."
+msgstr ""
 
 #. 2.6->settings-schema.json->head-sidebar-layout->description
 msgid "Sidebar Layout"
-msgstr "Seitenleistenlayout"
+msgstr ""
 
 #. 2.6->settings-schema.json->menu-editor-button->description
 msgid "Open the menu editor"
-msgstr "Den Menüeditor öffnen"
+msgstr "Открыть редактор меню"
 
 #. 2.6->settings-schema.json->menu-editor-button->tooltip
 msgid "Press this button to customize your menu entries."
-msgstr "Diesen Knopf drücken um die Menüeinträge anzupassen."
+msgstr "Нажмите эту кнопку для изменения пунктов меню"
 
 #. 2.6->settings-schema.json->head-button-show-hide-icons->description
 msgid "Icons"
-msgstr "Symbole"
+msgstr "Значки"
 
 #. 2.6->settings-schema.json->menu-icon-custom->description
 msgid "Use a custom icon"
-msgstr "Ein benutzerdefiniertes Symbol benutzen"
+msgstr "Установить свой значок"
 
 #. 2.6->settings-schema.json->menu-icon-custom->tooltip
 msgid "Unchecking this allows the theme to set the icon"
-msgstr "Durch Abwählen wird es dem Thema erlaubt, das Symbol einzustellen"
+msgstr "Если флажок снят, значок определяется темой"
 
 #. 2.6->settings-schema.json->hover-delay->description
 msgid "Category hover delay"
-msgstr "Verzögerung beim Darüberbewegen über Kategorien"
+msgstr ""
 
 #. 2.6->settings-schema.json->hover-delay->tooltip
 msgid "Delay between switching categories"
-msgstr "Verzögerung beim Wechsel der Kategorien"
+msgstr ""
 
 #. 2.6->settings-schema.json->hover-delay->units
 msgid "milliseconds"
-msgstr "Millisekunden"
+msgstr "миллисекунд"
 
 #. 2.6->settings-schema.json->show-sidebar->description
 msgid "Show sidebar"
-msgstr "Seitenleiste anzeigen"
+msgstr ""
 
 #. 2.6->settings-schema.json->show-sidebar->tooltip
 msgid "Choose whether or not to show the sidebar."
-msgstr "Legt fest, ob die Seitenleiste angezeigt wird."
+msgstr ""
 
 #. 2.6->settings-schema.json->favorites-label->description
 msgid "'Favorites'-Button label"
-msgstr "»Favoriten«-Knopfbeschriftung"
+msgstr ""
 
 #. 2.6->settings-schema.json->favorites-label->tooltip
 msgid "Enter custom text for the 'Favorites' button."
-msgstr "Eigenen Text für den »Favoriten«-Knopf eingeben."
+msgstr ""
 
 #. CinnVIIStarkMenu@NikoKrause->metadata.json->description
 msgid "Cinnamon Menu with the look and feel of the Windows 7 Start Menu"
-msgstr "Cinnamon-Menü mit der Anmutung des Windows 7 Startmenüs"
+msgstr ""
 
 #. CinnVIIStarkMenu@NikoKrause->metadata.json->name
 msgid "CinnVIIStarkMenu"
-msgstr "CinnVIIStarkMenü"
+msgstr "CinnVIIСтаркМеню"
 
 #. 2.6->settings-schema.json->all-programs-label->default
 msgid "All Programs"
-msgstr "Alle Programme"
+msgstr "Все программы"
 
 #. 2.6->settings-schema.json->favorites-label->default
 msgid "Favorites"
-msgstr "Favoriten"
+msgstr "Избранное"
 
 #. 2.6->settings-schema.json->quicklauncher-1-label->default
 msgid "Home"
-msgstr "Persönlicher Ordner"
+msgstr "Домашняя папка"
 
 #. 2.6->settings-schema.json->quicklauncher-2-label->default
 msgid "Documents"
-msgstr "Dokumente"
+msgstr "Документы"
 
 #. 2.6->settings-schema.json->quicklauncher-2-command->default
 msgid "nemo Documents"
-msgstr "nemo Dokumente"
+msgstr "nemo Документы"
 
 #. 2.6->settings-schema.json->quicklauncher-3-label->default
 msgid "Pictures"
-msgstr "Bilder"
+msgstr "Изображения"
 
 #. 2.6->settings-schema.json->quicklauncher-3-command->default
 msgid "nemo Pictures"
-msgstr "nemo Bilder"
+msgstr "nemo Изображения"
 
 #. 2.6->settings-schema.json->quicklauncher-4-label->default
 msgid "Music"
-msgstr "Musik"
+msgstr "Музыка"
 
 #. 2.6->settings-schema.json->quicklauncher-4-command->default
 msgid "nemo Music"
-msgstr "nemo Musik"
+msgstr "nemo Музыка"
 
 #. 2.6->settings-schema.json->quicklauncher-5-label->default
 msgid "Videos"
-msgstr "Videos"
+msgstr "Видео"
 
 #. 2.6->settings-schema.json->quicklauncher-5-command->default
 msgid "nemo Videos"
-msgstr "nemo Videos"
+msgstr "nemo Видео"
 
 #. 2.6->settings-schema.json->quicklauncher-6-label->default
 msgid "Downloads"
-msgstr "Downloads"
+msgstr "Загрузки"
 
 #. 2.6->settings-schema.json->quicklauncher-6-command->default
 msgid "nemo Downloads"
-msgstr "nemo Downloads"
+msgstr "nemo Загрузки"
 
 #. 2.6->settings-schema.json->quicklauncher-8-label->default
 msgid "Computer"
-msgstr "Rechner"
+msgstr "Компьютер"
 
 #. 2.6->settings-schema.json->quicklauncher-9-label->default
 msgid "Software Manager"
-msgstr "Anwendungsverwaltung"
+msgstr "Менеджер программ"
 
 #. 2.6->settings-schema.json->quicklauncher-10-label->default
 msgid "System Settings"
-msgstr "Systemeinstellungen"
+msgstr "Параметры системы"
 
 #. 2.6->settings-schema.json->quicklauncher-11-label->default
 msgid "Terminal"
-msgstr "Terminal"
+msgstr "Терминал"
