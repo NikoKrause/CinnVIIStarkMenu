@@ -21,7 +21,7 @@ Language | Status | Untranslated | By
 --------------|:--------:|:----------------:|:---:
 [French (fr)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr)  | ![0%](http://progressed.io/bar/0) | [121](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/fr/+translate?show=untranslated) | &mdash;
 [German (de)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de)  | ![100%](http://progressed.io/bar/100) | [&mdash;](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/de/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
-[Russian (ru)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru) | ![31%](http://progressed.io/bar/31) | [84](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
+[Russian (ru)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru) | ![69%](http://progressed.io/bar/69) | [37](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/ru/+translate?show=untranslated) | [Niko Krause](https://launchpad.net/~nikokrause)
 [Spanish (es)](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es) | ![8%](http://progressed.io/bar/8) | [111](https://translations.launchpad.net/cinnviistarkmenu/trunk/+pots/cinnviistarkmenu/es/+translate?show=untranslated) | [Bob](https://launchpad.net/~basura1-p)
 
 #### Preview:
