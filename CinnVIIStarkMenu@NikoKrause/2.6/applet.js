@@ -595,7 +595,15 @@ PlaceButton.prototype = {
         this.label.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         this.label.set_style(MAX_BUTTON_WIDTH);
 
-        let selectedAppId = decodeURIComponent(this.place.id);
+        let selectedAppId;
+        try {
+            selectedAppId = decodeURIComponent(this.place.id);
+        }
+        catch (e) {
+            selectedAppId = this.place.id;
+            global.logError("Error while decoding URI: " + this.place.id);
+        }
+
         selectedAppId = selectedAppId.substr(selectedAppId.indexOf(':') + 1);
         let fileIndex = selectedAppId.indexOf('file:///');
         if (fileIndex !== -1)
@@ -678,7 +686,15 @@ RecentButton.prototype = {
         this.label.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         this.label.set_style(MAX_BUTTON_WIDTH);
 
-        let selectedAppUri = decodeURIComponent(this.file.uri);
+        let selectedAppUri;
+        try {
+            selectedAppUri = decodeURIComponent(this.file.uri);
+        }
+        catch (e) {
+            selectedAppUri = this.file.uri;
+            global.logError("Error while decoding URI: " + this.file.uri);
+        }
+
         let fileIndex = selectedAppUri.indexOf("file:///");
         if (fileIndex !== -1)
             selectedAppUri = selectedAppUri.substr(fileIndex + 7);
