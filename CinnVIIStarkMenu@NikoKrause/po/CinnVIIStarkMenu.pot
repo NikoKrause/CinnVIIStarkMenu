@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-08 12:44+0100\n"
+"POT-Creation-Date: 2016-12-19 14:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: 2.6/applet.js:176
 msgid "Please provide your password to uninstall this application"
@@ -122,12 +123,11 @@ msgid "No results found"
 msgstr ""
 
 #: 2.6/applet.js:4135
-msgid "result found"
-msgstr ""
-
-#: 2.6/applet.js:4137
-msgid "results found"
-msgstr ""
+#, javascript-format
+msgid "%d result found"
+msgid_plural "%d results found"
+msgstr[0] ""
+msgstr[1] ""
 
 #. 2.6->settings-schema.json->quicklauncher-9-checkbox->description
 #. 2.6->settings-schema.json->quicklauncher-3-checkbox->description

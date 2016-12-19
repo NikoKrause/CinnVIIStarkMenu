@@ -4131,10 +4131,8 @@ MyApplet.prototype = {
         let numberResults = appResults.length + placesResults.length + recentResults.length + acResults.length;
         if (numberResults == 0)
             this.resultsFoundButton.label.set_text(_("No results found"));
-        else if (numberResults == 1)
-            this.resultsFoundButton.label.set_text(numberResults + " " + _("result found"));
         else
-            this.resultsFoundButton.label.set_text(numberResults + " " + _("results found"));
+            this.resultsFoundButton.label.set_text(ngettext("%d result found", "%d results found", numberResults).format(numberResults));
 
         this.appBoxIter.reloadVisible();
         if (this.appBoxIter.getNumVisibleChildren() > 0) {
