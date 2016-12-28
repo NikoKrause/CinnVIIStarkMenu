@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: 3.2/applet.js:176 2.6/applet.js:176
-msgid "Please provide your password to uninstall this application"
+msgid "Please enter your password to uninstall this application"
 msgstr ""
 
 #: 3.2/applet.js:259 2.6/applet.js:259
@@ -27,7 +27,7 @@ msgid "Add to panel"
 msgstr ""
 
 #: 3.2/applet.js:262 2.6/applet.js:262
-msgid "Add to desktop"
+msgid "Create a shortcut on the desktop"
 msgstr ""
 
 #: 3.2/applet.js:266 2.6/applet.js:266
@@ -91,7 +91,7 @@ msgid "Leave the session"
 msgstr ""
 
 #: 3.2/applet.js:1747 2.6/applet.js:1761
-msgid "Lock the screen"
+msgid "Lock the session"
 msgstr ""
 
 #: 3.2/applet.js:1749 3.2/applet.js:1750 2.6/applet.js:1763 2.6/applet.js:1764
@@ -108,11 +108,11 @@ msgid "Menu"
 msgstr ""
 
 #: 3.2/applet.js:3260 2.6/applet.js:3280
-msgid "This file is no longer available"
+msgid "This file can't be found"
 msgstr ""
 
 #: 3.2/applet.js:3292 2.6/applet.js:3312
-msgid "No recent documents"
+msgid "No recent documents available"
 msgstr ""
 
 #: 3.2/applet.js:3610 2.6/applet.js:3630
@@ -170,7 +170,7 @@ msgstr[1] ""
 #. 2.6->settings-schema.json->quicklauncher-19-checkbox->description
 #. 2.6->settings-schema.json->quicklauncher-6-checkbox->description
 #. 2.6->settings-schema.json->quicklauncher-17-checkbox->description
-msgid "Show quicklauncher"
+msgid "Show quicklauncher on the sidebar"
 msgstr ""
 
 #. 3.2->settings-schema.json->quicklauncher-9-checkbox->tooltip
@@ -256,7 +256,7 @@ msgstr ""
 #. 2.6->settings-schema.json->quicklauncher-7-label->description
 #. 2.6->settings-schema.json->quicklauncher-16-label->description
 #. 2.6->settings-schema.json->quicklauncher-9-label->description
-msgid "Label"
+msgid "Label for this quicklauncher"
 msgstr ""
 
 #. 3.2->settings-schema.json->quicklauncher-19-label->tooltip
@@ -319,7 +319,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->activate-on-hover->description
 #. 2.6->settings-schema.json->activate-on-hover->description
-msgid "Open the menu when I move my mouse over it"
+msgid "Open the menu when I hover over it"
 msgstr ""
 
 #. 3.2->settings-schema.json->activate-on-hover->tooltip
@@ -367,7 +367,7 @@ msgstr ""
 #. 2.6->settings-schema.json->quicklauncher-1-command->description
 #. 2.6->settings-schema.json->quicklauncher-3-command->description
 #. 2.6->settings-schema.json->quicklauncher-18-command->description
-msgid "Command"
+msgid "Command to launch when selected"
 msgstr ""
 
 #. 3.2->settings-schema.json->quicklauncher-6-command->tooltip
@@ -400,7 +400,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->all-programs-label->tooltip
 #. 2.6->settings-schema.json->all-programs-label->tooltip
-msgid "Enter custom text for the 'All Programs' button."
+msgid "Enter custom text for the 'All Programs' label."
 msgstr ""
 
 #. 3.2->settings-schema.json->menu-appear->title
@@ -545,12 +545,12 @@ msgstr ""
 
 #. 3.2->settings-schema.json->search-filesystem->tooltip
 #. 2.6->settings-schema.json->search-filesystem->tooltip
-msgid "Allows path entry in the menu search box."
+msgid "Allows path entry into the menu search box."
 msgstr ""
 
 #. 3.2->settings-schema.json->show-shutdown-menu->description
 #. 2.6->settings-schema.json->show-shutdown-menu->description
-msgid "Show quit buttons"
+msgid "Show quit buttons on the sidebar"
 msgstr ""
 
 #. 3.2->settings-schema.json->show-shutdown-menu->tooltip
@@ -603,7 +603,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->show-favorite-icons->description
 #. 2.6->settings-schema.json->show-favorite-icons->description
-msgid "Show favorite icons"
+msgid "Show icons on favorites"
 msgstr ""
 
 #. 3.2->settings-schema.json->show-favorite-icons->tooltip
@@ -623,7 +623,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->show-apps-description-on-buttons->description
 #. 2.6->settings-schema.json->show-apps-description-on-buttons->description
-msgid "Show application description on buttons"
+msgid "Show application's description under their titles in the Menu"
 msgstr ""
 
 #. 3.2->settings-schema.json->show-apps-description-on-buttons->tooltip
@@ -635,7 +635,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->menu-label->description
 #. 2.6->settings-schema.json->menu-label->description
-msgid "'Menu'-Button label"
+msgid "'Menu'-Button label (shown next to menu icon)"
 msgstr ""
 
 #. 3.2->settings-schema.json->menu-label->tooltip
@@ -649,7 +649,7 @@ msgid "Select an icon to show in the panel."
 msgstr ""
 
 #. 3.2->settings-schema.json->quicklauncher-layout->description
-msgid "Quicklauncher button layout"
+msgid "Quicklauncher button style"
 msgstr ""
 
 #. 3.2->settings-schema.json->quicklauncher-layout->tooltip
@@ -710,7 +710,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->show-user-icon-label->description
 #. 2.6->settings-schema.json->show-user-icon-label->description
-msgid "Show username"
+msgid "Show username on sidebar"
 msgstr ""
 
 #. 3.2->settings-schema.json->show-user-icon-label->tooltip
@@ -732,7 +732,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->enable-animation->description
 #. 2.6->settings-schema.json->enable-animation->description
-msgid "Use menu animations"
+msgid "Animate Menu opening and closing"
 msgstr ""
 
 #. 3.2->settings-schema.json->enable-animation->tooltip
@@ -807,7 +807,7 @@ msgstr ""
 
 #. 3.2->settings-schema.json->show-sidebar->description
 #. 2.6->settings-schema.json->show-sidebar->description
-msgid "Show sidebar"
+msgid "Show sidebar on menu"
 msgstr ""
 
 #. 3.2->settings-schema.json->show-sidebar->tooltip
@@ -846,7 +846,7 @@ msgid "CinnVIIStarkMenu"
 msgstr ""
 
 #. CinnVIIStarkMenu@NikoKrause->metadata.json->description
-msgid "Cinnamon Menu with the look and feel of the Windows 7 Start Menu"
+msgid "Cinnamon Menu with the look and feel of the Windows 7 Start Menu or MATE Menu"
 msgstr ""
 #########################################################################
 
