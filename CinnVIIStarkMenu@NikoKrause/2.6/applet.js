@@ -173,7 +173,7 @@ ApplicationContextMenuItem.prototype = {
                 this._appButton.toggleMenu();
                 break;
             case "uninstall":
-                Util.spawnCommandLine("gksu -m '" + _("Please provide your password to uninstall this application") + "' /usr/bin/cinnamon-remove-application '" + this._appButton.app.get_app_info().get_filename() + "'");
+                Util.spawnCommandLine("gksu -m '" + _("Please enter your password to uninstall this application") + "' /usr/bin/cinnamon-remove-application '" + this._appButton.app.get_app_info().get_filename() + "'");
                 this._appButton.appsMenuButton.menu.close();
                 break;
             case "run_with_nvidia_gpu":
@@ -457,8 +457,8 @@ ApplicationButton.prototype = {
         if (showAppsDescription) {
             let appDescription = this.app.get_description();
             if (appDescription == null)
-                appDescription = "";
-            this.label.get_clutter_text().set_markup(this.app.get_name() + '\n' + '<span size="small">' + appDescription + '</span>');
+                appDescription = _("No description available");
+            this.label.get_clutter_text().set_markup(this.name.replace("&", "&amp;") + '\n' + '<span size="small">' + appDescription + '</span>');
         }
 
         this.addActor(this.label);
@@ -1123,21 +1123,6 @@ AppPopupSubMenuMenuItem.prototype = {
         this.menu.destroy();
         PopupBaseMenuItem.prototype.destroy.call(this);
     },
-
-    /*_onKeyPressEvent: function(actor, event) {
-        let symbol = event.get_key_symbol();
-
-        if (symbol == Clutter.KEY_Right) {
-            this.menu.open(true);
-            this.menu.actor.navigate_focus(null, Gtk.DirectionType.DOWN, false);
-            return true;
-        } else if (symbol == Clutter.KEY_Left && this.menu.isOpen) {
-            this.menu.close();
-            return true;
-        }
-
-        return PopupMenu.PopupBaseMenuItem.prototype._onKeyPressEvent.call(this, actor, event);
-    },*/
 
     activate: function(event) {
         this.menu.open(true);
@@ -2312,14 +2297,6 @@ MyApplet.prototype = {
         this._updateQuickLinksShutdownView();
         this._updateQuickLinksView();
         this._updateQuickLinks();
-    },
-
-    //
-    //override getDisplayLayout to declare that this applet is suitable for both horizontal and
-    // vertical orientations
-    //
-    getDisplayLayout: function() {
-        return Applet.DisplayLayout.BOTH;
     },
 
     on_applet_added_to_panel: function () {
