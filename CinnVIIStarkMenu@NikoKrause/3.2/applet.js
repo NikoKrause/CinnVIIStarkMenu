@@ -2075,6 +2075,8 @@ MyApplet.prototype = {
         this._refreshAll();
 
         St.TextureCache.get_default().connect("icon-theme-changed", Lang.bind(this, this.onIconThemeChanged));
+
+        this.update_label_visible();
     },
 
     _updateKeybinding: function() {
@@ -2163,6 +2165,13 @@ MyApplet.prototype = {
         let scrollBoxHeight = (this.favsBox.get_allocation_box().y2 - this.favsBox.get_allocation_box().y1) + this.separator.actor.get_height() - (this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.TOP) + this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.BOTTOM));
         this.applicationsScrollBox.style = "width: 26.5em;height: " + scrollBoxHeight + "px;";
         this.categoriesScrollBox.style = "height: " + scrollBoxHeight + "px;";
+    },
+
+    update_label_visible: function () {
+        if (this.orientation == St.Side.LEFT || this.orientation == St.Side.RIGHT)
+            this.hide_applet_label(true);
+        else
+            this.hide_applet_label(false);
     },
 
     _updateQuickLinksView: function() {
@@ -2292,6 +2301,9 @@ MyApplet.prototype = {
 
     on_orientation_changed: function (orientation) {
         this.orientation = orientation;
+
+        this.update_label_visible();
+
         this.menu.destroy();
         this.menu = new Applet.AppletPopupMenu(this, orientation);
         this.menuManager.addMenu(this.menu);
