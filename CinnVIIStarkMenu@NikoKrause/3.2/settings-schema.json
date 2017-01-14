@@ -317,7 +317,7 @@
  },
  "quicklauncher-1-icon": {
     "type": "iconfilechooser",
-    "default" : "folder-home",
+    "default" : "user-home",
     "description" : "Quicklauncher icon",
     "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
     "dependency" : "quicklauncher-1-checkbox",
