@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cinnviistarkmenu\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-28 21:32+0100\n"
-"PO-Revision-Date: 2016-12-28 23:42+0000\n"
+"POT-Creation-Date: 2017-01-16 14:20+0100\n"
+"PO-Revision-Date: 2017-01-16 14:20+0000\n"
 "Last-Translator: Niko Krause <nikokrause@gmx.de>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2017-01-08 18:40+0000\n"
+"X-Launchpad-Export-Date: 2017-01-16 14:28+0000\n"
 "X-Generator: Launchpad (build 18302)\n"
 "Language: fr\n"
 
@@ -105,27 +105,27 @@ msgid "Lock screen"
 msgstr "Verrouillage de l'écran"
 
 #. 3.2->settings-schema.json->menu->title
-#: 3.2/applet.js:1958 2.6/applet.js:1970
+#: 3.2/applet.js:1963 2.6/applet.js:1975
 msgid "Menu"
 msgstr "Menu"
 
-#: 3.2/applet.js:3243 2.6/applet.js:3257
+#: 3.2/applet.js:3282 2.6/applet.js:3262
 msgid "This file is no longer available"
 msgstr "Ce fichier n'est plus disponible"
 
-#: 3.2/applet.js:3275 2.6/applet.js:3289
+#: 3.2/applet.js:3314 2.6/applet.js:3294
 msgid "No recent documents"
 msgstr "Aucun document récent"
 
-#: 3.2/applet.js:3593 2.6/applet.js:3607
+#: 3.2/applet.js:3617 2.6/applet.js:3612
 msgid "Type to search..."
 msgstr "Tapez pour chercher..."
 
-#: 3.2/applet.js:4112 2.6/applet.js:4126
+#: 3.2/applet.js:4137 2.6/applet.js:4131
 msgid "No results found"
 msgstr "Aucun résultat n'a été trouvé"
 
-#: 3.2/applet.js:4114 2.6/applet.js:4128
+#: 3.2/applet.js:4139 2.6/applet.js:4133
 #, javascript-format
 msgid "%d result found"
 msgid_plural "%d results found"
@@ -801,14 +801,12 @@ msgid "Unchecking this allows the theme to set the icon"
 msgstr "Décochez cette case, pour utiliser l'icône définie par le thème"
 
 #. 3.2->settings-schema.json->hover-delay->description
-#. 2.6->settings-schema.json->hover-delay->description
-msgid "Category hover delay"
-msgstr ""
+msgid "Menu hover delay"
+msgstr "Délai de survol du menu"
 
 #. 3.2->settings-schema.json->hover-delay->tooltip
-#. 2.6->settings-schema.json->hover-delay->tooltip
-msgid "Delay between switching categories"
-msgstr ""
+msgid "Delay before the menu opens when hovered"
+msgstr "Délai avant lequel le menu s'ouvre au survol de la souris"
 
 #. 3.2->settings-schema.json->hover-delay->units
 #. 2.6->settings-schema.json->hover-delay->units
@@ -847,6 +845,14 @@ msgstr "Paramètres généraux"
 msgid "Icons"
 msgstr "Icônes"
 
+#. 2.6->settings-schema.json->hover-delay->description
+msgid "Category hover delay"
+msgstr ""
+
+#. 2.6->settings-schema.json->hover-delay->tooltip
+msgid "Delay between switching categories"
+msgstr ""
+
 #. CinnVIIStarkMenu@NikoKrause->metadata.json->name
 msgid "CinnVIIStarkMenu"
 msgstr "CinnVIIStarkMenu"
@@ -863,10 +869,6 @@ msgstr "Tous les programmes"
 #. 2.6->settings-schema.json->favorites-label->default
 msgid "Favorites"
 msgstr "Favoris"
-
-#. 2.6->settings-schema.json->quicklauncher-1-label->default
-msgid "Home"
-msgstr "Dossier personnel"
 
 #. 2.6->settings-schema.json->quicklauncher-2-label->default
 msgid "Documents"
@@ -908,18 +910,17 @@ msgstr "Téléchargements"
 msgid "nemo Downloads"
 msgstr "nemo Téléchargements"
 
-#. 2.6->settings-schema.json->quicklauncher-8-label->default
-msgid "Computer"
-msgstr "Poste de travail"
+#~ msgid "Home"
+#~ msgstr "Dossier personnel"
 
-#. 2.6->settings-schema.json->quicklauncher-9-label->default
-msgid "Software Manager"
-msgstr "Gestionnaire de logiciels"
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
 
-#. 2.6->settings-schema.json->quicklauncher-10-label->default
-msgid "System Settings"
-msgstr "Paramètres du système"
+#~ msgid "Software Manager"
+#~ msgstr "Gestionnaire de logiciels"
 
-#. 2.6->settings-schema.json->quicklauncher-11-label->default
-msgid "Terminal"
-msgstr "Terminal"
+#~ msgid "Computer"
+#~ msgstr "Poste de travail"
+
+#~ msgid "System Settings"
+#~ msgstr "Paramètres du système"
