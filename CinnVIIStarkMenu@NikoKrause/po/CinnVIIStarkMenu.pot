@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 21:32+0100\n"
+"POT-Creation-Date: 2017-01-16 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,27 +103,27 @@ msgid "Lock screen"
 msgstr ""
 
 #. 3.2->settings-schema.json->menu->title
-#: 3.2/applet.js:1958 2.6/applet.js:1970
+#: 3.2/applet.js:1963 2.6/applet.js:1975
 msgid "Menu"
 msgstr ""
 
-#: 3.2/applet.js:3243 2.6/applet.js:3257
+#: 3.2/applet.js:3282 2.6/applet.js:3262
 msgid "This file is no longer available"
 msgstr ""
 
-#: 3.2/applet.js:3275 2.6/applet.js:3289
+#: 3.2/applet.js:3314 2.6/applet.js:3294
 msgid "No recent documents"
 msgstr ""
 
-#: 3.2/applet.js:3593 2.6/applet.js:3607
+#: 3.2/applet.js:3617 2.6/applet.js:3612
 msgid "Type to search..."
 msgstr ""
 
-#: 3.2/applet.js:4112 2.6/applet.js:4126
+#: 3.2/applet.js:4137 2.6/applet.js:4131
 msgid "No results found"
 msgstr ""
 
-#: 3.2/applet.js:4114 2.6/applet.js:4128
+#: 3.2/applet.js:4139 2.6/applet.js:4133
 #, javascript-format
 msgid "%d result found"
 msgid_plural "%d results found"
@@ -795,13 +795,11 @@ msgid "Unchecking this allows the theme to set the icon"
 msgstr ""
 
 #. 3.2->settings-schema.json->hover-delay->description
-#. 2.6->settings-schema.json->hover-delay->description
-msgid "Category hover delay"
+msgid "Menu hover delay"
 msgstr ""
 
 #. 3.2->settings-schema.json->hover-delay->tooltip
-#. 2.6->settings-schema.json->hover-delay->tooltip
-msgid "Delay between switching categories"
+msgid "Delay before the menu opens when hovered"
 msgstr ""
 
 #. 3.2->settings-schema.json->hover-delay->units
@@ -841,6 +839,14 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
+#. 2.6->settings-schema.json->hover-delay->description
+msgid "Category hover delay"
+msgstr ""
+
+#. 2.6->settings-schema.json->hover-delay->tooltip
+msgid "Delay between switching categories"
+msgstr ""
+
 #. CinnVIIStarkMenu@NikoKrause->metadata.json->name
 msgid "CinnVIIStarkMenu"
 msgstr ""
@@ -849,6 +855,7 @@ msgstr ""
 msgid ""
 "Cinnamon Menu with the look of the Windows 7 Start Menu or the MATE Menu"
 msgstr ""
+
 #########################################################################
 
 #. 2.6->settings-schema.json->all-programs-label->default
@@ -857,10 +864,6 @@ msgstr ""
 
 #. 2.6->settings-schema.json->favorites-label->default
 msgid "Favorites"
-msgstr ""
-
-#. 2.6->settings-schema.json->quicklauncher-1-label->default
-msgid "Home"
 msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-2-label->default
@@ -901,20 +904,4 @@ msgstr ""
 
 #. 2.6->settings-schema.json->quicklauncher-6-command->default
 msgid "nemo Downloads"
-msgstr ""
-
-#. 2.6->settings-schema.json->quicklauncher-8-label->default
-msgid "Computer"
-msgstr ""
-
-#. 2.6->settings-schema.json->quicklauncher-9-label->default
-msgid "Software Manager"
-msgstr ""
-
-#. 2.6->settings-schema.json->quicklauncher-10-label->default
-msgid "System Settings"
-msgstr ""
-
-#. 2.6->settings-schema.json->quicklauncher-11-label->default
-msgid "Terminal"
 msgstr ""
