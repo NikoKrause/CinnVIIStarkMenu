@@ -1949,11 +1949,16 @@ FavoritesBox.prototype = {
     }
 }
 
-const Gettext = imports.gettext
-Gettext.bindtextdomain("CinnVIIStarkMenu@NikoKrause", GLib.get_home_dir() + "/.local/share/locale")
+const Gettext = imports.gettext;
+const UUID = "CinnVIIStarkMenu@NikoKrause";
+Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale")
 
 function _(str) {
-  return Gettext.dgettext("CinnVIIStarkMenu@NikoKrause", str)
+    let customTranslation = Gettext.dgettext(UUID, str);
+    if(customTranslation != str) {
+        return customTranslation;
+    }
+    return Gettext.gettext(str);
 }
 
 function MyApplet(orientation, panel_height, instance_id) {
