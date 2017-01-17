@@ -4136,7 +4136,7 @@ MyApplet.prototype = {
         if (numberResults == 0)
             this.resultsFoundButton.label.set_text(_("No results found"));
         else
-            this.resultsFoundButton.label.set_text(ngettext("%d result found", "%d results found", numberResults).format(numberResults));
+            this.resultsFoundButton.label.set_text(Gettext.dngettext(UUID, "%d result found", "%d results found", numberResults).format(numberResults));
 
         this.appBoxIter.reloadVisible();
         if (this.appBoxIter.getNumVisibleChildren() > 0) {

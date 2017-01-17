@@ -639,7 +639,7 @@
  },
  "quicklauncher-12-label" : {
     "type" : "entry",
-    "default" : "separator",
+    "default" : "System Info",
     "description" : "Quicklauncher label",
     "tooltip" : "Enter label for the quicklauncher",
     "dependency" : "quicklauncher-12-checkbox",
@@ -647,7 +647,7 @@
  },
  "quicklauncher-12-icon": {
     "type": "iconfilechooser",
-    "default" : "",
+    "default" : "cs-details",
     "description" : "Quicklauncher icon",
     "tooltip" : "Select an icon file or type an icon name into the entry box for the quicklauncher",
     "dependency" : "quicklauncher-12-checkbox",
@@ -655,7 +655,7 @@
  },
  "quicklauncher-12-command" : {
     "type" : "entry",
-    "default" : "",
+    "default" : "cinnamon-settings info",
     "description" : "Command to launch",
     "tooltip" : "Enter command to start the quicklauncher",
     "dependency" : "quicklauncher-12-checkbox",
@@ -663,13 +663,13 @@
  },
  "quicklauncher-13-checkbox" : {
     "type" : "switch",
-    "default" : false,
+    "default" : true,
     "description" : "Show quicklauncher on the sidebar",
     "tooltip" : "Choose whether or not to show this quicklauncher in the sidebar."
  },
  "quicklauncher-13-label" : {
     "type" : "entry",
-    "default" : "",
+    "default" : "separator",
     "description" : "Quicklauncher label",
     "tooltip" : "Enter label for the quicklauncher",
     "dependency" : "quicklauncher-13-checkbox",
