@@ -1,3 +1,6 @@
+### CinnVIIStarkMenu
+====================
+
 #### Compatible Cinnamon Versions:
 - [x] Cinnamon-Version 2.6 (Linux Mint 17.2)
 - [x] Cinnamon-Version 2.8 (Linux Mint 17.3)
@@ -50,3 +53,6 @@ Click on the image below to see a review video of CinnVIIStarkMenu (previous: Ci
 ####License
 CinnVIIStarkMenu is distributed under the terms of the GNU General Public License, version 2 or later.
 See the [COPYING](https://github.com/NikoKrause/CinnVIIStarkMenu/blob/master/COPYING) file for details.
+
+####Logo credits
+The CinnVIIStarkMenu logo is a mix of the [MATE Desktop logo](https://github.com/mate-desktop/mate-desktop/blob/f543545ceb97db7cdefc186889898e3ebdef8f65/icons/hicolor_apps_scalable_mate.svg) and the [Cinnamon logo](http://segfault.linuxmint.com/wp-content/uploads/2016/09/CinnamonIcon5-1.png).
