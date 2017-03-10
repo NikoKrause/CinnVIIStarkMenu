@@ -2167,7 +2167,7 @@ MyApplet.prototype = {
     },
 
     _appletStyles: function() {
-        let scrollBoxHeight = (this.favsBox.get_allocation_box().y2 - this.favsBox.get_allocation_box().y1) + this.separator.actor.get_height() - (this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.TOP) + this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.BOTTOM));
+        let scrollBoxHeight = this.favsBox.get_height() + this.separator.actor.get_height() + this.favExpandBin.get_height() - (this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.TOP) + this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.BOTTOM));
         this.applicationsScrollBox.style = "width: 26.5em;height: " + scrollBoxHeight + "px;";
         this.categoriesScrollBox.style = "height: " + scrollBoxHeight + "px;";
     },
@@ -2232,11 +2232,6 @@ MyApplet.prototype = {
         }
 
         this._updateCustomLabels();
-
-        if (this.rightButtonsBox.actor.get_height() > 415) {
-            this.favsBox.style = "min-height: " + (this.rightButtonsBox.actor.get_height() - (this.leftPaneBox.get_theme_node().get_padding(St.Side.TOP) + this.leftPaneBox.get_theme_node().get_padding(St.Side.BOTTOM) + this.searchBox.get_height() + this.appsButton.box.get_height() + this.separator.actor.get_height())+3) + "px;min-width: 235px;";
-        }
-
     },
 
     _updateQuickLinks: function() {
@@ -2297,11 +2292,6 @@ MyApplet.prototype = {
         this.rightButtonsBox._update_quicklinks(this.quicklauncherLayout, this.showUserIconLabel, this.shutdownMenuLayout);
 
         this._updateQuickLinksShutdownView();
-
-        if (this.rightButtonsBox.actor.get_height() > 415) {
-            this.favsBox.style = "min-height: " + (this.rightButtonsBox.actor.get_height() - (this.leftPaneBox.get_theme_node().get_padding(St.Side.TOP) + this.leftPaneBox.get_theme_node().get_padding(St.Side.BOTTOM) + this.searchBox.get_height() + this.appsButton.box.get_height() + this.separator.actor.get_height())+3) + "px;min-width: 235px;";
-        }
-
     },
 
     on_orientation_changed: function (orientation) {
@@ -3712,6 +3702,8 @@ MyApplet.prototype = {
         //    this.selectedAppBox.get_theme_node().get_length('height') == 0)
         //    this.selectedAppBox.set_height(30 * global.ui_scale);
 
+        this.favExpandBin = new St.Bin();
+
         this.selectedAppTitle = new St.Label({ style_class: 'menu-selected-app-title', text: "" });
         this.selectedAppBox.add_actor(this.selectedAppTitle);
         this.selectedAppDescription = new St.Label({ style_class: 'menu-selected-app-description', text: "" });
@@ -3720,7 +3712,7 @@ MyApplet.prototype = {
         this.appsBox.add_actor(this.categoriesApplicationsBox.actor);
         this.searchBox.add_actor(this.searchEntry);
         this.leftPaneBox.add_actor(this.leftPane);
-        this.leftPaneBox.add(new St.Bin(), { expand: true });
+        this.leftPaneBox.add(this.favExpandBin, { expand: true });
         this.leftPaneBox.add_actor(this.separator.actor);
         this.leftPaneBox.add_actor(this.appsButton.actor);
         this.leftPaneBox.add_actor(this.resultsFoundButton.actor);
