@@ -2383,10 +2383,9 @@ MyApplet.prototype = {
             //this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
             Mainloop.idle_add(Lang.bind(this, this._initial_cat_selection, n));
 
-            let favsWidth = 0.95 * (this.favsBox.get_allocation_box().x2 - this.favsBox.get_allocation_box().x1);
-            this.searchEntry.style = "width:" + favsWidth + "px; padding-left: 6px; padding-right: 6px;";
-            this.appsButton.box.style = "width:" + favsWidth + "px";
-            this.resultsFoundButton.box.style = "width:" + favsWidth + "px";
+            this.fit_favsbox(this.searchEntry);
+            this.fit_favsbox(this.appsButton.box);
+            this.fit_favsbox(this.resultsFoundButton.box);
 
         } else {
             if (this._appletEnterEventId > 0) {
@@ -2413,6 +2412,14 @@ MyApplet.prototype = {
         for (let i = start_index; i < n; i++) {
             this._applicationsButtons[i].actor.show();
         }
+    },
+
+    fit_favsbox: function(elem) {
+        let parent = elem.get_parent().get_theme_node();
+        let p_hpadding = parent.get_padding(St.Side.LEFT) + parent.get_padding(St.Side.RIGHT);
+        let favsbox_width = this.favsBox.get_allocation_box().x2 - this.favsBox.get_allocation_box().x1;
+
+        elem.set_width(favsbox_width - p_hpadding);
     },
 
     destroy: function() {
@@ -3599,9 +3606,7 @@ MyApplet.prototype = {
 
         this.appsBox = new St.BoxLayout({ vertical: true });
 
-        this.searchBox = new St.BoxLayout({ style_class: 'menu-search-box' });
-        this.searchBox.add_style_class_name("starkmenu-search-box");
-        this.searchBox.set_style("padding-right: 0px;padding-left: 0px;height:26px;");
+        this.searchBox = new St.BoxLayout({ style_class: 'starkmenu-search-box' });
 
         this.searchEntry = new St.Entry({ name: 'menu-search-entry',
                                      hint_text: _("Type to search..."),
