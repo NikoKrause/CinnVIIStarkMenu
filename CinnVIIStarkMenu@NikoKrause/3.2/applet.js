@@ -1665,8 +1665,7 @@ RightButtonsBox.prototype = {
                 this.hoverIcon.userLabel.show();
             } else {
                 this.hoverIcon.userLabel.hide();
-                let centerWidth = (this.actor.get_width() - (HOVER_ICON_SIZE + 4)) / 2;
-                this.hoverIcon.userBox.style = "padding-left:"+ centerWidth +"px; padding-right:"+ centerWidth +"px;";
+                this.hoverIcon.userBox.set_x_align(Clutter.ActorAlign.CENTER);
             }
 
             this.hoverIcon._userIcon.set_icon_size(HOVER_ICON_SIZE);
