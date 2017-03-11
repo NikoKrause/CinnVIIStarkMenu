@@ -3201,7 +3201,7 @@ MyApplet.prototype = {
 
         this._setCategoriesButtonActive(!this.searchActive);
 
-        this._resizeApplicationsBox();
+        //this._resizeApplicationsBox();
     },
 
     _refreshRecent : function() {
@@ -3316,7 +3316,7 @@ MyApplet.prototype = {
 
         this._setCategoriesButtonActive(!this.searchActive);
 
-        this._resizeApplicationsBox();
+        //this._resizeApplicationsBox();
     },
 
     _refreshApps : function() {
@@ -3774,7 +3774,8 @@ MyApplet.prototype = {
             this.appsButton.icon.set_icon_name("go-previous");
             if(this.menuLayout == "stark-menu")
                 this.rightButtonsBox.actor.hide();
-            this._resizeMenuSections();
+            if (this._activeContainer == null)
+                this._resizeMenuSections();
             visiblePane = "apps";
             if (this._previousTreeSelectedActor == null)
                 this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
@@ -3789,7 +3790,7 @@ MyApplet.prototype = {
             if (this.menu.showSidebar) {
                 this.rightButtonsBox.actor.show();
             }
-            this._resizeMenuSections();
+            //this._resizeMenuSections();
             visiblePane = "favs";
             if (this._previousTreeSelectedActor == null)
                 this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
