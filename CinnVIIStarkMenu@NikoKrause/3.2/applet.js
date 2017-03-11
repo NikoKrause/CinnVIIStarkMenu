@@ -2026,7 +2026,6 @@ MyApplet.prototype = {
         this._previousTreeSelectedActor = null;
         this._activeContainer = null;
         this._activeActor = null;
-        this._applicationsBoxWidth = 0;
         this.menuIsOpening = false;
         this._knownApps = new Array(); // Used to keep track of apps that are already installed, so we can highlight newly installed ones
         this._appsWereRefreshed = false;
@@ -3344,7 +3343,6 @@ MyApplet.prototype = {
         this._applicationsButtons = new Array();
         this._transientButtons = new Array();
         this._applicationsButtonFromApp = new Object();
-        this._applicationsBoxWidth = 0;
         //Remove all categories
         this.categoriesBox.destroy_all_children();
 
