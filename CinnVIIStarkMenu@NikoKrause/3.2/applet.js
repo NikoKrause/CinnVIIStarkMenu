@@ -2168,7 +2168,7 @@ MyApplet.prototype = {
 
     _appletStyles: function() {
         let scrollBoxHeight = this.favsBox.get_height() + this.separator.actor.get_height() + this.favExpandBin.get_height() - (this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.TOP) + this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.BOTTOM));
-        this.applicationsScrollBox.style = "width: 26.5em;height: " + scrollBoxHeight + "px;";
+        this.applicationsScrollBox.style = "height: " + scrollBoxHeight + "px;";
         this.categoriesScrollBox.style = "height: " + scrollBoxHeight + "px;";
     },
 
@@ -3211,7 +3211,7 @@ MyApplet.prototype = {
 
         this._setCategoriesButtonActive(!this.searchActive);
 
-        //this._resizeApplicationsBox();
+        this._resizeApplicationsBox();
     },
 
     _refreshRecent : function() {
@@ -3318,7 +3318,7 @@ MyApplet.prototype = {
 
         this._setCategoriesButtonActive(!this.searchActive);
 
-        //this._resizeApplicationsBox();
+        this._resizeApplicationsBox();
     },
 
     _refreshApps : function() {
@@ -3869,7 +3869,7 @@ MyApplet.prototype = {
         let [min, nat] = actor.get_preferred_width(-1.0);
         if (nat > this._applicationsBoxWidth){
             this._applicationsBoxWidth = nat;
-            this.applicationsBox.set_width(this._applicationsBoxWidth + 42); // The answer to life...
+            this.applicationsBox.set_width(this._applicationsBoxWidth + 42 + 19); // The answer to life...
         }
     },
 
