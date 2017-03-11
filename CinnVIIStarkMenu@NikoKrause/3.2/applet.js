@@ -2166,10 +2166,29 @@ MyApplet.prototype = {
         }
     },
 
-    _appletStyles: function() {
-        let scrollBoxHeight = this.favsBox.get_height() + this.separator.actor.get_height() + this.favExpandBin.get_height() - (this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.TOP) + this.applicationsScrollBox.get_theme_node().get_border_width(St.Side.BOTTOM));
-        this.applicationsScrollBox.style = "height: " + scrollBoxHeight + "px;";
-        this.categoriesScrollBox.style = "height: " + scrollBoxHeight + "px;";
+    _resizeMenuSections: function() {
+        let scrollBoxHeight = this.favsBox.get_height() + this.separator.actor.get_height() + this.favExpandBin.get_height();
+
+        this._resizeApplicationsBox();
+        this.applicationsScrollBox.set_height(scrollBoxHeight);
+        this.categoriesScrollBox.set_height(scrollBoxHeight);
+    },
+
+    _resizeApplicationsBox: function() {
+        let min_width = 0;
+        let child = this.applicationsScrollBox.get_first_child();
+        this.applicationsScrollBox.set_width(-1);
+
+        while (child) {
+            let [min, nat] = child.get_preferred_width(-1.0);
+            min_width = Math.max(nat, min_width);
+            child = child.get_next_sibling();
+        }
+
+        let theme_node = this.applicationsScrollBox.get_theme_node();
+        let scrollWidth = this.applicationsScrollBox.get_vscroll_bar().get_width();
+        let borders = theme_node.get_border_width(St.Side.LEFT) + theme_node.get_border_width(St.Side.RIGHT);
+        this.applicationsScrollBox.set_width(min_width + scrollWidth + borders);
     },
 
     update_label_visible: function () {
@@ -3626,10 +3645,8 @@ MyApplet.prototype = {
                                                 vertical: true,
                                                 accessible_role: Atk.Role.LIST });
         this.applicationsScrollBox = new St.ScrollView({ x_fill: true, y_fill: false, y_align: St.Align.START, style_class: 'vfade menu-applications-scrollbox' });
-        //this.applicationsScrollBox.set_width(264);
 
         this.categoriesScrollBox = new St.ScrollView({ x_fill: true, y_fill: false, y_align: St.Align.START, style_class: 'vfade menu-applications-scrollbox' });
-        //this.categoriesScrollBox.set_width(210);
 
         this.a11y_settings = new Gio.Settings({ schema_id: "org.cinnamon.desktop.a11y.applications" });
         this.a11y_settings.connect("changed::screen-magnifier-enabled", Lang.bind(this, this._updateVFade));
@@ -3764,7 +3781,7 @@ MyApplet.prototype = {
             this.appsButton.icon.set_icon_name("go-previous");
             if(this.menuLayout == "stark-menu")
                 this.rightButtonsBox.actor.hide();
-            this._appletStyles();
+            this._resizeMenuSections();
             visiblePane = "apps";
             if (this._previousTreeSelectedActor == null)
                 this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
@@ -3779,7 +3796,7 @@ MyApplet.prototype = {
             if (this.menu.showSidebar) {
                 this.rightButtonsBox.actor.show();
             }
-            this._appletStyles();
+            this._resizeMenuSections();
             visiblePane = "favs";
             if (this._previousTreeSelectedActor == null)
                 this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
@@ -3862,25 +3879,6 @@ MyApplet.prototype = {
                 else
                     this._favoritesButtons[app].closeMenu();
             }
-        }
-    },
-
-    _resize_actor_iter: function(actor) {
-        let [min, nat] = actor.get_preferred_width(-1.0);
-        if (nat > this._applicationsBoxWidth){
-            this._applicationsBoxWidth = nat;
-            this.applicationsBox.set_width(this._applicationsBoxWidth + 42 + 19); // The answer to life...
-        }
-    },
-
-    _resizeApplicationsBox: function() {
-        this._applicationsBoxWidth = 0;
-        this.applicationsBox.set_width(-1);
-        let child = this.applicationsBox.get_first_child();
-        this._resize_actor_iter(child);
-
-        while ((child = child.get_next_sibling()) != null) {
-            this._resize_actor_iter(child);
         }
     },
 
