@@ -1385,6 +1385,8 @@ HoverIcon.prototype = {
         });
         this.userBox.add_style_class_name("starkhover-box");
 
+        this.userBox.set_x_align(Clutter.ActorAlign.CENTER);
+
         this._userIcon = new St.Icon({
             style_class: 'hover-user-icon'
         });
@@ -1665,7 +1667,6 @@ RightButtonsBox.prototype = {
                 this.hoverIcon.userLabel.show();
             } else {
                 this.hoverIcon.userLabel.hide();
-                this.hoverIcon.userBox.set_x_align(Clutter.ActorAlign.CENTER);
             }
 
             this.hoverIcon._userIcon.set_icon_size(HOVER_ICON_SIZE);
