@@ -3778,10 +3778,13 @@ MyApplet.prototype = {
             this.appsButton.icon.set_icon_name("go-previous");
             if(this.menuLayout == "stark-menu")
                 this.rightButtonsBox.actor.hide();
+            if (this._previousTreeSelectedActor)
+                this._previousTreeSelectedActor.style_class = "menu-category-button";
+            this._previousTreeSelectedActor = this._allAppsCategoryButton.actor;
+            this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
+            this._select_category(null, this._allAppsCategoryButton);
             this._resizeMenuSections();
             visiblePane = "apps";
-            if (this._previousTreeSelectedActor == null)
-                this._allAppsCategoryButton.actor.style_class = "menu-category-button-selected";
         } else {
             this.leftPane.set_child(this.favsBox);
             this.separator.actor.show();
