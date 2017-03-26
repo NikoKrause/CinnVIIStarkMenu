@@ -2,8 +2,18 @@
 
 ## Table of contents
 
+[Full Changelog v1.2...v1.3](https://github.com/NikoKrause/CinnVIIStarkMenu/compare/v1.2...v1.3)
 [Full Changelog v1.0...v1.2](https://github.com/NikoKrause/CinnVIIStarkMenu/compare/v1.0...v1.2)
 [Full Changelog v0.0...v1.0](https://github.com/NikoKrause/CinnVIIStarkMenu/compare/v0.0...v1.0)
+
+## Changes `v1.2`...`v1.3`
+```
+[NikoKrause]
+* update translations
+* add option to hide the user picture
+* add CHANGELOG.md
+
+```
 
 ## Changes `v1.0`...`v1.2`
 ```
