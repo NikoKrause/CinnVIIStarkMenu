@@ -24,7 +24,7 @@ const GLib = imports.gi.GLib;
 const Settings = imports.ui.settings;
 const Pango = imports.gi.Pango;
 const SearchProviderManager = imports.ui.searchProviderManager;
-
+// Account service, handles the user profile hover button
 const AccountsService = imports.gi.AccountsService;
 const Tooltips = imports.ui.tooltips;
 const Session = new GnomeSession.SessionManager();
