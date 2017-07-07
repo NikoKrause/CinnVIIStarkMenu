@@ -85,7 +85,7 @@ VisibleChildIterator.prototype = {
     },
 
     getFirstVisible: function() {
-        return this.array[0];
+        return this.array[0]
     },
 
     getLastVisible: function() {
